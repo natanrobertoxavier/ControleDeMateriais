@@ -14,6 +14,7 @@ public class UserController : ControleDeMateriaisController
         [FromBody] RequestRegisterUserJson request)
     {
         var result = await useCase.Execute(request);
-        return Ok(result);
+
+        return Created(string.Empty, result);
     }
 }

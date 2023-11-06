@@ -314,6 +314,14 @@
           }
         }
       },
+      "FluentValidation/11.8.0": {
+        "runtime": {
+          "lib/net7.0/FluentValidation.dll": {
+            "assemblyVersion": "11.0.0.0",
+            "fileVersion": "11.8.0.0"
+          }
+        }
+      },
       "Microsoft.AspNetCore.Http.Abstractions/2.2.0": {
         "dependencies": {
           "Microsoft.AspNetCore.Http.Features": "2.2.0",
@@ -838,7 +846,9 @@
           "AutoMapper": "12.0.1",
           "ControleDeMateriais.Communication": "1.0.0",
           "ControleDeMateriais.Domain": "1.0.0",
+          "ControleDeMateriais.Exceptions": "1.0.0",
           "ControleDeMateriais.Infrastructure": "1.0.0",
+          "FluentValidation": "11.8.0",
           "Microsoft.Extensions.Configuration.Abstractions": "7.0.0",
           "Microsoft.Extensions.DependencyInjection.Abstractions": "7.0.0"
         },
@@ -858,6 +868,11 @@
         },
         "runtime": {
           "ControleDeMateriais.Domain.dll": {}
+        }
+      },
+      "ControleDeMateriais.Exceptions/1.0.0": {
+        "runtime": {
+          "ControleDeMateriais.Exceptions.dll": {}
         }
       },
       "ControleDeMateriais.Infrastructure/1.0.0": {
@@ -1049,6 +1064,13 @@
       "sha512": "sha512-IOYYVsgsTPdRUx6ZZ74Xuu6ZCTJuj268CG4hYciMsznuAGSZvADHFQrHC0EdXn+kNOdZfYeKyJ+kuR+igm6utg==",
       "path": "fluentmigrator.runner.sqlserverce/3.3.2",
       "hashPath": "fluentmigrator.runner.sqlserverce.3.3.2.nupkg.sha512"
+    },
+    "FluentValidation/11.8.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-TiEaaYqSIAS+wXQv46LRm8Mca092XYNePD0n231Hqlkmm5FuToZoWnjI1ef/vJUxBzqR7/k2vaVQXxijNgVKRQ==",
+      "path": "fluentvalidation/11.8.0",
+      "hashPath": "fluentvalidation.11.8.0.nupkg.sha512"
     },
     "Microsoft.AspNetCore.Http.Abstractions/2.2.0": {
       "type": "package",
@@ -1474,6 +1496,11 @@
       "sha512": ""
     },
     "ControleDeMateriais.Domain/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "ControleDeMateriais.Exceptions/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

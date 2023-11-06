@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "luVeykUwNspFSImR5uDILkf9cj9UQAZOvnJUonyz8TB4otqCEjkmTnrtG0f0aMgaW0olQNKIcBoKE9Xcs9UNPg==",
+  "dgSpecHash": "pO0bWD6Yqvhvg9S1gJwotDu8EtCLUu4Xi5FzNqmP2kSQ2pW5LciAiO1r2ACdxMr7OCihuiNntNXZf1iuz6H/nA==",
   "success": true,
   "projectFilePath": "C:\\Code\\.net\\ControleDeMateriais\\ControleDeMateriais.Api\\ControleDeMateriais.Api.csproj",
   "expectedPackageFiles": [
@@ -28,6 +28,7 @@
     "C:\\Users\\natan\\.nuget\\packages\\fluentmigrator.runner.sqlite\\3.3.2\\fluentmigrator.runner.sqlite.3.3.2.nupkg.sha512",
     "C:\\Users\\natan\\.nuget\\packages\\fluentmigrator.runner.sqlserver\\3.3.2\\fluentmigrator.runner.sqlserver.3.3.2.nupkg.sha512",
     "C:\\Users\\natan\\.nuget\\packages\\fluentmigrator.runner.sqlserverce\\3.3.2\\fluentmigrator.runner.sqlserverce.3.3.2.nupkg.sha512",
+    "C:\\Users\\natan\\.nuget\\packages\\fluentvalidation\\11.8.0\\fluentvalidation.11.8.0.nupkg.sha512",
     "C:\\Users\\natan\\.nuget\\packages\\microsoft.aspnetcore.http.abstractions\\2.2.0\\microsoft.aspnetcore.http.abstractions.2.2.0.nupkg.sha512",
     "C:\\Users\\natan\\.nuget\\packages\\microsoft.aspnetcore.http.features\\2.2.0\\microsoft.aspnetcore.http.features.2.2.0.nupkg.sha512",
     "C:\\Users\\natan\\.nuget\\packages\\microsoft.aspnetcore.openapi\\7.0.11\\microsoft.aspnetcore.openapi.7.0.11.nupkg.sha512",

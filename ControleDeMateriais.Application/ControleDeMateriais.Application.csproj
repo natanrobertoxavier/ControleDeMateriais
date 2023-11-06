@@ -8,12 +8,14 @@
 
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="12.0.1" />
+    <PackageReference Include="FluentValidation" Version="11.8.0" />
     <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="7.0.0" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="7.0.0" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\ControleDeMateriais.Communication\ControleDeMateriais.Communication.csproj" />
+    <ProjectReference Include="..\ControleDeMateriais.Exceptions\ControleDeMateriais.Exceptions.csproj" />
     <ProjectReference Include="..\ControleDeMateriais.Infrastructure\ControleDeMateriais.Infrastructure.csproj" />
     <ProjectReference Include="..\ControleDeMaterias.Domain\ControleDeMateriais.Domain.csproj" />
   </ItemGroup>
