@@ -3,15 +3,15 @@ WORKDIR /app
 EXPOSE 80
 
 FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build
-WORKDIR /main/ControleDeMateriais.Api
-COPY ["ControleDeMateriais.Api.csproj", "main/ControleDeMateriais.Api"]
-RUN dotnet restore "main/ControleDeMateriais.Api.csproj"
+WORKDIR /main
+COPY ["ControleDeMateriais.Api/ControleDeMateriais.Api.csproj", "ControleDeMateriais.Api/"]
+RUN dotnet restore "ControleDeMateriais.Api/ControleDeMateriais.Api.csproj"
 COPY . .
 
-RUN dotnet build "ControleDeMateriais.Api.csproj" -c Release -o /app/build
+RUN dotnet build "ControleDeMateriais.Api/ControleDeMateriais.Api.csproj" -c Release -o /app/build
 
 FROM build AS publish
-RUN dotnet publish "ControleDeMateriais.Api.csproj" -c Release -o /app/publish
+RUN dotnet publish "ControleDeMateriais.Api/ControleDeMateriais.Api.csproj" -c Release -o /app/publish
 
 FROM base AS final
 WORKDIR /app
