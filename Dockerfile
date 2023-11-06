@@ -4,7 +4,7 @@ EXPOSE 80
 
 FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build
 WORKDIR /main/ControleDeMateriais.Api
-COPY ["ControleDeMateriais.Api.csproj", "main/"]
+COPY ["ControleDeMateriais.Api.csproj", "main/ControleDeMateriais.Api"]
 RUN dotnet restore "main/ControleDeMateriais.Api.csproj"
 COPY . .
 
