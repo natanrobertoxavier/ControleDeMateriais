@@ -3,8 +3,8 @@ WORKDIR /app
 EXPOSE 80
 
 FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build
-WORKDIR /main
-COPY ["ControleDeMateriais.Api.csproj", "/main/ControleDeMateriais.Api/"]
+WORKDIR /main/ControleDeMateriais.Api
+COPY ["ControleDeMateriais.Api.csproj", "."]
 RUN dotnet restore "/main/ControleDeMateriais.Api/ControleDeMateriais.Api.csproj"
 COPY . .
 
