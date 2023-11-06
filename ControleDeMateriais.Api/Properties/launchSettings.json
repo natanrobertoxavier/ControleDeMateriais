@@ -1,0 +1,47 @@
+﻿{
+  "$schema": "https://json.schemastore.org/launchsettings.json",
+  "iisSettings": {
+    "windowsAuthentication": false,
+    "anonymousAuthentication": true,
+    "iisExpress": {
+      "applicationUrl": "http://localhost:47505",
+      "sslPort": 44313
+    }
+  },
+  "profiles": {
+    "http": {
+      "commandName": "Project",
+      "dotnetRunMessages": true,
+      "launchBrowser": true,
+      "launchUrl": "swagger",
+      "applicationUrl": "http://localhost:5171",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "ConnectionString": "mongodb+srv://systemuser:5jQlnoLyvW2qPFds@cluster0.7gbzm3g.mongodb.net/?retryWrites=true&w=majority",
+        "DatabaseName": "materialcontrol"
+      }
+    },
+    "https": {
+      "commandName": "Project",
+      "dotnetRunMessages": true,
+      "launchBrowser": true,
+      "launchUrl": "swagger",
+      "applicationUrl": "https://localhost:7100;http://localhost:5171",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "ConnectionString": "mongodb+srv://systemuser:5jQlnoLyvW2qPFds@cluster0.7gbzm3g.mongodb.net/?retryWrites=true&w=majority",
+        "DatabaseName": "materialcontrol"
+      }
+    },
+    "IIS Express": {
+      "commandName": "IISExpress",
+      "launchBrowser": true,
+      "launchUrl": "swagger",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "ConnectionString": "mongodb+srv://systemuser:5jQlnoLyvW2qPFds@cluster0.7gbzm3g.mongodb.net/?retryWrites=true&w=majority",
+        "DatabaseName": "materialcontrol"
+      }
+    }
+  }
+}
