@@ -10,6 +10,7 @@ public class AutoMapperConfiguration : Profile
 
     private void EntityToResponse()
     {
-        CreateMap<Communication.Requests.RequestRegisterUserJson, Domain.Entities.User>();
+        CreateMap<Communication.Requests.RequestRegisterUserJson, Domain.Entities.User>()
+            .ForMember(destiny => destiny.Password, config => config.Ignore());
     }
 }

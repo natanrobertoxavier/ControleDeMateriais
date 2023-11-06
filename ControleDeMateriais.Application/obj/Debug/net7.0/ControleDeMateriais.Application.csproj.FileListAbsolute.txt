@@ -15,3 +15,5 @@ C:\Code\.net\ControleDeMateriais\ControleDeMateriais.Application\bin\Debug\net7.
 C:\Code\.net\ControleDeMateriais\ControleDeMateriais.Application\obj\Debug\net7.0\ControleDeMateriais.Application.csproj.CopyComplete
 C:\Code\.net\ControleDeMateriais\ControleDeMateriais.Application\bin\Debug\net7.0\ControleDeMateriais.Domain.dll
 C:\Code\.net\ControleDeMateriais\ControleDeMateriais.Application\bin\Debug\net7.0\ControleDeMateriais.Domain.pdb
+C:\Code\.net\ControleDeMateriais\ControleDeMateriais.Application\bin\Debug\net7.0\ControleDeMateriais.Infrastructure.dll
+C:\Code\.net\ControleDeMateriais\ControleDeMateriais.Application\bin\Debug\net7.0\ControleDeMateriais.Infrastructure.pdb

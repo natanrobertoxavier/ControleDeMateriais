@@ -838,6 +838,7 @@
           "AutoMapper": "12.0.1",
           "ControleDeMateriais.Communication": "1.0.0",
           "ControleDeMateriais.Domain": "1.0.0",
+          "ControleDeMateriais.Infrastructure": "1.0.0",
           "Microsoft.Extensions.Configuration.Abstractions": "7.0.0",
           "Microsoft.Extensions.DependencyInjection.Abstractions": "7.0.0"
         },

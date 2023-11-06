@@ -1,4 +1,7 @@
-﻿using ControleDeMateriais.Application.UseCases.User.Register;
+﻿using ControleDeMateriais.Application.Services.Cryptography;
+using ControleDeMateriais.Application.UseCases.User.Register;
+using ControleDeMateriais.Infrastructure.AccessRepository;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -10,6 +13,13 @@ public static class Initializer
         IConfiguration configuration)
     {
         AddUseCase(services);
+        AddAdditionalKeyPassword(services, configuration);
+    }
+
+    private static void AddAdditionalKeyPassword(IServiceCollection services, IConfiguration configuration)
+    {
+        var section = Environment.GetEnvironmentVariable("AdditionalKeyPassword");
+        services.AddScoped(option => new PasswordEncryptor(section));
     }
 
     private static void AddUseCase(IServiceCollection services)

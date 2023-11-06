@@ -14,6 +14,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\ControleDeMateriais.Communication\ControleDeMateriais.Communication.csproj" />
+    <ProjectReference Include="..\ControleDeMateriais.Infrastructure\ControleDeMateriais.Infrastructure.csproj" />
     <ProjectReference Include="..\ControleDeMaterias.Domain\ControleDeMateriais.Domain.csproj" />
   </ItemGroup>
 

@@ -120,6 +120,9 @@
               "C:\\Code\\.net\\ControleDeMateriais\\ControleDeMateriais.Communication\\ControleDeMateriais.Communication.csproj": {
                 "projectPath": "C:\\Code\\.net\\ControleDeMateriais\\ControleDeMateriais.Communication\\ControleDeMateriais.Communication.csproj"
               },
+              "C:\\Code\\.net\\ControleDeMateriais\\ControleDeMateriais.Infrastructure\\ControleDeMateriais.Infrastructure.csproj": {
+                "projectPath": "C:\\Code\\.net\\ControleDeMateriais\\ControleDeMateriais.Infrastructure\\ControleDeMateriais.Infrastructure.csproj"
+              },
               "C:\\Code\\.net\\ControleDeMateriais\\ControleDeMaterias.Domain\\ControleDeMateriais.Domain.csproj": {
                 "projectPath": "C:\\Code\\.net\\ControleDeMateriais\\ControleDeMaterias.Domain\\ControleDeMateriais.Domain.csproj"
               }
