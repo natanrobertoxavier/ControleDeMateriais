@@ -8,7 +8,21 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerGen(c =>
+{
+    c.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo
+    {
+        Title = "Controle de Materiais API",
+        Version = "v1",
+        Contact = new Microsoft.OpenApi.Models.OpenApiContact() 
+        { 
+            Name = "Natan Roberto Xavier",
+            Email = "natanroberto182@gmail.com"
+        },
+    });
+
+    c.SchemaFilter<ExampleRegisterUserFilter>();
+});
 
 builder.Services.AddInfrastructure(builder.Configuration);
 builder.Services.AddApplication(builder.Configuration);
