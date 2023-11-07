@@ -20,7 +20,7 @@ public class RegisterUserValidator : AbstractValidator<RequestRegisterUserJson>
         {
             RuleFor(c => c.Telephone).Custom((telephone, context) => 
             {
-                string telephonePattern = "[0-9]{2} [1-9]{1} [0-9]{4}-[0-9]{4}";
+                string telephonePattern = "[0-9]{2} [9]{1} [0-9]{4}-[0-9]{4}";
                 var isMatch = Regex.IsMatch(telephone, telephonePattern);
 
                 if (!isMatch)
