@@ -16,5 +16,6 @@ public static class Initializer
     private static void AddRepository(IServiceCollection services)
     {
         services.AddScoped<IUserWriteOnlyRepository, UserRepository>();
+        services.AddScoped<IUserReadOnlyRepository, UserRepository>();
     }
 }

@@ -10,18 +10,21 @@ namespace ControleDeMateriais.Application.UseCases.User.Register;
 public class RegisterUserUseCase : IRegisterUserUseCase
 {
     private readonly IMapper _mapper;
-    private readonly IUserWriteOnlyRepository _repository;
+    private readonly IUserWriteOnlyRepository _userRepositoryWriteOnly;
+    private readonly IUserReadOnlyRepository _userRepositoryReadOnly;
     private readonly PasswordEncryptor _passwordEncryptor;
     private readonly TokenController _tokenController;
 
     public RegisterUserUseCase(
         IMapper mapper,
-        IUserWriteOnlyRepository repository,
+        IUserWriteOnlyRepository repositoryWriteOnly,
+        IUserReadOnlyRepository repositoryReadOnly,
         PasswordEncryptor passwordEncryptor,
         TokenController tokenController)
     {
         _mapper = mapper;
-        _repository = repository;
+        _userRepositoryWriteOnly = repositoryWriteOnly;
+        _userRepositoryReadOnly = repositoryReadOnly;
         _passwordEncryptor = passwordEncryptor;
         _tokenController = tokenController;
     }
@@ -32,7 +35,7 @@ public class RegisterUserUseCase : IRegisterUserUseCase
         var entity = _mapper.Map<Domain.Entities.User>(request);
         entity.Password = _passwordEncryptor.Encrypt(request.Password);
 
-        await _repository.Add(entity);
+        await _userRepositoryWriteOnly.Add(entity);
 
         var token = _tokenController.TokenGenerate(entity.Email);
 
@@ -46,6 +49,13 @@ public class RegisterUserUseCase : IRegisterUserUseCase
     {
         var validator = new RegisterUserValidator();
         var result = validator.Validate(request);
+
+        var isThereUserWithEmail = await _userRepositoryReadOnly.IsThereUserWithEmail(request.Email);
+
+        if (isThereUserWithEmail)
+        {
+            result.Errors.Add(new FluentValidation.Results.ValidationFailure("email", ErrorMessagesResource.EMAIL_CADASTRADO));
+        }
 
         if (!result.IsValid)
         {

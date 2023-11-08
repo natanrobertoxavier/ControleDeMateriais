@@ -61,6 +61,15 @@ namespace ControleDeMateriais.Exceptions.ExceptionBase {
         }
         
         /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a E-mail já cadastrado..
+        /// </summary>
+        public static string EMAIL_CADASTRADO {
+            get {
+                return ResourceManager.GetString("EMAIL_CADASTRADO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a Informe o e-mail..
         /// </summary>
         public static string EMAIL_USUARIO_EM_BRANCO {
@@ -124,7 +133,7 @@ namespace ControleDeMateriais.Exceptions.ExceptionBase {
         }
         
         /// <summary>
-        ///   Consulta uma cadeia de caracteres localizada semelhante a Telefone informado inválido..
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Telefone informado é inválido..
         /// </summary>
         public static string TELEFONE_USUARIO_INVALIDO {
             get {
