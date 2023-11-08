@@ -1,4 +1,5 @@
 ﻿using ControleDeMateriais.Application.Services.Cryptography;
+using ControleDeMateriais.Application.Services.Token;
 using ControleDeMateriais.Application.UseCases.User.Register;
 using ControleDeMateriais.Infrastructure.AccessRepository;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
@@ -14,12 +15,22 @@ public static class Initializer
     {
         AddUseCase(services);
         AddAdditionalKeyPassword(services, configuration);
+        AddTokenJwt(services, configuration);
     }
 
     private static void AddAdditionalKeyPassword(IServiceCollection services, IConfiguration configuration)
     {
-        var section = Environment.GetEnvironmentVariable("AdditionalKeyPassword");
-        services.AddScoped(option => new PasswordEncryptor(section));
+        var additionalKeyPassword = Environment.GetEnvironmentVariable("AdditionalKeyPassword");
+
+        services.AddScoped(option => new PasswordEncryptor(additionalKeyPassword));
+    }
+
+    private static void AddTokenJwt(IServiceCollection services, IConfiguration configuration)
+    {
+        var lifeTimeToken = Environment.GetEnvironmentVariable("LifetimeToken");
+        var tokenKey = Environment.GetEnvironmentVariable("TokenKey");
+
+        services.AddScoped(option => new TokenController(double.Parse(lifeTimeToken), tokenKey));
     }
 
     private static void AddUseCase(IServiceCollection services)

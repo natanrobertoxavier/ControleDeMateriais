@@ -1,10 +1,10 @@
 ﻿using AutoMapper;
 using ControleDeMateriais.Application.Services.Cryptography;
+using ControleDeMateriais.Application.Services.Token;
 using ControleDeMateriais.Communication.Requests;
 using ControleDeMateriais.Communication.Responses;
 using ControleDeMateriais.Domain.Repositories;
 using ControleDeMateriais.Exceptions.ExceptionBase;
-using Microsoft.Extensions.Options;
 
 namespace ControleDeMateriais.Application.UseCases.User.Register;
 public class RegisterUserUseCase : IRegisterUserUseCase
@@ -12,15 +12,18 @@ public class RegisterUserUseCase : IRegisterUserUseCase
     private readonly IMapper _mapper;
     private readonly IUserWriteOnlyRepository _repository;
     private readonly PasswordEncryptor _passwordEncryptor;
+    private readonly TokenController _tokenController;
 
     public RegisterUserUseCase(
         IMapper mapper,
         IUserWriteOnlyRepository repository,
-        PasswordEncryptor passwordEncryptor)
+        PasswordEncryptor passwordEncryptor,
+        TokenController tokenController)
     {
         _mapper = mapper;
         _repository = repository;
         _passwordEncryptor = passwordEncryptor;
+        _tokenController = tokenController;
     }
 
     public async Task<ResponseUserCreatedJson> Execute(RequestRegisterUserJson request)
@@ -31,9 +34,11 @@ public class RegisterUserUseCase : IRegisterUserUseCase
 
         await _repository.Add(entity);
 
+        var token = _tokenController.TokenGenerate(entity.Email);
+
         return new ResponseUserCreatedJson
         {
-            Token = string.Empty
+            Token = token
         };
     }
 

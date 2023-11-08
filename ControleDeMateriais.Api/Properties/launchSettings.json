@@ -19,7 +19,9 @@
         "ASPNETCORE_ENVIRONMENT": "Development",
         "ConnectionString": "mongodb+srv://systemuser:5jQlnoLyvW2qPFds@cluster0.7gbzm3g.mongodb.net/?retryWrites=true&w=majority",
         "DatabaseName": "materialcontrol",
-        "AdditionalKeyPassword": "3/Y&l4N419!Du"
+        "AdditionalKeyPassword": "3/Y&l4N419!Du",
+        "LifetimeToken": "1000",
+        "TokenKey": "WUpyYng4QnkxXjYvRjpubXNcX1hpNTltdyhbPFJ+"
       }
     },
     "https": {
@@ -32,7 +34,9 @@
         "ASPNETCORE_ENVIRONMENT": "Development",
         "ConnectionString": "mongodb+srv://systemuser:5jQlnoLyvW2qPFds@cluster0.7gbzm3g.mongodb.net/?retryWrites=true&w=majority",
         "DatabaseName": "materialcontrol",
-        "AdditionalKeyPassword": "3/Y&l4N419!Du"
+        "AdditionalKeyPassword": "3/Y&l4N419!Du",
+        "LifetimeToken": "1000",
+        "TokenKey": "WUpyYng4QnkxXjYvRjpubXNcX1hpNTltdyhbPFJ+"
       }
     },
     "IIS Express": {
@@ -43,7 +47,9 @@
         "ASPNETCORE_ENVIRONMENT": "Development",
         "ConnectionString": "mongodb+srv://systemuser:5jQlnoLyvW2qPFds@cluster0.7gbzm3g.mongodb.net/?retryWrites=true&w=majority",
         "DatabaseName": "materialcontrol",
-        "AdditionalKeyPassword": "3/Y&l4N419!Du"
+        "AdditionalKeyPassword": "3/Y&l4N419!Du",
+        "LifetimeToken": "1000",
+        "TokenKey": "WUpyYng4QnkxXjYvRjpubXNcX1hpNTltdyhbPFJ+"
       }
     }
   }
