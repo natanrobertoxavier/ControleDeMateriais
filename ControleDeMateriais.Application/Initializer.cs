@@ -1,8 +1,6 @@
 ﻿using ControleDeMateriais.Application.Services.Cryptography;
 using ControleDeMateriais.Application.Services.Token;
 using ControleDeMateriais.Application.UseCases.User.Register;
-using ControleDeMateriais.Infrastructure.AccessRepository;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 

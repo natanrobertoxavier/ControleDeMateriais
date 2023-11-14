@@ -1,8 +1,7 @@
-using ControleDeMateriais.Application;
-using ControleDeMateriais.Infrastructure;
-using ControleDeMateriais.Domain.Extension;
-using ControleDeMateriais.Application.Services.AutoMapper;
 using ControleDeMateriais.Api.Filters;
+using ControleDeMateriais.Application;
+using ControleDeMateriais.Application.Services.AutoMapper;
+using ControleDeMateriais.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -21,7 +20,7 @@ builder.Services.AddSwaggerGen(c =>
         },
     });
 
-    c.SchemaFilter<ExampleRegisterUserFilter>();
+    c.SchemaFilter<ExampleControllerFilter>();
 });
 
 builder.Services.AddInfrastructure(builder.Configuration);

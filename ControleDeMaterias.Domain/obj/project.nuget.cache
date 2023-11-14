@@ -1,0 +1,15 @@
+{
+  "version": 2,
+  "dgSpecHash": "Aeh+Pdn+nL1pCxOlhhDT//Vu6Mwy7xYYOs+h7wEp0XJ7KB6hhM3/joRU3sMHLj3VLbKCOmllgjO5CKWmayxrcQ==",
+  "success": true,
+  "projectFilePath": "C:\\Code\\.net\\ControleDeMateriais\\ControleDeMaterias.Domain\\ControleDeMateriais.Domain.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\natan\\.nuget\\packages\\microsoft.extensions.configuration\\7.0.0\\microsoft.extensions.configuration.7.0.0.nupkg.sha512",
+    "C:\\Users\\natan\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\7.0.0\\microsoft.extensions.configuration.abstractions.7.0.0.nupkg.sha512",
+    "C:\\Users\\natan\\.nuget\\packages\\microsoft.extensions.primitives\\7.0.0\\microsoft.extensions.primitives.7.0.0.nupkg.sha512",
+    "C:\\Users\\natan\\.nuget\\packages\\mongodb.bson\\2.22.0\\mongodb.bson.2.22.0.nupkg.sha512",
+    "C:\\Users\\natan\\.nuget\\packages\\system.memory\\4.5.5\\system.memory.4.5.5.nupkg.sha512",
+    "C:\\Users\\natan\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\5.0.0\\system.runtime.compilerservices.unsafe.5.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}
