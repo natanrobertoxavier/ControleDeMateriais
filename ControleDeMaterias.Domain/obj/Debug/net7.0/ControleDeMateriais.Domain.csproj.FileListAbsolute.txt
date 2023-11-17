@@ -10,3 +10,4 @@ C:\Code\.net\ControleDeMateriais\ControleDeMaterias.Domain\obj\Debug\net7.0\Cont
 C:\Code\.net\ControleDeMateriais\ControleDeMaterias.Domain\obj\Debug\net7.0\refint\ControleDeMateriais.Domain.dll
 C:\Code\.net\ControleDeMateriais\ControleDeMaterias.Domain\obj\Debug\net7.0\ControleDeMateriais.Domain.pdb
 C:\Code\.net\ControleDeMateriais\ControleDeMaterias.Domain\obj\Debug\net7.0\ref\ControleDeMateriais.Domain.dll
+C:\Code\.net\ControleDeMateriais\ControleDeMaterias.Domain\obj\Debug\net7.0\ControleDeMateriais.Domain.sourcelink.json

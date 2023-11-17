@@ -13,9 +13,11 @@ builder.Services.AddSwaggerGen(c =>
     {
         Title = "Controle de Materiais API",
         Version = "v1",
+        Description = "Developed by: Natan Roberto Xavier",
+
         Contact = new Microsoft.OpenApi.Models.OpenApiContact() 
         { 
-            Name = "Natan Roberto Xavier",
+            Name = "natanroberto182@gmail.com",
             Email = "natanroberto182@gmail.com"
         },
     });

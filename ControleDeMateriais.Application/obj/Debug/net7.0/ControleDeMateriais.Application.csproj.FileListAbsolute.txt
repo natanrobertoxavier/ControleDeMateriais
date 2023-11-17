@@ -19,3 +19,4 @@ C:\Code\.net\ControleDeMateriais\ControleDeMateriais.Application\obj\Debug\net7.
 C:\Code\.net\ControleDeMateriais\ControleDeMateriais.Application\obj\Debug\net7.0\refint\ControleDeMateriais.Application.dll
 C:\Code\.net\ControleDeMateriais\ControleDeMateriais.Application\obj\Debug\net7.0\ControleDeMateriais.Application.pdb
 C:\Code\.net\ControleDeMateriais\ControleDeMateriais.Application\obj\Debug\net7.0\ref\ControleDeMateriais.Application.dll
+C:\Code\.net\ControleDeMateriais\ControleDeMateriais.Application\obj\Debug\net7.0\ControleDeMateriais.Application.sourcelink.json

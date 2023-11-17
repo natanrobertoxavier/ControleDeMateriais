@@ -51,10 +51,16 @@ public class RegisterUserUseCase : IRegisterUserUseCase
         var result = validator.Validate(request);
 
         var isThereUserWithEmail = await _userRepositoryReadOnly.IsThereUserWithEmail(request.Email);
+        var isThereUserWithCpf = await _userRepositoryReadOnly.IsThereUserWithCpf(request.Cpf);
 
         if (isThereUserWithEmail)
         {
             result.Errors.Add(new FluentValidation.Results.ValidationFailure("email", ErrorMessagesResource.EMAIL_CADASTRADO));
+        }
+
+        if (isThereUserWithCpf)
+        {
+            result.Errors.Add(new FluentValidation.Results.ValidationFailure("cpf", ErrorMessagesResource.CPF_CADASTRADO));
         }
 
         if (!result.IsValid)

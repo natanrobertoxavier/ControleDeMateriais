@@ -1,0 +1,19 @@
+# Ignora arquivos e pastas do Visual Studio
+.vsidx
+*.csproj
+
+# Ignora arquivos e pastas do SQL Server
+*.mdf
+*.ldf
+*.sdf
+
+# Ignora outros arquivos e pastas
+*.log
+*.pdb
+*.suo
+*.user
+*.cachefile
+*.opensdf
+*.snx
+*.snupkg
+*.vstestresults

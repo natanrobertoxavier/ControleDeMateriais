@@ -13,3 +13,4 @@ C:\Code\.net\ControleDeMateriais\ControleDeMateriais.Infrastructure\obj\Debug\ne
 C:\Code\.net\ControleDeMateriais\ControleDeMateriais.Infrastructure\obj\Debug\net7.0\refint\ControleDeMateriais.Infrastructure.dll
 C:\Code\.net\ControleDeMateriais\ControleDeMateriais.Infrastructure\obj\Debug\net7.0\ControleDeMateriais.Infrastructure.pdb
 C:\Code\.net\ControleDeMateriais\ControleDeMateriais.Infrastructure\obj\Debug\net7.0\ref\ControleDeMateriais.Infrastructure.dll
+C:\Code\.net\ControleDeMateriais\ControleDeMateriais.Infrastructure\obj\Debug\net7.0\ControleDeMateriais.Infrastructure.sourcelink.json

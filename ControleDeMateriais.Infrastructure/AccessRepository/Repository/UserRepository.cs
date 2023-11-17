@@ -21,4 +21,15 @@ public class UserRepository : IUserWriteOnlyRepository, IUserReadOnlyRepository
 
         return false;
     }
+
+    public async Task<bool> IsThereUserWithCpf(string cpf)
+    {
+        var collection = ConnectDataBase.GetUserAccess();
+        var result = await collection.FindAsync(c => c.Cpf.Equals(cpf));
+
+        if (await result.AnyAsync())
+            return true;
+
+        return false;
+    }
 }

@@ -11,3 +11,4 @@ C:\Code\.net\ControleDeMateriais\ControleDeMateriais.Exceptions\obj\Debug\net7.0
 C:\Code\.net\ControleDeMateriais\ControleDeMateriais.Exceptions\obj\Debug\net7.0\refint\ControleDeMateriais.Exceptions.dll
 C:\Code\.net\ControleDeMateriais\ControleDeMateriais.Exceptions\obj\Debug\net7.0\ControleDeMateriais.Exceptions.pdb
 C:\Code\.net\ControleDeMateriais\ControleDeMateriais.Exceptions\obj\Debug\net7.0\ref\ControleDeMateriais.Exceptions.dll
+C:\Code\.net\ControleDeMateriais\ControleDeMateriais.Exceptions\obj\Debug\net7.0\ControleDeMateriais.Exceptions.sourcelink.json

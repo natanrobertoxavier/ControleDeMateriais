@@ -20,6 +20,9 @@ public class ExampleControllerFilter : ISchemaFilter
                 case "name":
                     schema.Example = new OpenApiString("Conrado Xavier");
                     break;
+                case "cpf":
+                    schema.Example = new OpenApiString("000.000.000-00");
+                    break;
                 case "email":
                     schema.Example = new OpenApiString("exemple@gmail.com");
                     break;

@@ -61,6 +61,33 @@ namespace ControleDeMateriais.Exceptions.ExceptionBase {
         }
         
         /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a CPF já cadastrado..
+        /// </summary>
+        public static string CPF_CADASTRADO {
+            get {
+                return ResourceManager.GetString("CPF_CADASTRADO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Informe o CPF..
+        /// </summary>
+        public static string CPF_USUARIO_EM_BRANCO {
+            get {
+                return ResourceManager.GetString("CPF_USUARIO_EM_BRANCO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a O CPF informado é inválido..
+        /// </summary>
+        public static string CPF_USUARIO_INVALIDO {
+            get {
+                return ResourceManager.GetString("CPF_USUARIO_INVALIDO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a E-mail já cadastrado..
         /// </summary>
         public static string EMAIL_CADASTRADO {

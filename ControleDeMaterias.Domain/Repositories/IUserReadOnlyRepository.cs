@@ -2,4 +2,5 @@
 public interface IUserReadOnlyRepository
 {
     Task<bool> IsThereUserWithEmail(string email);
+    Task<bool> IsThereUserWithCpf(string cpf);
 }

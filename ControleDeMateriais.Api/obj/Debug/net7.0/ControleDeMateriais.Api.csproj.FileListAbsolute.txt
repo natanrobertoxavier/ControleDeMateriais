@@ -107,3 +107,4 @@ C:\Code\.net\ControleDeMateriais\ControleDeMateriais.Api\obj\Debug\net7.0\refint
 C:\Code\.net\ControleDeMateriais\ControleDeMateriais.Api\obj\Debug\net7.0\ControleDeMateriais.Api.pdb
 C:\Code\.net\ControleDeMateriais\ControleDeMateriais.Api\obj\Debug\net7.0\ControleDeMateriais.Api.genruntimeconfig.cache
 C:\Code\.net\ControleDeMateriais\ControleDeMateriais.Api\obj\Debug\net7.0\ref\ControleDeMateriais.Api.dll
+C:\Code\.net\ControleDeMateriais\ControleDeMateriais.Api\obj\Debug\net7.0\ControleDeMateriais.Api.sourcelink.json
