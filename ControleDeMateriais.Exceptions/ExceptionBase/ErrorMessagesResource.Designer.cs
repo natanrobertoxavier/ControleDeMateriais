@@ -124,6 +124,15 @@ namespace ControleDeMateriais.Exceptions.ExceptionBase {
         }
         
         /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Usuário e/ou senha incorretos..
+        /// </summary>
+        public static string LOGIN_INVALIDO {
+            get {
+                return ResourceManager.GetString("LOGIN_INVALIDO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a Informe o nome..
         /// </summary>
         public static string NOME_USUARIO_EM_BRANCO {

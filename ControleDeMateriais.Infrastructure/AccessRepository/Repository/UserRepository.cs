@@ -32,4 +32,12 @@ public class UserRepository : IUserWriteOnlyRepository, IUserReadOnlyRepository
 
         return false;
     }
+
+    public async Task<User> GetEmailPassword(string email, string password)
+    {
+        var collection = ConnectDataBase.GetUserAccess();
+        var filter = Builders<User>.Filter.Where(c => c.Email.Equals(email) && c.Password.Equals(password));
+
+        return await collection.Find(filter).FirstOrDefaultAsync();
+    }
 }

@@ -1,5 +1,4 @@
 ﻿using ControleDeMateriais.Communication.Responses;
-using ControleDeMateriais.Exceptions;
 using ControleDeMateriais.Exceptions.ExceptionBase;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
@@ -27,6 +26,18 @@ public class ExceptionFilters : IExceptionFilter
         {
             ProcessErrorValidator(context);
         }
+        if (context.Exception is LoginInvalidException)
+        {
+            ProcessLoginInvalidException(context);
+        }
+    }
+
+    private static void ProcessLoginInvalidException(ExceptionContext context)
+    {
+        var errorLogin = context.Exception as LoginInvalidException;
+
+        context.HttpContext.Response.StatusCode = (int)HttpStatusCode.Unauthorized;
+        context.Result = new ObjectResult(new ResponseErrorJson(errorLogin.Message));
     }
 
     private static void ProcessErrorValidator(ExceptionContext context)
