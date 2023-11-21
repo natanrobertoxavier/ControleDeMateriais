@@ -129,11 +129,17 @@
   <data name="EMAIL_CADASTRADO" xml:space="preserve">
     <value>E-mail já cadastrado.</value>
   </data>
+  <data name="EMAIL_NAO_LOCALIZADO" xml:space="preserve">
+    <value>Nenhum e-mail localizado.</value>
+  </data>
   <data name="EMAIL_USUARIO_EM_BRANCO" xml:space="preserve">
     <value>Informe o e-mail.</value>
   </data>
   <data name="EMAIL_USUARIO_INVALIDO" xml:space="preserve">
     <value>E-mail informado inválido.</value>
+  </data>
+  <data name="ERRO_AO_ENVIAR_EMAIL" xml:space="preserve">
+    <value>Erro ao se comunicar com serviço de e-mail, por favor, tente novamente.</value>
   </data>
   <data name="ERRO_DESCONHECIDO" xml:space="preserve">
     <value>Erro desconhecido.</value>

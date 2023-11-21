@@ -1,4 +1,6 @@
-﻿using ControleDeMateriais.Domain.Repositories;
+﻿using ControleDeMateriais.Domain.Repositories.User;
+using ControleDeMateriais.Domain.Repositories.User.ForgotPassword.Forgot;
+using ControleDeMateriais.Domain.Repositories.User.ForgotPassword.RecoveryCode;
 using ControleDeMateriais.Infrastructure.AccessRepository.Repository;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -17,5 +19,8 @@ public static class Initializer
     {
         services.AddScoped<IUserWriteOnlyRepository, UserRepository>();
         services.AddScoped<IUserReadOnlyRepository, UserRepository>();
+        services.AddScoped<IForgotPasswordSendMailOnlyRepository, ForgotPasswordRepository>();
+        services.AddScoped<IRecoveryCodeWriteOnlyRepository, RecoveryCodeRepository>();
+        services.AddScoped<IRecoveryCodeReadOnlyRepository, RecoveryCodeRepository>();
     }
 }

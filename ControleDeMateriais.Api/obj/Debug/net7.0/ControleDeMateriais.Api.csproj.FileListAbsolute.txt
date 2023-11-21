@@ -108,3 +108,4 @@ C:\Code\.net\ControleDeMateriais\ControleDeMateriais.Api\obj\Debug\net7.0\Contro
 C:\Code\.net\ControleDeMateriais\ControleDeMateriais.Api\obj\Debug\net7.0\ControleDeMateriais.Api.genruntimeconfig.cache
 C:\Code\.net\ControleDeMateriais\ControleDeMateriais.Api\obj\Debug\net7.0\ref\ControleDeMateriais.Api.dll
 C:\Code\.net\ControleDeMateriais\ControleDeMateriais.Api\obj\Debug\net7.0\ControleDeMateriais.Api.sourcelink.json
+C:\Code\.net\ControleDeMateriais\ControleDeMateriais.Api\bin\Debug\net7.0\Newtonsoft.Json.dll

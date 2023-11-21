@@ -13,9 +13,12 @@
     <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.13" />
     <PackageReference Include="MongoDB.Driver" Version="2.22.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\ControleDeMateriais.Communication\ControleDeMateriais.Communication.csproj" />
+    <ProjectReference Include="..\ControleDeMateriais.Exceptions\ControleDeMateriais.Exceptions.csproj" />
     <ProjectReference Include="..\ControleDeMaterias.Domain\ControleDeMateriais.Domain.csproj" />
   </ItemGroup>
 

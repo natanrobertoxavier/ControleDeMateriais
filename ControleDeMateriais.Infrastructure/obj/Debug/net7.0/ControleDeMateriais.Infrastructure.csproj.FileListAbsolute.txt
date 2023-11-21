@@ -14,3 +14,7 @@ C:\Code\.net\ControleDeMateriais\ControleDeMateriais.Infrastructure\obj\Debug\ne
 C:\Code\.net\ControleDeMateriais\ControleDeMateriais.Infrastructure\obj\Debug\net7.0\ControleDeMateriais.Infrastructure.pdb
 C:\Code\.net\ControleDeMateriais\ControleDeMateriais.Infrastructure\obj\Debug\net7.0\ref\ControleDeMateriais.Infrastructure.dll
 C:\Code\.net\ControleDeMateriais\ControleDeMateriais.Infrastructure\obj\Debug\net7.0\ControleDeMateriais.Infrastructure.sourcelink.json
+C:\Code\.net\ControleDeMateriais\ControleDeMateriais.Infrastructure\bin\Debug\net7.0\ControleDeMateriais.Communication.dll
+C:\Code\.net\ControleDeMateriais\ControleDeMateriais.Infrastructure\bin\Debug\net7.0\ControleDeMateriais.Communication.pdb
+C:\Code\.net\ControleDeMateriais\ControleDeMateriais.Infrastructure\bin\Debug\net7.0\ControleDeMateriais.Exceptions.dll
+C:\Code\.net\ControleDeMateriais\ControleDeMateriais.Infrastructure\bin\Debug\net7.0\ControleDeMateriais.Exceptions.pdb

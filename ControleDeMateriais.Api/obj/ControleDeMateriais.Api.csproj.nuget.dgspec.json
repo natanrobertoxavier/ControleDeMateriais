@@ -325,6 +325,12 @@
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
+              "C:\\Code\\.net\\ControleDeMateriais\\ControleDeMateriais.Communication\\ControleDeMateriais.Communication.csproj": {
+                "projectPath": "C:\\Code\\.net\\ControleDeMateriais\\ControleDeMateriais.Communication\\ControleDeMateriais.Communication.csproj"
+              },
+              "C:\\Code\\.net\\ControleDeMateriais\\ControleDeMateriais.Exceptions\\ControleDeMateriais.Exceptions.csproj": {
+                "projectPath": "C:\\Code\\.net\\ControleDeMateriais\\ControleDeMateriais.Exceptions\\ControleDeMateriais.Exceptions.csproj"
+              },
               "C:\\Code\\.net\\ControleDeMateriais\\ControleDeMaterias.Domain\\ControleDeMateriais.Domain.csproj": {
                 "projectPath": "C:\\Code\\.net\\ControleDeMateriais\\ControleDeMaterias.Domain\\ControleDeMateriais.Domain.csproj"
               }
@@ -364,6 +370,10 @@
             "MongoDB.Driver": {
               "target": "Package",
               "version": "[2.22.0, )"
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.3, )"
             }
           },
           "imports": [

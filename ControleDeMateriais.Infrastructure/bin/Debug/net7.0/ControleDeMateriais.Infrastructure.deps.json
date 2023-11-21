@@ -8,13 +8,16 @@
     ".NETCoreApp,Version=v7.0": {
       "ControleDeMateriais.Infrastructure/1.0.0": {
         "dependencies": {
+          "ControleDeMateriais.Communication": "1.0.0",
           "ControleDeMateriais.Domain": "1.0.0",
+          "ControleDeMateriais.Exceptions": "1.0.0",
           "Dapper": "2.1.15",
           "FluentMigrator": "3.3.2",
           "FluentMigrator.Runner": "3.3.2",
           "Microsoft.AspNetCore.Http.Abstractions": "2.2.0",
           "Microsoft.EntityFrameworkCore": "7.0.13",
-          "MongoDB.Driver": "2.22.0"
+          "MongoDB.Driver": "2.22.0",
+          "Newtonsoft.Json": "13.0.3"
         },
         "runtime": {
           "ControleDeMateriais.Infrastructure.dll": {}
@@ -680,6 +683,14 @@
           }
         }
       },
+      "Newtonsoft.Json/13.0.3": {
+        "runtime": {
+          "lib/net6.0/Newtonsoft.Json.dll": {
+            "assemblyVersion": "13.0.0.0",
+            "fileVersion": "13.0.3.27908"
+          }
+        }
+      },
       "SharpCompress/0.30.1": {
         "runtime": {
           "lib/net5.0/SharpCompress.dll": {
@@ -840,6 +851,11 @@
           }
         }
       },
+      "ControleDeMateriais.Communication/1.0.0": {
+        "runtime": {
+          "ControleDeMateriais.Communication.dll": {}
+        }
+      },
       "ControleDeMateriais.Domain/1.0.0": {
         "dependencies": {
           "Microsoft.Extensions.Configuration": "7.0.0",
@@ -847,6 +863,11 @@
         },
         "runtime": {
           "ControleDeMateriais.Domain.dll": {}
+        }
+      },
+      "ControleDeMateriais.Exceptions/1.0.0": {
+        "runtime": {
+          "ControleDeMateriais.Exceptions.dll": {}
         }
       }
     }
@@ -1235,6 +1256,13 @@
       "path": "mongodb.libmongocrypt/1.8.0",
       "hashPath": "mongodb.libmongocrypt.1.8.0.nupkg.sha512"
     },
+    "Newtonsoft.Json/13.0.3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-HrC5BXdl00IP9zeV+0Z848QWPAoCr9P3bDEZguI+gkLcBKAOxix/tLEAAHC+UvDNPv4a2d18lOReHMOagPa+zQ==",
+      "path": "newtonsoft.json/13.0.3",
+      "hashPath": "newtonsoft.json.13.0.3.nupkg.sha512"
+    },
     "SharpCompress/0.30.1": {
       "type": "package",
       "serviceable": true,
@@ -1382,7 +1410,17 @@
       "path": "zstdsharp.port/0.6.2",
       "hashPath": "zstdsharp.port.0.6.2.nupkg.sha512"
     },
+    "ControleDeMateriais.Communication/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
     "ControleDeMateriais.Domain/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "ControleDeMateriais.Exceptions/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

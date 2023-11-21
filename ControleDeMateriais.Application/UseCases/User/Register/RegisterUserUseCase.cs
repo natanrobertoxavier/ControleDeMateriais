@@ -3,7 +3,7 @@ using ControleDeMateriais.Application.Services.Cryptography;
 using ControleDeMateriais.Application.Services.Token;
 using ControleDeMateriais.Communication.Requests;
 using ControleDeMateriais.Communication.Responses;
-using ControleDeMateriais.Domain.Repositories;
+using ControleDeMateriais.Domain.Repositories.User;
 using ControleDeMateriais.Exceptions.ExceptionBase;
 
 namespace ControleDeMateriais.Application.UseCases.User.Register;

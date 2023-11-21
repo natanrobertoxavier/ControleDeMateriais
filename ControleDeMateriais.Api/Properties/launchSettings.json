@@ -21,7 +21,8 @@
         "DatabaseName": "materialcontrol",
         "AdditionalKeyPassword": "3/Y&l4N419!Du",
         "LifetimeToken": "1000",
-        "TokenKey": "WUpyYng4QnkxXjYvRjpubXNcX1hpNTltdyhbPFJ+"
+        "TokenKey": "WUpyYng4QnkxXjYvRjpubXNcX1hpNTltdyhbPFJ+",
+        "AddressSendMail": "https://envio-de-email-api.onrender.com/Email/Send"
       }
     },
     "https": {
@@ -36,7 +37,8 @@
         "DatabaseName": "materialcontrol",
         "AdditionalKeyPassword": "3/Y&l4N419!Du",
         "LifetimeToken": "1000",
-        "TokenKey": "WUpyYng4QnkxXjYvRjpubXNcX1hpNTltdyhbPFJ+"
+        "TokenKey": "WUpyYng4QnkxXjYvRjpubXNcX1hpNTltdyhbPFJ+",
+        "AddressSendMail": "https://envio-de-email-api.onrender.com/Email/Send"
       }
     },
     "IIS Express": {
@@ -49,7 +51,8 @@
         "DatabaseName": "materialcontrol",
         "AdditionalKeyPassword": "3/Y&l4N419!Du",
         "LifetimeToken": "1000",
-        "TokenKey": "WUpyYng4QnkxXjYvRjpubXNcX1hpNTltdyhbPFJ+"
+        "TokenKey": "WUpyYng4QnkxXjYvRjpubXNcX1hpNTltdyhbPFJ+",
+        "AddressSendMail": "https://envio-de-email-api.onrender.com/Email/Send"
       }
     }
   }

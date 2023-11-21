@@ -97,6 +97,15 @@ namespace ControleDeMateriais.Exceptions.ExceptionBase {
         }
         
         /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Nenhum e-mail localizado..
+        /// </summary>
+        public static string EMAIL_NAO_LOCALIZADO {
+            get {
+                return ResourceManager.GetString("EMAIL_NAO_LOCALIZADO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a Informe o e-mail..
         /// </summary>
         public static string EMAIL_USUARIO_EM_BRANCO {
@@ -111,6 +120,15 @@ namespace ControleDeMateriais.Exceptions.ExceptionBase {
         public static string EMAIL_USUARIO_INVALIDO {
             get {
                 return ResourceManager.GetString("EMAIL_USUARIO_INVALIDO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Erro ao se comunicar com serviço de e-mail, por favor, tente novamente..
+        /// </summary>
+        public static string ERRO_AO_ENVIAR_EMAIL {
+            get {
+                return ResourceManager.GetString("ERRO_AO_ENVIAR_EMAIL", resourceCulture);
             }
         }
         

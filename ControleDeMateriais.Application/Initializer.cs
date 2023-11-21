@@ -1,6 +1,7 @@
 ﻿using ControleDeMateriais.Application.Services.Cryptography;
 using ControleDeMateriais.Application.Services.Token;
 using ControleDeMateriais.Application.UseCases.Login.Login;
+using ControleDeMateriais.Application.UseCases.User.ForgotPassword;
 using ControleDeMateriais.Application.UseCases.User.Register;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -36,5 +37,6 @@ public static class Initializer
     {
         services.AddScoped<IRegisterUserUseCase, RegisterUserUseCase>();
         services.AddScoped<ILoginUseCase, LoginUseCase>();
+        services.AddScoped<IForgotPasswordUseCase, ForgotPasswordUseCase>();
     }
 }

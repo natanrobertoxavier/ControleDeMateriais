@@ -1,5 +1,5 @@
 ﻿using ControleDeMateriais.Domain.Entities;
-using ControleDeMateriais.Domain.Repositories;
+using ControleDeMateriais.Domain.Repositories.User;
 using MongoDB.Driver;
 
 namespace ControleDeMateriais.Infrastructure.AccessRepository.Repository;
@@ -37,6 +37,14 @@ public class UserRepository : IUserWriteOnlyRepository, IUserReadOnlyRepository
     {
         var collection = ConnectDataBase.GetUserAccess();
         var filter = Builders<User>.Filter.Where(c => c.Email.Equals(email) && c.Password.Equals(password));
+
+        return await collection.Find(filter).FirstOrDefaultAsync();
+    }
+
+    public async Task<User> IsThereUserWithEmailReturnUser(string email)
+    {
+        var collection = ConnectDataBase.GetUserAccess();
+        var filter = Builders<User>.Filter.Where(c => c.Email.Equals(email));
 
         return await collection.Find(filter).FirstOrDefaultAsync();
     }

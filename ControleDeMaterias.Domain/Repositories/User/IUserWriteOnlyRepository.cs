@@ -1,4 +1,4 @@
-﻿namespace ControleDeMateriais.Domain.Repositories;
+﻿namespace ControleDeMateriais.Domain.Repositories.User;
 public interface IUserWriteOnlyRepository
 {
     Task Add(Entities.User user);
