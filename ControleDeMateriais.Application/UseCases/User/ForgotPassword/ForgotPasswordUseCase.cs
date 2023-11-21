@@ -1,4 +1,6 @@
-﻿using ControleDeMateriais.Application.UseCases.User.Register;
+﻿using Amazon.Runtime.Internal;
+using ControleDeMateriais.Application.Services.Cryptography;
+using ControleDeMateriais.Application.UseCases.User.Register;
 using ControleDeMateriais.Communication.Requests;
 using ControleDeMateriais.Communication.Responses;
 using ControleDeMateriais.Domain.Entities;
@@ -14,17 +16,20 @@ public class ForgotPasswordUseCase : IForgotPasswordUseCase
     private readonly IForgotPasswordSendMailOnlyRepository _forgotPassword;
     private readonly IRecoveryCodeWriteOnlyRepository _recoveryCodeWriteOnly;
     private readonly IRecoveryCodeReadOnlyRepository _recoveryCodeReadOnly;
+    private readonly PasswordEncryptor _passwordEncryptor;
 
     public ForgotPasswordUseCase(
         IUserReadOnlyRepository userReadOnlyRepository,
         IForgotPasswordSendMailOnlyRepository forgotPassword,
         IRecoveryCodeWriteOnlyRepository recoveryCodeWriteOnly,
-        IRecoveryCodeReadOnlyRepository recoveryCodeReadOnly)
+        IRecoveryCodeReadOnlyRepository recoveryCodeReadOnly,
+        PasswordEncryptor passwordEncryptor)
     {
         _userReadOnlyRepository = userReadOnlyRepository;
         _forgotPassword = forgotPassword;
         _recoveryCodeWriteOnly = recoveryCodeWriteOnly;
         _recoveryCodeReadOnly = recoveryCodeReadOnly;
+        _passwordEncryptor = passwordEncryptor;
     }
 
     public async Task<ResponseForgotPasswordJson> Execute(RequestForgotPasswordJson request)
@@ -87,7 +92,7 @@ public class ForgotPasswordUseCase : IForgotPasswordUseCase
         await _recoveryCodeWriteOnly.Add(new RecoveryCode()
         {
             UserId = user._id,
-            Code = result,
+            Code = _passwordEncryptor.Encrypt(result),
             Created = DateTime.Now,
             Active = true,
         });
