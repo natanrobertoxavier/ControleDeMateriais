@@ -1,6 +1,4 @@
 ﻿using ControleDeMateriais.Communication.Requests;
-using ControleDeMateriais.Domain.Entities;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Microsoft.OpenApi.Any;
 using Microsoft.OpenApi.Models;
 using Swashbuckle.AspNetCore.SwaggerGen;
@@ -14,13 +12,14 @@ public class ExampleControllerFilter : ISchemaFilter
     {
         AddRegistrationExamples(schema, context);
         AddLoginExamples(schema, context);
+        AddForgotPasswordExamples(schema, context);
     }
 
     private void AddRegistrationExamples(OpenApiSchema schema, SchemaFilterContext context)
     {
         if (context.MemberInfo is PropertyInfo propertyInfo && context.MemberInfo.DeclaringType == typeof(RequestRegisterUserJson))
         {
-            var propertyName = char.ToLower(propertyInfo.Name[0]) + propertyInfo.Name.Substring(1);
+            var propertyName = char.ToLower(propertyInfo.Name[0]) + propertyInfo.Name[1..];
             switch (propertyName)
             {
                 case "name":
@@ -46,7 +45,7 @@ public class ExampleControllerFilter : ISchemaFilter
     {
         if (context.MemberInfo is PropertyInfo propertyInfo && context.MemberInfo.DeclaringType == typeof(RequestLoginJson))
         {
-            var propertyName = char.ToLower(propertyInfo.Name[0]) + propertyInfo.Name.Substring(1);
+            var propertyName = char.ToLower(propertyInfo.Name[0]) + propertyInfo.Name[1..];
             switch (propertyName)
             {
                 case "email":
@@ -54,6 +53,20 @@ public class ExampleControllerFilter : ISchemaFilter
                     break;
                 case "password":
                     schema.Example = new OpenApiString("123456");
+                    break;
+            }
+        }
+    }
+
+    private static void AddForgotPasswordExamples(OpenApiSchema schema, SchemaFilterContext context)
+    {
+        if (context.MemberInfo is PropertyInfo propertyInfo && context.MemberInfo.DeclaringType == typeof(RequestForgotPasswordJson))
+        {
+            var propertyName = char.ToLower(propertyInfo.Name[0]) + propertyInfo.Name[1..];
+            switch (propertyName)
+            {
+                case "email":
+                    schema.Example = new OpenApiString("exemple@gmail.com");
                     break;
             }
         }
