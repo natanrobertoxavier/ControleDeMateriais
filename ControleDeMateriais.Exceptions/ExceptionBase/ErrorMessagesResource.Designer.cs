@@ -61,6 +61,24 @@ namespace ControleDeMateriais.Exceptions.ExceptionBase {
         }
         
         /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a O código informado está expirado..
+        /// </summary>
+        public static string CODIGO_EXPIRADO {
+            get {
+                return ResourceManager.GetString("CODIGO_EXPIRADO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a O código informado não confere ao enviado ao e-mail cadastrado..
+        /// </summary>
+        public static string CODIGOS_NAO_CONFEREM {
+            get {
+                return ResourceManager.GetString("CODIGOS_NAO_CONFEREM", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a CPF já cadastrado..
         /// </summary>
         public static string CPF_CADASTRADO {
@@ -160,6 +178,24 @@ namespace ControleDeMateriais.Exceptions.ExceptionBase {
         }
         
         /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Informe a nova senha..
+        /// </summary>
+        public static string NOVA_SENHA_EM_BRANCO {
+            get {
+                return ResourceManager.GetString("NOVA_SENHA_EM_BRANCO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a A nova senha deve conter ao menos seis caracteres..
+        /// </summary>
+        public static string NOVA_SENHA_SEIS_CARACTERES {
+            get {
+                return ResourceManager.GetString("NOVA_SENHA_SEIS_CARACTERES", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a A senha deve conter ao menos seis caracteres..
         /// </summary>
         public static string SENHA_MINIMO_SEIS_CARACTERES {
@@ -174,6 +210,15 @@ namespace ControleDeMateriais.Exceptions.ExceptionBase {
         public static string SENHA_USUARIO_EM_BRANCO {
             get {
                 return ResourceManager.GetString("SENHA_USUARIO_EM_BRANCO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a As senhas digitadas não são iguais..
+        /// </summary>
+        public static string SENHAS_NAO_CONFEREM {
+            get {
+                return ResourceManager.GetString("SENHAS_NAO_CONFEREM", resourceCulture);
             }
         }
         

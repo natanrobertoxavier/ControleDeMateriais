@@ -93,7 +93,7 @@ public class ForgotPasswordUseCase : IForgotPasswordUseCase
         {
             UserId = user._id,
             Code = _passwordEncryptor.Encrypt(result),
-            Created = DateTime.Now,
+            Created = DateTime.UtcNow,
             Active = true,
         });
     }

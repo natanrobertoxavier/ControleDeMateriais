@@ -117,6 +117,12 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="CODIGOS_NAO_CONFEREM" xml:space="preserve">
+    <value>O código informado não confere ao enviado ao e-mail cadastrado.</value>
+  </data>
+  <data name="CODIGO_EXPIRADO" xml:space="preserve">
+    <value>O código informado está expirado.</value>
+  </data>
   <data name="CPF_CADASTRADO" xml:space="preserve">
     <value>CPF já cadastrado.</value>
   </data>
@@ -149,6 +155,15 @@
   </data>
   <data name="NOME_USUARIO_EM_BRANCO" xml:space="preserve">
     <value>Informe o nome.</value>
+  </data>
+  <data name="NOVA_SENHA_EM_BRANCO" xml:space="preserve">
+    <value>Informe a nova senha.</value>
+  </data>
+  <data name="NOVA_SENHA_SEIS_CARACTERES" xml:space="preserve">
+    <value>A nova senha deve conter ao menos seis caracteres.</value>
+  </data>
+  <data name="SENHAS_NAO_CONFEREM" xml:space="preserve">
+    <value>As senhas digitadas não são iguais.</value>
   </data>
   <data name="SENHA_MINIMO_SEIS_CARACTERES" xml:space="preserve">
     <value>A senha deve conter ao menos seis caracteres.</value>

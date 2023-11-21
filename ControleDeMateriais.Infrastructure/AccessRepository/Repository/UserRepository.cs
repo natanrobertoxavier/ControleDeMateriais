@@ -11,6 +11,14 @@ public class UserRepository : IUserWriteOnlyRepository, IUserReadOnlyRepository
         await collection.InsertOneAsync(user);
     }
 
+    public async Task UpdatePassword(User user)
+    {
+        var collection = ConnectDataBase.GetUserAccess();
+        var filter = Builders<User>.Filter.Where(c => c._id == user._id);
+
+        _ = await collection.ReplaceOneAsync(filter, user);
+    }
+
     public async Task<bool> IsThereUserWithEmail(string email)
     {
         var collection = ConnectDataBase.GetUserAccess();
