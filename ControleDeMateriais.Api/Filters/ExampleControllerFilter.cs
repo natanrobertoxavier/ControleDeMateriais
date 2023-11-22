@@ -13,6 +13,7 @@ public class ExampleControllerFilter : ISchemaFilter
         AddRegistrationExamples(schema, context);
         AddLoginExamples(schema, context);
         AddForgotPasswordExamples(schema, context);
+        AddNewPasswordExamples(schema, context);
     }
 
     private void AddRegistrationExamples(OpenApiSchema schema, SchemaFilterContext context)
@@ -67,6 +68,28 @@ public class ExampleControllerFilter : ISchemaFilter
             {
                 case "email":
                     schema.Example = new OpenApiString("exemple@gmail.com");
+                    break;
+            }
+        }
+    }
+    private static void AddNewPasswordExamples(OpenApiSchema schema, SchemaFilterContext context)
+    {
+        if (context.MemberInfo is PropertyInfo propertyInfo && context.MemberInfo.DeclaringType == typeof(RequestNewPasswordJson))
+        {
+            var propertyName = char.ToLower(propertyInfo.Name[0]) + propertyInfo.Name[1..];
+            switch (propertyName)
+            {
+                case "email":
+                    schema.Example = new OpenApiString("exemple@gmail.com");
+                    break;
+                case "recoveryCode":
+                    schema.Example = new OpenApiString("AB12EF");
+                    break;
+                case "newPassword":
+                    schema.Example = new OpenApiString("123456");
+                    break;
+                case "confirmPassword":
+                    schema.Example = new OpenApiString("123456");
                     break;
             }
         }
