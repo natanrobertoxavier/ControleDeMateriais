@@ -1,4 +1,4 @@
-using ControleDeMateriais.Application.UseCases.User.ForgotPassword;
+using ControleDeMateriais.Api.Filters.LoggedUser;
 using ControleDeMateriais.Application.UseCases.User.NewPassword;
 using ControleDeMateriais.Communication.Requests;
 using ControleDeMateriais.Communication.Responses;
@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace ControleDeMateriais.Api.Controllers;
 
+[ServiceFilter(typeof(AuthenticatedUserAttribute))]
 public class NewPasswordController : ControleDeMateriaisController
 {
     [HttpPost]

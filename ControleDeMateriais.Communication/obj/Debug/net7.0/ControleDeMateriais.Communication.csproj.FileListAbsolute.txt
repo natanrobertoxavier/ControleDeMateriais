@@ -10,3 +10,4 @@ C:\Code\.net\ControleDeMateriais\ControleDeMateriais.Communication\obj\Debug\net
 C:\Code\.net\ControleDeMateriais\ControleDeMateriais.Communication\obj\Debug\net7.0\refint\ControleDeMateriais.Communication.dll
 C:\Code\.net\ControleDeMateriais\ControleDeMateriais.Communication\obj\Debug\net7.0\ControleDeMateriais.Communication.pdb
 C:\Code\.net\ControleDeMateriais\ControleDeMateriais.Communication\obj\Debug\net7.0\ref\ControleDeMateriais.Communication.dll
+C:\Code\.net\ControleDeMateriais\ControleDeMateriais.Communication\obj\Debug\net7.0\ControleDeMateriais.Communication.csproj.AssemblyReference.cache

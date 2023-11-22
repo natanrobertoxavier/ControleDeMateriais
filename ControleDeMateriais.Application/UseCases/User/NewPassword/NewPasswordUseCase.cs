@@ -1,7 +1,5 @@
-﻿using AutoMapper;
-using ControleDeMateriais.Application.Services.Cryptography;
+﻿using ControleDeMateriais.Application.Services.Cryptography;
 using ControleDeMateriais.Application.Services.Token;
-using ControleDeMateriais.Application.UseCases.User.Register;
 using ControleDeMateriais.Communication.Requests;
 using ControleDeMateriais.Communication.Responses;
 using ControleDeMateriais.Domain.Repositories.User;

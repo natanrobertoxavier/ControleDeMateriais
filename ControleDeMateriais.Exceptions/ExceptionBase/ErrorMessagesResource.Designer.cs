@@ -61,6 +61,42 @@ namespace ControleDeMateriais.Exceptions.ExceptionBase {
         }
         
         /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Categoria inválida..
+        /// </summary>
+        public static string CATEGORIA_INVALIDA {
+            get {
+                return ResourceManager.GetString("CATEGORIA_INVALIDA", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Código de barras em branco..
+        /// </summary>
+        public static string CODIGO_BARRAS_EM_BRANCO {
+            get {
+                return ResourceManager.GetString("CODIGO_BARRAS_EM_BRANCO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Código de barras inválido..
+        /// </summary>
+        public static string CODIGO_BARRAS_INVALIDO {
+            get {
+                return ResourceManager.GetString("CODIGO_BARRAS_INVALIDO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Quantidade de dígitos do código de barras é inválido..
+        /// </summary>
+        public static string CODIGO_BARRAS_TAMANHO_INVALIDO {
+            get {
+                return ResourceManager.GetString("CODIGO_BARRAS_TAMANHO_INVALIDO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a O código informado está expirado..
         /// </summary>
         public static string CODIGO_EXPIRADO {
@@ -102,6 +138,15 @@ namespace ControleDeMateriais.Exceptions.ExceptionBase {
         public static string CPF_USUARIO_INVALIDO {
             get {
                 return ResourceManager.GetString("CPF_USUARIO_INVALIDO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Descrição do material em branco..
+        /// </summary>
+        public static string DESCRICAO_EM_BRANCO {
+            get {
+                return ResourceManager.GetString("DESCRICAO_EM_BRANCO", resourceCulture);
             }
         }
         
@@ -237,6 +282,42 @@ namespace ControleDeMateriais.Exceptions.ExceptionBase {
         public static string TELEFONE_USUARIO_INVALIDO {
             get {
                 return ResourceManager.GetString("TELEFONE_USUARIO_INVALIDO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Token expirado..
+        /// </summary>
+        public static string TOKEN_EXPIRADO {
+            get {
+                return ResourceManager.GetString("TOKEN_EXPIRADO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Token inválido..
+        /// </summary>
+        public static string TOKEN_INVALIDO {
+            get {
+                return ResourceManager.GetString("TOKEN_INVALIDO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Usuário não localizado..
+        /// </summary>
+        public static string USUARIO_NAO_LOCALIZADO {
+            get {
+                return ResourceManager.GetString("USUARIO_NAO_LOCALIZADO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Usuário sem permissão.
+        /// </summary>
+        public static string USUARIO_SEM_PREMISSAO {
+            get {
+                return ResourceManager.GetString("USUARIO_SEM_PREMISSAO", resourceCulture);
             }
         }
     }

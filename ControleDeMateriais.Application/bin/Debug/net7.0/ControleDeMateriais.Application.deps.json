@@ -869,6 +869,9 @@
         }
       },
       "ControleDeMateriais.Communication/1.0.0": {
+        "dependencies": {
+          "MongoDB.Bson": "2.22.0"
+        },
         "runtime": {
           "ControleDeMateriais.Communication.dll": {}
         }

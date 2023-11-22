@@ -26,7 +26,7 @@ public class LoginUseCase : ILoginUseCase
     {
         var encryptedPassword = _passwordEncryptor.Encrypt(request.Password);
 
-        var user = await _userReadOnlyRepository.GetEmailPassword(request.Email, encryptedPassword) ?? 
+        var user = await _userReadOnlyRepository.RecoverEmailPassword(request.Email, encryptedPassword) ?? 
             throw new LoginInvalidException();
 
         return new ResponseLoginJson

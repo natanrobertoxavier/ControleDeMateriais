@@ -1,4 +1,5 @@
-﻿using ControleDeMateriais.Domain.Repositories.User;
+﻿using ControleDeMateriais.Domain.Repositories.Material;
+using ControleDeMateriais.Domain.Repositories.User;
 using ControleDeMateriais.Domain.Repositories.User.ForgotPassword.Forgot;
 using ControleDeMateriais.Domain.Repositories.User.ForgotPassword.RecoveryCode;
 using ControleDeMateriais.Infrastructure.AccessRepository.Repository;
@@ -22,5 +23,6 @@ public static class Initializer
         services.AddScoped<IForgotPasswordSendMailOnlyRepository, ForgotPasswordRepository>();
         services.AddScoped<IRecoveryCodeWriteOnlyRepository, RecoveryCodeRepository>();
         services.AddScoped<IRecoveryCodeReadOnlyRepository, RecoveryCodeRepository>();
+        services.AddScoped<IMaterialWriteOnlyRepository, MaterialRepository>();
     }
 }

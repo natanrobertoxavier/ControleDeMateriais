@@ -1,6 +1,8 @@
 ﻿using ControleDeMateriais.Application.Services.Cryptography;
+using ControleDeMateriais.Application.Services.LoggedUser;
 using ControleDeMateriais.Application.Services.Token;
 using ControleDeMateriais.Application.UseCases.Login.Login;
+using ControleDeMateriais.Application.UseCases.Material.Register;
 using ControleDeMateriais.Application.UseCases.User.ForgotPassword;
 using ControleDeMateriais.Application.UseCases.User.NewPassword;
 using ControleDeMateriais.Application.UseCases.User.Register;
@@ -17,6 +19,12 @@ public static class Initializer
         AddUseCase(services);
         AddAdditionalKeyPassword(services, configuration);
         AddTokenJwt(services, configuration);
+        AddLoggedUser(services, configuration);
+    }
+
+    private static void AddLoggedUser(IServiceCollection services, IConfiguration configuration)
+    {
+        services.AddScoped<ILoggedUser, LoggedUser>();
     }
 
     private static void AddAdditionalKeyPassword(IServiceCollection services, IConfiguration configuration)
@@ -40,5 +48,6 @@ public static class Initializer
         services.AddScoped<ILoginUseCase, LoginUseCase>();
         services.AddScoped<IForgotPasswordUseCase, ForgotPasswordUseCase>();
         services.AddScoped<INewPasswordUseCase, NewPasswordUseCase>();
+        services.AddScoped<IRegisterMaterialUseCase, RegisterMaterialUseCase>();
     }
 }

@@ -41,7 +41,7 @@ public class UserRepository : IUserWriteOnlyRepository, IUserReadOnlyRepository
         return false;
     }
 
-    public async Task<User> GetEmailPassword(string email, string password)
+    public async Task<User> RecoverEmailPassword(string email, string password)
     {
         var collection = ConnectDataBase.GetUserAccess();
         var filter = Builders<User>.Filter.Where(c => c.Email.Equals(email) && c.Password.Equals(password));
@@ -50,6 +50,14 @@ public class UserRepository : IUserWriteOnlyRepository, IUserReadOnlyRepository
     }
 
     public async Task<User> IsThereUserWithEmailReturnUser(string email)
+    {
+        var collection = ConnectDataBase.GetUserAccess();
+        var filter = Builders<User>.Filter.Where(c => c.Email.Equals(email));
+
+        return await collection.Find(filter).FirstOrDefaultAsync();
+    }
+
+    public async Task<User> RecoverByEmail(string email)
     {
         var collection = ConnectDataBase.GetUserAccess();
         var filter = Builders<User>.Filter.Where(c => c.Email.Equals(email));

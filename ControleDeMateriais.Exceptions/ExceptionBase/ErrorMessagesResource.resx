@@ -117,8 +117,20 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="CATEGORIA_INVALIDA" xml:space="preserve">
+    <value>Categoria inválida.</value>
+  </data>
   <data name="CODIGOS_NAO_CONFEREM" xml:space="preserve">
     <value>O código informado não confere ao enviado ao e-mail cadastrado.</value>
+  </data>
+  <data name="CODIGO_BARRAS_EM_BRANCO" xml:space="preserve">
+    <value>Código de barras em branco.</value>
+  </data>
+  <data name="CODIGO_BARRAS_INVALIDO" xml:space="preserve">
+    <value>Código de barras inválido.</value>
+  </data>
+  <data name="CODIGO_BARRAS_TAMANHO_INVALIDO" xml:space="preserve">
+    <value>Quantidade de dígitos do código de barras é inválido.</value>
   </data>
   <data name="CODIGO_EXPIRADO" xml:space="preserve">
     <value>O código informado está expirado.</value>
@@ -131,6 +143,9 @@
   </data>
   <data name="CPF_USUARIO_INVALIDO" xml:space="preserve">
     <value>O CPF informado é inválido.</value>
+  </data>
+  <data name="DESCRICAO_EM_BRANCO" xml:space="preserve">
+    <value>Descrição do material em branco.</value>
   </data>
   <data name="EMAIL_CADASTRADO" xml:space="preserve">
     <value>E-mail já cadastrado.</value>
@@ -176,5 +191,17 @@
   </data>
   <data name="TELEFONE_USUARIO_INVALIDO" xml:space="preserve">
     <value>Telefone informado é inválido.</value>
+  </data>
+  <data name="TOKEN_EXPIRADO" xml:space="preserve">
+    <value>Token expirado.</value>
+  </data>
+  <data name="TOKEN_INVALIDO" xml:space="preserve">
+    <value>Token inválido.</value>
+  </data>
+  <data name="USUARIO_NAO_LOCALIZADO" xml:space="preserve">
+    <value>Usuário não localizado.</value>
+  </data>
+  <data name="USUARIO_SEM_PREMISSAO" xml:space="preserve">
+    <value>Usuário sem permissão</value>
   </data>
 </root>
