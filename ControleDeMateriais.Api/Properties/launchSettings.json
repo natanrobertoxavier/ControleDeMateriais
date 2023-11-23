@@ -16,13 +16,7 @@
       "launchUrl": "swagger",
       "applicationUrl": "http://localhost:5171",
       "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development",
-        "ConnectionString": "mongodb+srv://systemuser:5jQlnoLyvW2qPFds@cluster0.7gbzm3g.mongodb.net/?retryWrites=true&w=majority",
-        "DatabaseName": "materialcontrol",
-        "AdditionalKeyPassword": "3/Y&l4N419!Du",
-        "LifetimeToken": "1000",
-        "TokenKey": "WUpyYng4QnkxXjYvRjpubXNcX1hpNTltdyhbPFJ+",
-        "AddressSendMail": "https://envio-de-email-api.onrender.com/Email/Send"
+        "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
     "https": {
@@ -32,13 +26,7 @@
       "launchUrl": "swagger",
       "applicationUrl": "https://localhost:7100;http://localhost:5171",
       "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development",
-        "ConnectionString": "mongodb+srv://systemuser:5jQlnoLyvW2qPFds@cluster0.7gbzm3g.mongodb.net/?retryWrites=true&w=majority",
-        "DatabaseName": "materialcontrol",
-        "AdditionalKeyPassword": "3/Y&l4N419!Du",
-        "LifetimeToken": "1000",
-        "TokenKey": "WUpyYng4QnkxXjYvRjpubXNcX1hpNTltdyhbPFJ+",
-        "AddressSendMail": "https://envio-de-email-api.onrender.com/Email/Send"
+        "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
     "IIS Express": {
@@ -46,13 +34,7 @@
       "launchBrowser": true,
       "launchUrl": "swagger",
       "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development",
-        "ConnectionString": "mongodb+srv://systemuser:5jQlnoLyvW2qPFds@cluster0.7gbzm3g.mongodb.net/?retryWrites=true&w=majority",
-        "DatabaseName": "materialcontrol",
-        "AdditionalKeyPassword": "3/Y&l4N419!Du",
-        "LifetimeToken": "1000",
-        "TokenKey": "WUpyYng4QnkxXjYvRjpubXNcX1hpNTltdyhbPFJ+",
-        "AddressSendMail": "https://envio-de-email-api.onrender.com/Email/Send"
+        "ASPNETCORE_ENVIRONMENT": "Development"
       }
     }
   }
