@@ -6,7 +6,6 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace ControleDeMateriais.Api.Controllers;
 
-[ServiceFilter(typeof(AuthenticatedUserAttribute))]
 public class NewPasswordController : ControleDeMateriaisController
 {
     [HttpPost]
