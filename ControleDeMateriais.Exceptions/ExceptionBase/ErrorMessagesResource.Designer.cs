@@ -214,6 +214,15 @@ namespace ControleDeMateriais.Exceptions.ExceptionBase {
         }
         
         /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Nenhum material foi localizado com os dados informados..
+        /// </summary>
+        public static string NENHUM_MATERIAL_LOCALIZADO {
+            get {
+                return ResourceManager.GetString("NENHUM_MATERIAL_LOCALIZADO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a Informe o nome..
         /// </summary>
         public static string NOME_USUARIO_EM_BRANCO {

@@ -1,5 +1,6 @@
 ﻿using ControleDeMateriais.Domain.Entities;
 using ControleDeMateriais.Domain.Repositories.Material;
+using ControleDeMateriais.Exceptions.ExceptionBase;
 using MongoDB.Driver;
 
 namespace ControleDeMateriais.Infrastructure.AccessRepository.Repository;
@@ -23,7 +24,8 @@ public class MaterialRepository : IMaterialWriteOnlyRepository, IMaterialReadOnl
     {
         var collection = ConnectDataBase.GetMaterialAccess();
         var filter = Builders<Material>.Filter.Where(c => c.BarCode.Equals(barCode));
+        var result = await collection.Find(filter).FirstOrDefaultAsync() ?? null;
 
-        return await collection.Find(filter).FirstOrDefaultAsync();
+        return result;
     }
 }

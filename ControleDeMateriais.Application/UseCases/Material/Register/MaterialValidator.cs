@@ -12,7 +12,7 @@ public class MaterialValidator : AbstractValidator<RequestRegisterMaterialJson>
         RuleFor(x => x.BarCode)
                     .NotEmpty().WithMessage(ErrorMessagesResource.CODIGO_BARRAS_EM_BRANCO)
                     .Must(ValidateBarCode).WithMessage(ErrorMessagesResource.CODIGO_BARRAS_TAMANHO_INVALIDO)
-                    .Matches("^[0-9]+$").WithMessage(ErrorMessagesResource.CODIGO_BARRAS_INVALIDO); ;
+                    .Matches("^[0-9]+$").WithMessage(ErrorMessagesResource.CODIGO_BARRAS_INVALIDO);
     }
 
     private bool ValidateBarCode(string barCode)

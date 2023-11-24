@@ -168,6 +168,9 @@
   <data name="LOGIN_INVALIDO" xml:space="preserve">
     <value>Usuário e/ou senha incorretos.</value>
   </data>
+  <data name="NENHUM_MATERIAL_LOCALIZADO" xml:space="preserve">
+    <value>Nenhum material foi localizado com os dados informados.</value>
+  </data>
   <data name="NOME_USUARIO_EM_BRANCO" xml:space="preserve">
     <value>Informe o nome.</value>
   </data>
