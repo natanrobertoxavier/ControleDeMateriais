@@ -9,8 +9,8 @@ using ControleDeMateriais.Exceptions.ExceptionBase;
 namespace ControleDeMateriais.Application.UseCases.Material.Register;
 public class RegisterMaterialUseCase : IRegisterMaterialUseCase
 {
-    private IMapper _mapper;
-    private IMaterialWriteOnlyRepository _repositoryMaterialWriteOnly;
+    private readonly IMapper _mapper;
+    private readonly IMaterialWriteOnlyRepository _repositoryMaterialWriteOnly;
 
     public RegisterMaterialUseCase(
         IMapper mapper, 
@@ -20,7 +20,7 @@ public class RegisterMaterialUseCase : IRegisterMaterialUseCase
         _repositoryMaterialWriteOnly = repositoryMaterialWriteOnly;
     }
 
-    public async Task<ResponseRegisterMaterialJson> Execute(RequestRegisterMaterialJson request)
+    public async Task<ResponseMaterialJson> Execute(RequestRegisterMaterialJson request)
     {
         ValidateData(request);
 
@@ -28,7 +28,7 @@ public class RegisterMaterialUseCase : IRegisterMaterialUseCase
 
         await _repositoryMaterialWriteOnly.Register(material);
 
-        return _mapper.Map<ResponseRegisterMaterialJson>(material);
+        return _mapper.Map<ResponseMaterialJson>(material);
     }
 
     private static void ValidateData(RequestRegisterMaterialJson request)

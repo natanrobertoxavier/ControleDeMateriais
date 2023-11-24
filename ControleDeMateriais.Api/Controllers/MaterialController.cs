@@ -10,7 +10,7 @@ namespace ControleDeMateriais.Api.Controllers;
 public class MaterialController : ControleDeMateriaisController
 {
     [HttpPost]
-    [ProducesResponseType(typeof(ResponseRegisterMaterialJson), StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(ResponseMaterialJson), StatusCodes.Status200OK)]
     public async Task<IActionResult> Register(
         [FromServices] IRegisterMaterialUseCase useCase,
         [FromBody] RequestRegisterMaterialJson request)

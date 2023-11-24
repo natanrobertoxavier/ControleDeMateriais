@@ -1,6 +1,14 @@
 # Ignora arquivos e pastas do Visual Studio
 *.vsidx
+*.json
 *.csproj
+*.dll
+*.cache
+*.exe
+*.suo
+*.so
+ControleDeMateriais.Api\Properties\launchSettings.json
+*.dylib
 
 # Ignora arquivos e pastas do SQL Server
 *.mdf

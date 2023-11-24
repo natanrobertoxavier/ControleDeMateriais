@@ -24,5 +24,6 @@ public static class Initializer
         services.AddScoped<IRecoveryCodeWriteOnlyRepository, RecoveryCodeRepository>();
         services.AddScoped<IRecoveryCodeReadOnlyRepository, RecoveryCodeRepository>();
         services.AddScoped<IMaterialWriteOnlyRepository, MaterialRepository>();
+        services.AddScoped<IMaterialReadOnlyRepository, MaterialRepository>();
     }
 }

@@ -55,7 +55,7 @@ public class RegisterUserValidator : AbstractValidator<RequestRegisterUserJson>
                 if (!isMatch)
                 {
                     context.AddFailure(new FluentValidation.Results
-                        .ValidationFailure(nameof(telephone), "TELEFONE INVÁLIDO"));
+                        .ValidationFailure(nameof(telephone), ErrorMessagesResource.TELEFONE_USUARIO_INVALIDO));
                 }
             });
         });

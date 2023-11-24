@@ -1,7 +1,7 @@
 ﻿using ControleDeMateriais.Communication.Enum;
 
 namespace ControleDeMateriais.Communication.Requests;
-public class RequestRegisterMaterialJson
+public class RequestUpdateMaterialJson
 {
     public string Name { get; set; }
     public string Description { get; set; }
