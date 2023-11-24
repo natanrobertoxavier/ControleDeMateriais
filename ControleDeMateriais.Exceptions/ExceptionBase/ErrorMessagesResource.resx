@@ -126,6 +126,9 @@
   <data name="CODIGOS_NAO_CONFEREM" xml:space="preserve">
     <value>O código informado não confere ao enviado ao e-mail cadastrado.</value>
   </data>
+  <data name="CODIGO_BARRAS_CADASTRADO" xml:space="preserve">
+    <value>Código de barras já cadastrado.</value>
+  </data>
   <data name="CODIGO_BARRAS_EM_BRANCO" xml:space="preserve">
     <value>Código de barras em branco.</value>
   </data>

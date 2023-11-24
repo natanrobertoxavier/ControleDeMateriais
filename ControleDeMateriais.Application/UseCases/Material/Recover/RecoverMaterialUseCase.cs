@@ -18,6 +18,13 @@ public class RecoverMaterialUseCase : IRecoverMaterialUseCase
         _repositoryMaterialReadOnly = repositoryMaterialReadOnly;
     }
 
+    public async Task<List<ResponseMaterialJson>> Execute()
+    {
+        var material = await _repositoryMaterialReadOnly.RecoverAll();
+
+        return _mapper.Map<List<ResponseMaterialJson>>(material);
+    }
+
     public async Task<ResponseMaterialJson> Execute(string codeBar)
     {
         ValidateData(codeBar);

@@ -30,11 +30,21 @@ public class MaterialRepository : IMaterialWriteOnlyRepository, IMaterialReadOnl
         return result;
     }
 
+    public async Task<List<Material>> RecoverAll()
+    {
+        var collection = ConnectDataBase.GetMaterialAccess();
+        var filter = Builders<Material>.Filter.Empty;
+
+        return await collection.Find(filter).ToListAsync();
+    }
+
     public async Task<Material> RecoverById(string id)
     {
         var collection = ConnectDataBase.GetMaterialAccess();
 
-        var objectId = ObjectId.Parse(id);
+        ObjectId objectId;
+        
+        ObjectId.TryParse(id, out objectId);
 
         var filter = Builders<Material>.Filter.Where(c => c._id.Equals(objectId));
 

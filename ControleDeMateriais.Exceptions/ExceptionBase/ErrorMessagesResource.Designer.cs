@@ -79,6 +79,15 @@ namespace ControleDeMateriais.Exceptions.ExceptionBase {
         }
         
         /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Código de barras já cadastrado..
+        /// </summary>
+        public static string CODIGO_BARRAS_CADASTRADO {
+            get {
+                return ResourceManager.GetString("CODIGO_BARRAS_CADASTRADO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a Código de barras em branco..
         /// </summary>
         public static string CODIGO_BARRAS_EM_BRANCO {
