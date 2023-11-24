@@ -53,6 +53,24 @@ public class MaterialController : ControleDeMateriaisController
     }
 
     [HttpGet]
+    [Route("category/{category}")]
+    [ProducesResponseType(typeof(ResponseMaterialJson), StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status204NoContent)]
+    public async Task<IActionResult> RecoverByCategory(
+        [FromServices] IRecoverMaterialUseCase useCase,
+        [FromRoute] [Required] int category)
+    {
+        var result = await useCase.Execute(category);
+
+        if (result is not null)
+        {
+            return Ok(result);
+        }
+
+        return NoContent();
+    }
+
+    [HttpGet]
     [Route("{codeBar}")]
     [ProducesResponseType(typeof(ResponseMaterialJson), StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status204NoContent)]

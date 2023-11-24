@@ -38,6 +38,15 @@ public class MaterialRepository : IMaterialWriteOnlyRepository, IMaterialReadOnl
         return await collection.Find(filter).ToListAsync();
     }
 
+    public async Task<List<Material>> RecoverByCategory(int category)
+    {
+        var collection = ConnectDataBase.GetMaterialAccess();
+        var filter = Builders<Material>.Filter.Where(c => c.Category.Equals(category));
+        var result = await collection.Find(filter).ToListAsync();
+
+        return result;
+    }
+
     public async Task<Material> RecoverById(string id)
     {
         var collection = ConnectDataBase.GetMaterialAccess();
