@@ -61,6 +61,15 @@ namespace ControleDeMateriais.Exceptions.ExceptionBase {
         }
         
         /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Não é permitida a alteração do código de barras..
+        /// </summary>
+        public static string ALTERACAO_CODIGO_BARRAS_NAO_PERMITIDA {
+            get {
+                return ResourceManager.GetString("ALTERACAO_CODIGO_BARRAS_NAO_PERMITIDA", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a Categoria inválida..
         /// </summary>
         public static string CATEGORIA_INVALIDA {
@@ -219,6 +228,15 @@ namespace ControleDeMateriais.Exceptions.ExceptionBase {
         public static string NENHUM_MATERIAL_LOCALIZADO {
             get {
                 return ResourceManager.GetString("NENHUM_MATERIAL_LOCALIZADO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Informe o nome do material..
+        /// </summary>
+        public static string NOME_MATERIAL_EM_BRANCO {
+            get {
+                return ResourceManager.GetString("NOME_MATERIAL_EM_BRANCO", resourceCulture);
             }
         }
         

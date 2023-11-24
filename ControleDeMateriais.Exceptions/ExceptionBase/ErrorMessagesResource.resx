@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="ALTERACAO_CODIGO_BARRAS_NAO_PERMITIDA" xml:space="preserve">
+    <value>Não é permitida a alteração do código de barras.</value>
+  </data>
   <data name="CATEGORIA_INVALIDA" xml:space="preserve">
     <value>Categoria inválida.</value>
   </data>
@@ -170,6 +173,9 @@
   </data>
   <data name="NENHUM_MATERIAL_LOCALIZADO" xml:space="preserve">
     <value>Nenhum material foi localizado com os dados informados.</value>
+  </data>
+  <data name="NOME_MATERIAL_EM_BRANCO" xml:space="preserve">
+    <value>Informe o nome do material.</value>
   </data>
   <data name="NOME_USUARIO_EM_BRANCO" xml:space="preserve">
     <value>Informe o nome.</value>

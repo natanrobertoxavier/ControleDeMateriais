@@ -7,6 +7,7 @@ public class MaterialValidator : AbstractValidator<RequestRegisterMaterialJson>
 {
     public MaterialValidator()
     {
+        RuleFor(x => x.Name).NotEmpty().WithMessage(ErrorMessagesResource.NOME_MATERIAL_EM_BRANCO);
         RuleFor(x => x.Description).NotEmpty().WithMessage(ErrorMessagesResource.DESCRICAO_EM_BRANCO);
         RuleFor(x => x.Category).IsInEnum().WithMessage(ErrorMessagesResource.CATEGORIA_INVALIDA);
         RuleFor(x => x.BarCode)
