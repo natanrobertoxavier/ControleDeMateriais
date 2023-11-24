@@ -45,5 +45,19 @@ public class RegisterUserValidator : AbstractValidator<RequestRegisterUserJson>
                 }
             });
         });
+        When(c => !string.IsNullOrEmpty(c.Telephone), () =>
+        {
+            RuleFor(c => c.Telephone).Custom((telephone, context) => 
+            {
+                string telephonePattern = "[0-9]{2} [9]{1} [0-9]{4}-[0-9]{4}";
+                var isMatch = Regex.IsMatch(telephone, telephonePattern);
+
+                if (!isMatch)
+                {
+                    context.AddFailure(new FluentValidation.Results
+                        .ValidationFailure(nameof(telephone), "TELEFONE INVÁLIDO"));
+                }
+            });
+        });
     }
 }
