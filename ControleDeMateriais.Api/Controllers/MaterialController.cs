@@ -37,10 +37,26 @@ public class MaterialController : ControleDeMateriaisController
     }
 
     [HttpGet]
+    [ProducesResponseType(typeof(ResponseMaterialJson), StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status204NoContent)]
+    public async Task<IActionResult> RecoverAll(
+        [FromServices] IRecoverMaterialUseCase useCase)
+    {
+        var result = await useCase.Execute();
+
+        if (result is not null)
+        {
+            return Ok(result);
+        }
+
+        return NoContent();
+    }
+
+    [HttpGet]
     [Route("{codeBar}")]
     [ProducesResponseType(typeof(ResponseMaterialJson), StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
-    public async Task<IActionResult> RecoverBarCode(
+    public async Task<IActionResult> RecoverByBarCode(
         [FromServices] IRecoverMaterialUseCase useCase,
         [FromRoute] string codeBar)
     {
