@@ -1,5 +1,5 @@
 # Ignora arquivos e pastas do Visual Studio
-.vsidx
+*.vsidx
 *.csproj
 
 # Ignora arquivos e pastas do SQL Server
