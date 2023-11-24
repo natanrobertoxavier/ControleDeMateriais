@@ -6,7 +6,6 @@ public class RecoverMaterialValidator : AbstractValidator<string>
 {
     public RecoverMaterialValidator()
     {
-
         RuleFor(x => x)
                     .NotEmpty().WithMessage(ErrorMessagesResource.CODIGO_BARRAS_EM_BRANCO)
                     .Must(ValidateBarCode).WithMessage(ErrorMessagesResource.CODIGO_BARRAS_TAMANHO_INVALIDO)

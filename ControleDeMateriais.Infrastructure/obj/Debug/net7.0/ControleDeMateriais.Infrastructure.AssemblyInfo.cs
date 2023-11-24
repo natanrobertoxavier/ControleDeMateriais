@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ControleDeMateriais.Infrastructure")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+afcef1e3e5128205f1a09df73db1d9da6ed3d9bc")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+4d7cf3f28c6b3ececc25d46ffc7c4033c368c38a")]
 [assembly: System.Reflection.AssemblyProductAttribute("ControleDeMateriais.Infrastructure")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ControleDeMateriais.Infrastructure")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
