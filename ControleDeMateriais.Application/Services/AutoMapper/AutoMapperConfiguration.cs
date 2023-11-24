@@ -5,8 +5,8 @@ public class AutoMapperConfiguration : Profile
 {
     public AutoMapperConfiguration()
     {
-        EntityToResponse();
         RequestToEntity();
+        EntityToResponse();
     }
 
     private void RequestToEntity()
@@ -15,11 +15,12 @@ public class AutoMapperConfiguration : Profile
             .ForMember(destiny => destiny.Password, config => config.Ignore());
 
         CreateMap<Communication.Requests.RequestRegisterMaterialJson, Domain.Entities.Material>();
+        CreateMap<Communication.Requests.RequestUpdateMaterialJson, Domain.Entities.Material>();
     }
 
     private void EntityToResponse()
     {
-        CreateMap<Domain.Entities.Material, Communication.Responses.ResponseRegisterMaterialJson>()
+        CreateMap<Domain.Entities.Material, Communication.Responses.ResponseMaterialJson>()
             .ForMember(destiny => destiny._id, config => config.MapFrom(origin => origin._id.ToString()));
     }
 }

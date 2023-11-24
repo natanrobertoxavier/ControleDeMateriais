@@ -17,6 +17,6 @@ public class MaterialValidator : AbstractValidator<RequestRegisterMaterialJson>
 
     private bool ValidateBarCode(string barCode)
     {
-        return barCode.Length == 8 || barCode.Length == 17;
+        return barCode.Length == 8 || barCode.Length == 13;
     }
 }
