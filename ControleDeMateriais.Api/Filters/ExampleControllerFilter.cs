@@ -15,6 +15,7 @@ public class ExampleControllerFilter : ISchemaFilter
         AddForgotPasswordExamples(schema, context);
         AddNewPasswordExamples(schema, context);
         AddRegisterMaterialExamples(schema, context);
+        AddUpdateMaterialExamples(schema, context);
     }
 
     private static void AddRegistrationExamples(OpenApiSchema schema, SchemaFilterContext context)
@@ -93,10 +94,31 @@ public class ExampleControllerFilter : ISchemaFilter
             }
         }
     }
-
     private static void AddRegisterMaterialExamples(OpenApiSchema schema, SchemaFilterContext context)
     {
         if (context.MemberInfo is PropertyInfo propertyInfo && context.MemberInfo.DeclaringType == typeof(RequestRegisterMaterialJson))
+        {
+            var propertyName = char.ToLower(propertyInfo.Name[0]) + propertyInfo.Name[1..];
+            switch (propertyName)
+            {
+                case "name":
+                    schema.Example = new OpenApiString("Notebook I7");
+                    break;
+                case "description":
+                    schema.Example = new OpenApiString("Notebook Dell Inspiron 15 Series 3000");
+                    break;
+                case "barCode":
+                    schema.Example = new OpenApiString("7896094906020");
+                    break;
+                case "category":
+                    schema.Example = new OpenApiInteger(1);
+                    break;
+            }
+        }
+    }
+    private static void AddUpdateMaterialExamples(OpenApiSchema schema, SchemaFilterContext context)
+    {
+        if (context.MemberInfo is PropertyInfo propertyInfo && context.MemberInfo.DeclaringType == typeof(RequestUpdateMaterialJson))
         {
             var propertyName = char.ToLower(propertyInfo.Name[0]) + propertyInfo.Name[1..];
             switch (propertyName)

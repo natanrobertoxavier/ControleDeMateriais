@@ -4,6 +4,9 @@ using ControleDeMateriais.Communication.Requests;
 using ControleDeMateriais.Communication.Responses;
 using ControleDeMateriais.Domain.Repositories.Material;
 using ControleDeMateriais.Exceptions.ExceptionBase;
+using FluentValidation.Results;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using MongoDB.Bson;
 
 namespace ControleDeMateriais.Application.UseCases.Material.Update;
 public class UpdateMaterialUseCase : IUpdateMaterialUseCase
@@ -14,27 +17,36 @@ public class UpdateMaterialUseCase : IUpdateMaterialUseCase
 
     public UpdateMaterialUseCase(
         IMapper mapper,
-        IMaterialWriteOnlyRepository repositoryMaterialWriteOnly)
+        IMaterialWriteOnlyRepository repositoryMaterialWriteOnly,
+        IMaterialReadOnlyRepository repositoryMaterialReadOnly)
     {
         _mapper = mapper;
         _repositoryMaterialWriteOnly = repositoryMaterialWriteOnly;
+        _repositoryMaterialReadOnly = repositoryMaterialReadOnly;
     }
-    public Task<ResponseMaterialJson> Execute(RequestUpdateMaterialJson request)
+    public async Task<ResponseMaterialJson> Execute(string id, RequestUpdateMaterialJson request)
     {
-        ValidateData(request);
-        throw new NotImplementedException();
+        await ValidateData(id, request);
+
+        var entity = _mapper.Map<Domain.Entities.Material>(request);
+
+        var result = await _repositoryMaterialWriteOnly.Update(id, entity);
+
+        return _mapper.Map<ResponseMaterialJson>(result);
     }
 
-    private async Task ValidateData(RequestUpdateMaterialJson request)
+    private async Task ValidateData(string id, RequestUpdateMaterialJson request)
     {
-        var barCodeBD = await _repositoryMaterialReadOnly.RecoverByBarCode(request.BarCode);
-
-        if (barCodeBD.BarCode != request.BarCode) 
-            throw new ControleDeMateriaisException(ErrorMessagesResource.ALTERACAO_CODIGO_BARRAS_NAO_PERMITIDA);
-
+        var barCodeBD = await _repositoryMaterialReadOnly.RecoverById(id) ?? new Domain.Entities.Material();
 
         var validator = new MaterialUpdateValidator();
         var result = validator.Validate(request);
+
+        if (barCodeBD.BarCode is null)
+            result.Errors.Add(new ValidationFailure("BarCode", ErrorMessagesResource.NENHUM_MATERIAL_LOCALIZADO));
+
+        if (barCodeBD.BarCode != request.BarCode)
+            result.Errors.Add(new ValidationFailure("BarCode", ErrorMessagesResource.ALTERACAO_CODIGO_BARRAS_NAO_PERMITIDA));
 
         if (!result.IsValid)
         {
