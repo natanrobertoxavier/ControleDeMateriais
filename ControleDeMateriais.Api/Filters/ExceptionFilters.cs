@@ -26,15 +26,23 @@ public class ExceptionFilters : IExceptionFilter
         {
             ProcessErrorValidator(context);
         }
-        if (context.Exception is LoginInvalidException)
+        else if (context.Exception is ExceptionLoginInvalid)
         {
             ProcessLoginInvalidException(context);
+        }
+        else if (context.Exception is ExceptionRecoveryErrors)
+        {
+            ProcessRecoveryErrors(context);
+        }
+        else
+        {
+            ThrowUnknownError(context);
         }
     }
 
     private static void ProcessLoginInvalidException(ExceptionContext context)
     {
-        var errorLogin = context.Exception as LoginInvalidException;
+        var errorLogin = context.Exception as ExceptionLoginInvalid;
 
         context.HttpContext.Response.StatusCode = (int)HttpStatusCode.Unauthorized;
         context.Result = new ObjectResult(new ResponseErrorJson(errorLogin.Message));
@@ -52,5 +60,13 @@ public class ExceptionFilters : IExceptionFilter
     {
         context.HttpContext.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
         context.Result = new ObjectResult(new ResponseErrorJson(ErrorMessagesResource.ERRO_DESCONHECIDO));
+    }
+
+    private static void ProcessRecoveryErrors(ExceptionContext context)
+    {
+        var errorValidator = context.Exception as ExceptionRecoveryErrors;
+
+        context.HttpContext.Response.StatusCode = (int)HttpStatusCode.NoContent;
+        context.Result = new ObjectResult(new ResponseErrorJson(errorValidator.Message));
     }
 }
