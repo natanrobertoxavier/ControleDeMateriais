@@ -55,7 +55,7 @@ public class MaterialRepository : IMaterialWriteOnlyRepository, IMaterialReadOnl
         
         ObjectId.TryParse(id, out objectId);
 
-        var filter = Builders<Material>.Filter.Where(c => c._id.Equals(objectId));
+        var filter = Builders<Material>.Filter.Where(c => c.Id.Equals(objectId));
 
         return await collection.Find(filter).FirstOrDefaultAsync();
     }

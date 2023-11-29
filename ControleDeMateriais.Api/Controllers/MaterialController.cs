@@ -58,7 +58,7 @@ public class MaterialController : ControleDeMateriaisController
     [ProducesResponseType(StatusCodes.Status204NoContent)]
     public async Task<IActionResult> RecoverByCategory(
         [FromServices] IRecoverMaterialUseCase useCase,
-        [FromRoute] [Required] int category)
+        [FromRoute] int category)
     {
         var result = await useCase.Execute(category);
 
@@ -71,7 +71,7 @@ public class MaterialController : ControleDeMateriaisController
     }
 
     [HttpGet]
-    [Route("{codeBar}")]
+    [Route("codebar/{codeBar}")]
     [ProducesResponseType(typeof(ResponseMaterialJson), StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
     public async Task<IActionResult> RecoverByBarCode(

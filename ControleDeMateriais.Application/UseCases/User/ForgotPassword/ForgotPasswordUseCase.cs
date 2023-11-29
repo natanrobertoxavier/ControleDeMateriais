@@ -91,7 +91,7 @@ public class ForgotPasswordUseCase : IForgotPasswordUseCase
 
         await _recoveryCodeWriteOnly.Add(new RecoveryCode()
         {
-            UserId = user._id,
+            UserId = user.Id,
             Code = _passwordEncryptor.Encrypt(result),
             Created = DateTime.UtcNow,
             Active = true,

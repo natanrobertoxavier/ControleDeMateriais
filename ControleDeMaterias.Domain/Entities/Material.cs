@@ -1,4 +1,5 @@
 ﻿using ControleDeMateriais.Domain.Enum;
+using MongoDB.Bson;
 
 namespace ControleDeMateriais.Domain.Entities;
 public class Material : BaseEntity
@@ -7,4 +8,5 @@ public class Material : BaseEntity
     public string Description { get; set; }
     public string BarCode { get; set; }
     public Category Category { get; set; }
+    public ObjectId UserId { get; set; }
 }
