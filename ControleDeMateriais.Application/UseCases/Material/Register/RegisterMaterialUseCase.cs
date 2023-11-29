@@ -15,22 +15,27 @@ public class RegisterMaterialUseCase : IRegisterMaterialUseCase
     private readonly IMapper _mapper;
     private readonly IMaterialWriteOnlyRepository _repositoryMaterialWriteOnly;
     private readonly IMaterialReadOnlyRepository _repositoryMaterialReadOnly;
+    private readonly ILoggedUser _loggedUser;
 
     public RegisterMaterialUseCase(
         IMapper mapper, 
         IMaterialWriteOnlyRepository repositoryMaterialWriteOnly,
-        IMaterialReadOnlyRepository repositoryMaterialReadOnly)
+        IMaterialReadOnlyRepository repositoryMaterialReadOnly,
+        ILoggedUser loggedUser)
     {
         _mapper = mapper;
         _repositoryMaterialWriteOnly = repositoryMaterialWriteOnly;
         _repositoryMaterialReadOnly = repositoryMaterialReadOnly;
+        _loggedUser = loggedUser;
     }
 
     public async Task<ResponseMaterialJson> Execute(RequestRegisterMaterialJson request)
     {
         await ValidateData(request);
+        var user = await _loggedUser.RecoveryUser();
 
         var material = _mapper.Map<Domain.Entities.Material>(request);
+        material.UserId = user.Id;
 
         await _repositoryMaterialWriteOnly.Register(material);
 

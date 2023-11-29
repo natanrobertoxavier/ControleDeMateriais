@@ -14,7 +14,7 @@ public class UserRepository : IUserWriteOnlyRepository, IUserReadOnlyRepository
     public async Task UpdatePassword(User user)
     {
         var collection = ConnectDataBase.GetUserAccess();
-        var filter = Builders<User>.Filter.Where(c => c._id == user._id);
+        var filter = Builders<User>.Filter.Where(c => c.Id == user.Id);
 
         _ = await collection.ReplaceOneAsync(filter, user);
     }

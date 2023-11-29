@@ -15,7 +15,7 @@ public class RecoveryCodeRepository : IRecoveryCodeWriteOnlyRepository, IRecover
     public async Task InactivateCode(RecoveryCode recoveryCode)
     {
         var collection = ConnectDataBase.GetRecoveryCodeAccess();
-        var filter = Builders<RecoveryCode>.Filter.Where(o => o._id == recoveryCode._id);
+        var filter = Builders<RecoveryCode>.Filter.Where(o => o.Id == recoveryCode.Id);
         var codeToInactivate = await collection.Find(filter).FirstOrDefaultAsync();
 
         codeToInactivate.Active = false;
@@ -26,7 +26,7 @@ public class RecoveryCodeRepository : IRecoveryCodeWriteOnlyRepository, IRecover
     public async Task<RecoveryCode> IsThereCodeActive(User user)
     {
         var collection = ConnectDataBase.GetRecoveryCodeAccess();
-        var filter = Builders<RecoveryCode>.Filter.Where(o => o.UserId == user._id && o.Active == true);
+        var filter = Builders<RecoveryCode>.Filter.Where(o => o.UserId == user.Id && o.Active == true);
 
         var result = await collection.Find(filter).FirstOrDefaultAsync();
 

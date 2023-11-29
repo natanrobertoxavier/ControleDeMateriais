@@ -5,6 +5,6 @@ namespace ControleDeMateriais.Domain.Entities;
 public class BaseEntity
 {
     [BsonId]
-    public ObjectId _id {  get; set; }
+    public ObjectId Id {  get; set; }
     public DateTime Created {  get; set; } = DateTime.UtcNow;
 }
