@@ -1,10 +1,7 @@
-﻿using Amazon.Runtime.Internal;
-using AutoMapper;
-using ControleDeMateriais.Application.UseCases.Material.Register;
+﻿using AutoMapper;
 using ControleDeMateriais.Communication.Responses;
 using ControleDeMateriais.Domain.Repositories.Material;
 using ControleDeMateriais.Exceptions.ExceptionBase;
-using FluentValidation;
 
 namespace ControleDeMateriais.Application.UseCases.Material.Recover;
 public class RecoverMaterialUseCase : IRecoverMaterialUseCase
