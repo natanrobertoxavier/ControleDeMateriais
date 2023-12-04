@@ -2,6 +2,7 @@
 using ControleDeMateriais.Application.Services.LoggedUser;
 using ControleDeMateriais.Application.Services.Token;
 using ControleDeMateriais.Application.UseCases.Login.Login;
+using ControleDeMateriais.Application.UseCases.Material.Delete;
 using ControleDeMateriais.Application.UseCases.Material.Recover;
 using ControleDeMateriais.Application.UseCases.Material.Register;
 using ControleDeMateriais.Application.UseCases.Material.Update;
@@ -53,5 +54,6 @@ public static class Initializer
         services.AddScoped<IRegisterMaterialUseCase, RegisterMaterialUseCase>();
         services.AddScoped<IRecoverMaterialUseCase, RecoverMaterialUseCase>();
         services.AddScoped<IUpdateMaterialUseCase, UpdateMaterialUseCase>();
+        services.AddScoped<IDeleteMaterialUseCase, DeleteMateriaulUseCase>();
     }
 }

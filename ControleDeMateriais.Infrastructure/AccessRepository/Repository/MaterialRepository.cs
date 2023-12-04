@@ -1,6 +1,5 @@
 ﻿using ControleDeMateriais.Domain.Entities;
 using ControleDeMateriais.Domain.Repositories.Material;
-using ControleDeMateriais.Exceptions.ExceptionBase;
 using MongoDB.Bson;
 using MongoDB.Driver;
 
@@ -67,5 +66,18 @@ public class MaterialRepository : IMaterialWriteOnlyRepository, IMaterialReadOnl
         var result = await collection.Find(filter).FirstOrDefaultAsync() ?? null;
 
         return result;
+    }
+
+    public async Task Delete(string barCode)
+    {
+        var collection = ConnectDataBase.GetMaterialAccess();
+        var filter = Builders<Material>.Filter.Where(c => c.BarCode.Equals(barCode));
+        await collection.DeleteOneAsync(filter);
+    }
+
+    public async Task RegisterDeletionLog(MaterialDeletionLog material)
+    {
+        var collection = ConnectDataBase.GetMaterialDeletionLogAccess();
+        await collection.InsertOneAsync(material);
     }
 }
