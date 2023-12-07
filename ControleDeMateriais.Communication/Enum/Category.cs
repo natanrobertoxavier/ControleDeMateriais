@@ -20,12 +20,12 @@ public static class EnumExtensions
     {
         FieldInfo field = value.GetType().GetField(value.ToString());
 
-        if (field == null)
+        if (field is null)
             return value.ToString();
 
         DescriptionAttribute attribute =
             (DescriptionAttribute)Attribute.GetCustomAttribute(field, typeof(DescriptionAttribute));
 
-        return attribute == null ? value.ToString() : attribute.Description;
+        return attribute is null ? value.ToString() : attribute.Description;
     }
 }

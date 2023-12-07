@@ -144,6 +144,12 @@
   <data name="CPF_CADASTRADO" xml:space="preserve">
     <value>CPF já cadastrado.</value>
   </data>
+  <data name="CPF_COLABORADOR_EM_BRANCO" xml:space="preserve">
+    <value>Informe o cpf do colaborador.</value>
+  </data>
+  <data name="CPF_COLABORADOR_INVALIDO" xml:space="preserve">
+    <value>O CPF informado é inválido.</value>
+  </data>
   <data name="CPF_USUARIO_EM_BRANCO" xml:space="preserve">
     <value>Informe o CPF.</value>
   </data>
@@ -155,6 +161,12 @@
   </data>
   <data name="EMAIL_CADASTRADO" xml:space="preserve">
     <value>E-mail já cadastrado.</value>
+  </data>
+  <data name="EMAIL_COLABORADOR_EM_BRANCO" xml:space="preserve">
+    <value>Informe o email do colaborador.</value>
+  </data>
+  <data name="EMAIL_COLABORADOR_INVALIDO" xml:space="preserve">
+    <value>E-mail do colaborador inválido.</value>
   </data>
   <data name="EMAIL_NAO_LOCALIZADO" xml:space="preserve">
     <value>Nenhum e-mail localizado.</value>
@@ -177,6 +189,12 @@
   <data name="NENHUM_MATERIAL_LOCALIZADO" xml:space="preserve">
     <value>Nenhum material foi localizado com os dados informados.</value>
   </data>
+  <data name="NICKNAME_COLABORADOR_EM_BRANCO" xml:space="preserve">
+    <value>Informe o nickname do colaborador.</value>
+  </data>
+  <data name="NOME_COLABORADOR_EM_BRANCO" xml:space="preserve">
+    <value>Informe o nome do colaborador.</value>
+  </data>
   <data name="NOME_MATERIAL_EM_BRANCO" xml:space="preserve">
     <value>Informe o nome do material.</value>
   </data>
@@ -192,11 +210,23 @@
   <data name="SENHAS_NAO_CONFEREM" xml:space="preserve">
     <value>As senhas digitadas não são iguais.</value>
   </data>
+  <data name="SENHA_COLABORADOR_EM_BRANCO" xml:space="preserve">
+    <value>Informe a senha do colaborador.</value>
+  </data>
+  <data name="SENHA_COLABORADOR_MINIMO_SEIS_CARACTERES" xml:space="preserve">
+    <value>A senha deve conter ao menos seis caracteres.</value>
+  </data>
   <data name="SENHA_MINIMO_SEIS_CARACTERES" xml:space="preserve">
     <value>A senha deve conter ao menos seis caracteres.</value>
   </data>
   <data name="SENHA_USUARIO_EM_BRANCO" xml:space="preserve">
     <value>Informe a senha.</value>
+  </data>
+  <data name="TELEFONE_COLABORADOR_EM_BRANCO" xml:space="preserve">
+    <value>Informe o telefone.</value>
+  </data>
+  <data name="TELEFONE_COLABORADOR_INVALIDO" xml:space="preserve">
+    <value>Telefone informado é inválido.</value>
   </data>
   <data name="TELEFONE_USUARIO_EM_BRANCO" xml:space="preserve">
     <value>Informe o telefone.</value>

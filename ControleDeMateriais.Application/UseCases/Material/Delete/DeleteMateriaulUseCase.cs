@@ -50,7 +50,7 @@ public class DeleteMateriaulUseCase : IDeleteMaterialUseCase
 
         if (!resultValidation.IsValid)
         {
-            var messageError = resultValidation.Errors.Select(error => error.ErrorMessage).ToList();
+            var messageError = resultValidation.Errors.Select(error => error.ErrorMessage).Distinct().ToList();
             throw new ExceptionValidationErrors(messageError);
         }
 

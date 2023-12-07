@@ -1,4 +1,5 @@
-﻿using ControleDeMateriais.Domain.Repositories.Material;
+﻿using ControleDeMateriais.Domain.Repositories.Collaborator;
+using ControleDeMateriais.Domain.Repositories.Material;
 using ControleDeMateriais.Domain.Repositories.User;
 using ControleDeMateriais.Domain.Repositories.User.ForgotPassword.Forgot;
 using ControleDeMateriais.Domain.Repositories.User.ForgotPassword.RecoveryCode;
@@ -18,12 +19,20 @@ public static class Initializer
 
     private static void AddRepository(IServiceCollection services)
     {
-        services.AddScoped<IUserWriteOnlyRepository, UserRepository>();
-        services.AddScoped<IUserReadOnlyRepository, UserRepository>();
-        services.AddScoped<IForgotPasswordSendMailOnlyRepository, ForgotPasswordRepository>();
-        services.AddScoped<IRecoveryCodeWriteOnlyRepository, RecoveryCodeRepository>();
-        services.AddScoped<IRecoveryCodeReadOnlyRepository, RecoveryCodeRepository>();
-        services.AddScoped<IMaterialWriteOnlyRepository, MaterialRepository>();
-        services.AddScoped<IMaterialReadOnlyRepository, MaterialRepository>();
+        #region UserDependencyInjection
+        services.AddScoped<IUserWriteOnlyRepository, UserRepository>()
+                .AddScoped<IUserReadOnlyRepository, UserRepository>()
+                .AddScoped<IForgotPasswordSendMailOnlyRepository, ForgotPasswordRepository>()
+                .AddScoped<IRecoveryCodeWriteOnlyRepository, RecoveryCodeRepository>()
+                .AddScoped<IRecoveryCodeReadOnlyRepository, RecoveryCodeRepository>();
+        #endregion
+
+        #region MaterialDependencyInjection
+        services.AddScoped<IMaterialWriteOnlyRepository, MaterialRepository>()
+                .AddScoped<IMaterialReadOnlyRepository, MaterialRepository>();
+        #endregion
+
+        services.AddScoped<ICollaboratorWriteOnlyRepository, CollaboratorRepository>()
+                .AddScoped<ICollaboratorReadOnlyRepository, CollaboratorRepository>();
     }
 }

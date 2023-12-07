@@ -51,7 +51,7 @@ public class RecoverMaterialUseCase : IRecoverMaterialUseCase
 
         if (!result.IsValid)
         {
-            var messageError = result.Errors.Select(error => error.ErrorMessage).ToList();
+            var messageError = result.Errors.Select(error => error.ErrorMessage).Distinct().ToList();
             throw new ExceptionValidationErrors(messageError);
         }
     }

@@ -10,15 +10,15 @@ public class ExampleControllerFilter : ISchemaFilter
 {
     public void Apply(OpenApiSchema schema, SchemaFilterContext context)
     {
-        AddRegistrationExamples(schema, context);
+        AddRegisterUserExamples(schema, context);
         AddLoginExamples(schema, context);
         AddForgotPasswordExamples(schema, context);
         AddNewPasswordExamples(schema, context);
         AddRegisterMaterialExamples(schema, context);
         AddUpdateMaterialExamples(schema, context);
+        AddRegisterCollaboratorExamples(schema, context);
     }
-
-    private static void AddRegistrationExamples(OpenApiSchema schema, SchemaFilterContext context)
+    private static void AddRegisterUserExamples(OpenApiSchema schema, SchemaFilterContext context)
     {
         if (context.MemberInfo is PropertyInfo propertyInfo && context.MemberInfo.DeclaringType == typeof(RequestRegisterUserJson))
         {
@@ -134,6 +134,34 @@ public class ExampleControllerFilter : ISchemaFilter
                     break;
                 case "category":
                     schema.Example = new OpenApiInteger(1);
+                    break;
+            }
+        }
+    }
+    private static void AddRegisterCollaboratorExamples(OpenApiSchema schema, SchemaFilterContext context)
+    {
+        if (context.MemberInfo is PropertyInfo propertyInfo && context.MemberInfo.DeclaringType == typeof(RequestCollaboratorJson))
+        {
+            var propertyName = char.ToLower(propertyInfo.Name[0]) + propertyInfo.Name[1..];
+            switch (propertyName)
+            {
+                case "name":
+                    schema.Example = new OpenApiString("Antônio Francisco Pereira Xavier");
+                    break;
+                case "nickname":
+                    schema.Example = new OpenApiString("Antônio Xavier");
+                    break;
+                case "cpf":
+                    schema.Example = new OpenApiString("000.000.000-00");
+                    break;
+                case "email":
+                    schema.Example = new OpenApiString("exemple@gmail.com");
+                    break;
+                case "password":
+                    schema.Example = new OpenApiString("123456");
+                    break;
+                case "telephone":
+                    schema.Example = new OpenApiString("XX 9 XXXX-XXXX");
                     break;
             }
         }
