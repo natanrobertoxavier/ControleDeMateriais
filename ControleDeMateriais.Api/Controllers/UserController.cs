@@ -9,6 +9,7 @@ public class UserController : ControleDeMateriaisController
 {
     [HttpPost]
     [ProducesResponseType(typeof(ResponseUserCreatedJson), StatusCodes.Status201Created)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
     public async Task<IActionResult> RegisterUser(
         [FromServices] IRegisterUserUseCase useCase,
         [FromBody] RequestRegisterUserJson request)

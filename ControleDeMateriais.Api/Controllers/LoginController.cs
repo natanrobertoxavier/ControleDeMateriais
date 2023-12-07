@@ -9,6 +9,8 @@ public class LoginController : ControleDeMateriaisController
 {
     [HttpPost]
     [ProducesResponseType(typeof(ResponseLoginJson), StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    [ProducesResponseType(StatusCodes.Status401Unauthorized)]
     public async Task<IActionResult> Login(
         [FromServices] ILoginUseCase useCase,
         [FromBody] RequestLoginJson request)

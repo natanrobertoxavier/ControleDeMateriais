@@ -15,6 +15,7 @@ public class MaterialController : ControleDeMateriaisController
 {
     [HttpPost]
     [ProducesResponseType(typeof(ResponseMaterialJson), StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
     public async Task<IActionResult> Register(
         [FromServices] IRegisterMaterialUseCase useCase,
         [FromBody] RequestRegisterMaterialJson request)
@@ -40,6 +41,7 @@ public class MaterialController : ControleDeMateriaisController
     [HttpGet]
     [ProducesResponseType(typeof(ResponseMaterialJson), StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
     public async Task<IActionResult> RecoverAll(
         [FromServices] IRecoverMaterialUseCase useCase)
     {
@@ -57,6 +59,7 @@ public class MaterialController : ControleDeMateriaisController
     [Route("category/{category}")]
     [ProducesResponseType(typeof(ResponseMaterialJson), StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
     public async Task<IActionResult> RecoverByCategory(
         [FromServices] IRecoverMaterialUseCase useCase,
         [FromRoute] int category)
@@ -75,6 +78,7 @@ public class MaterialController : ControleDeMateriaisController
     [Route("codebar/{barCode}")]
     [ProducesResponseType(typeof(ResponseMaterialJson), StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
     public async Task<IActionResult> RecoverByBarCode(
         [FromServices] IRecoverMaterialUseCase useCase,
         [FromRoute] string barCode)
@@ -93,6 +97,7 @@ public class MaterialController : ControleDeMateriaisController
     [Route("codebar/{barCode}")]
     [ProducesResponseType(typeof(ResponseMaterialJson), StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
     public async Task<IActionResult> Delete(
         [FromServices] IDeleteMaterialUseCase useCase,
         [FromRoute] string barCode)
