@@ -10,5 +10,6 @@ public class ResponseMaterialJson
     public string Description { get; set; }
     public string BarCode { get; set; }
     public Category Category { get; set; }
+    public string CategoryDescription { get; set; }
     public string UserId { get; set; }
 }

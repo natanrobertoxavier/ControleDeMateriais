@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ControleDeMateriais.Api")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ab7c9a9bbf720b77cdf832e61aad4290b2b5fb79")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b5ef26c95d3da942e31223238ca3bbd8d6e9afd2")]
 [assembly: System.Reflection.AssemblyProductAttribute("ControleDeMateriais.Api")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ControleDeMateriais.Api")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
