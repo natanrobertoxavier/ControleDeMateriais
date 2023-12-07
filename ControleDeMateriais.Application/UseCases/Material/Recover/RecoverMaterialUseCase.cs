@@ -39,7 +39,9 @@ public class RecoverMaterialUseCase : IRecoverMaterialUseCase
 
         var material = await _repositoryMaterialReadOnly.RecoverByBarCode(codeBar);
         var result = _mapper.Map<ResponseMaterialJson>(material);
-        result.CategoryDescription = EnumExtensions.GetDescription(result.Category);
+        
+        if (result is not null)
+            result.CategoryDescription = EnumExtensions.GetDescription(result.Category);
 
         return result;
     }

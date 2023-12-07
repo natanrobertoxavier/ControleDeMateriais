@@ -10,6 +10,7 @@ public class ForgotPasswordController : ControleDeMateriaisController
 {
     [HttpPost]
     [ProducesResponseType(typeof(ResponseForgotPasswordJson), StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
     public async Task<IActionResult> ForgotPassword(
         [FromServices] IForgotPasswordUseCase useCase,
         [FromBody] RequestForgotPasswordJson request)

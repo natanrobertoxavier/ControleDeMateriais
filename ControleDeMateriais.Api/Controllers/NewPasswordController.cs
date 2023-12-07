@@ -10,6 +10,7 @@ public class NewPasswordController : ControleDeMateriaisController
 {
     [HttpPost]
     [ProducesResponseType(typeof(ResponseNewPasswordJson), StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
     public async Task<IActionResult> NewPassword(
         [FromServices] INewPasswordUseCase useCase,
         [FromBody] RequestNewPasswordJson request)
