@@ -142,6 +142,24 @@ namespace ControleDeMateriais.Exceptions.ExceptionBase {
         }
         
         /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Informe o cpf do colaborador..
+        /// </summary>
+        public static string CPF_COLABORADOR_EM_BRANCO {
+            get {
+                return ResourceManager.GetString("CPF_COLABORADOR_EM_BRANCO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a O CPF informado é inválido..
+        /// </summary>
+        public static string CPF_COLABORADOR_INVALIDO {
+            get {
+                return ResourceManager.GetString("CPF_COLABORADOR_INVALIDO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a Informe o CPF..
         /// </summary>
         public static string CPF_USUARIO_EM_BRANCO {
@@ -174,6 +192,24 @@ namespace ControleDeMateriais.Exceptions.ExceptionBase {
         public static string EMAIL_CADASTRADO {
             get {
                 return ResourceManager.GetString("EMAIL_CADASTRADO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Informe o email do colaborador..
+        /// </summary>
+        public static string EMAIL_COLABORADOR_EM_BRANCO {
+            get {
+                return ResourceManager.GetString("EMAIL_COLABORADOR_EM_BRANCO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a E-mail do colaborador inválido..
+        /// </summary>
+        public static string EMAIL_COLABORADOR_INVALIDO {
+            get {
+                return ResourceManager.GetString("EMAIL_COLABORADOR_INVALIDO", resourceCulture);
             }
         }
         
@@ -241,6 +277,24 @@ namespace ControleDeMateriais.Exceptions.ExceptionBase {
         }
         
         /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Informe o nickname do colaborador..
+        /// </summary>
+        public static string NICKNAME_COLABORADOR_EM_BRANCO {
+            get {
+                return ResourceManager.GetString("NICKNAME_COLABORADOR_EM_BRANCO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Informe o nome do colaborador..
+        /// </summary>
+        public static string NOME_COLABORADOR_EM_BRANCO {
+            get {
+                return ResourceManager.GetString("NOME_COLABORADOR_EM_BRANCO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a Informe o nome do material..
         /// </summary>
         public static string NOME_MATERIAL_EM_BRANCO {
@@ -277,6 +331,24 @@ namespace ControleDeMateriais.Exceptions.ExceptionBase {
         }
         
         /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Informe a senha do colaborador..
+        /// </summary>
+        public static string SENHA_COLABORADOR_EM_BRANCO {
+            get {
+                return ResourceManager.GetString("SENHA_COLABORADOR_EM_BRANCO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a A senha deve conter ao menos seis caracteres..
+        /// </summary>
+        public static string SENHA_COLABORADOR_MINIMO_SEIS_CARACTERES {
+            get {
+                return ResourceManager.GetString("SENHA_COLABORADOR_MINIMO_SEIS_CARACTERES", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a A senha deve conter ao menos seis caracteres..
         /// </summary>
         public static string SENHA_MINIMO_SEIS_CARACTERES {
@@ -300,6 +372,24 @@ namespace ControleDeMateriais.Exceptions.ExceptionBase {
         public static string SENHAS_NAO_CONFEREM {
             get {
                 return ResourceManager.GetString("SENHAS_NAO_CONFEREM", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Informe o telefone..
+        /// </summary>
+        public static string TELEFONE_COLABORADOR_EM_BRANCO {
+            get {
+                return ResourceManager.GetString("TELEFONE_COLABORADOR_EM_BRANCO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Telefone informado é inválido..
+        /// </summary>
+        public static string TELEFONE_COLABORADOR_INVALIDO {
+            get {
+                return ResourceManager.GetString("TELEFONE_COLABORADOR_INVALIDO", resourceCulture);
             }
         }
         

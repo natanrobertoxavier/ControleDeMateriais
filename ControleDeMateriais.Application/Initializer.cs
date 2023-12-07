@@ -1,6 +1,7 @@
 ﻿using ControleDeMateriais.Application.Services.Cryptography;
 using ControleDeMateriais.Application.Services.LoggedUser;
 using ControleDeMateriais.Application.Services.Token;
+using ControleDeMateriais.Application.UseCases.Collaborator.Register;
 using ControleDeMateriais.Application.UseCases.Login.Login;
 using ControleDeMateriais.Application.UseCases.Material.Delete;
 using ControleDeMateriais.Application.UseCases.Material.Recover;
@@ -47,13 +48,20 @@ public static class Initializer
 
     private static void AddUseCase(IServiceCollection services)
     {
+        #region UserDependencyInjection
         services.AddScoped<IRegisterUserUseCase, RegisterUserUseCase>();
         services.AddScoped<ILoginUseCase, LoginUseCase>();
         services.AddScoped<IForgotPasswordUseCase, ForgotPasswordUseCase>();
         services.AddScoped<INewPasswordUseCase, NewPasswordUseCase>();
+        #endregion
+
+        #region MaterialDependencyInjection
         services.AddScoped<IRegisterMaterialUseCase, RegisterMaterialUseCase>();
         services.AddScoped<IRecoverMaterialUseCase, RecoverMaterialUseCase>();
         services.AddScoped<IUpdateMaterialUseCase, UpdateMaterialUseCase>();
         services.AddScoped<IDeleteMaterialUseCase, DeleteMateriaulUseCase>();
+        #endregion
+
+        services.AddScoped<IRegisterCollaboratorUseCase, RegisterCollaboratorUseCase>();
     }
 }

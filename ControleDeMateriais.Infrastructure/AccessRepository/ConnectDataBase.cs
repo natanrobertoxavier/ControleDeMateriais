@@ -8,6 +8,7 @@ public class ConnectDataBase
     private const string recoveryCode = "recoverycodes";
     private const string materials = "materials";
     private const string materialsDeletionLog = "materialsDeletionLog";
+    private const string collaborator = "collaborators";
     public static IMongoCollection<User> GetUserAccess()
     {
         var connection = Environment.GetEnvironmentVariable("ConnectionString");
@@ -56,6 +57,19 @@ public class ConnectDataBase
         var mongoDataBase = mongoClient.GetDatabase(databaseName);
 
         IMongoCollection<MaterialDeletionLog> collection = mongoDataBase.GetCollection<MaterialDeletionLog>(materialsDeletionLog);
+
+        return collection;
+    }
+
+    public static IMongoCollection<Collaborator> GetCollaboratorAccess()
+    {
+        var connection = Environment.GetEnvironmentVariable("ConnectionString");
+        var databaseName = Environment.GetEnvironmentVariable("DatabaseName");
+
+        var mongoClient = new MongoClient(connection);
+        var mongoDataBase = mongoClient.GetDatabase(databaseName);
+
+        IMongoCollection<Collaborator> collection = mongoDataBase.GetCollection<Collaborator>(collaborator);
 
         return collection;
     }
