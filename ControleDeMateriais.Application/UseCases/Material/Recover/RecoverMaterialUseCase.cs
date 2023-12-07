@@ -1,5 +1,7 @@
 ﻿using AutoMapper;
+using ControleDeMateriais.Communication.Enum;
 using ControleDeMateriais.Communication.Responses;
+using ControleDeMateriais.Domain.Entities;
 using ControleDeMateriais.Domain.Repositories.Material;
 using ControleDeMateriais.Exceptions.ExceptionBase;
 
@@ -18,15 +20,17 @@ public class RecoverMaterialUseCase : IRecoverMaterialUseCase
     public async Task<List<ResponseMaterialJson>> Execute()
     {
         var material = await _repositoryMaterialReadOnly.RecoverAll();
+        var result = GetCategoryDescription(_mapper.Map<List<ResponseMaterialJson>>(material));
 
-        return _mapper.Map<List<ResponseMaterialJson>>(material);
+        return result;
     }
 
     public async Task<List<ResponseMaterialJson>> Execute(int category)
     {
         var material = await _repositoryMaterialReadOnly.RecoverByCategory(category);
+        var result = GetCategoryDescription(_mapper.Map<List<ResponseMaterialJson>>(material));
 
-        return _mapper.Map<List<ResponseMaterialJson>>(material);
+        return result;
     }
 
     public async Task<ResponseMaterialJson> Execute(string codeBar)
@@ -34,8 +38,10 @@ public class RecoverMaterialUseCase : IRecoverMaterialUseCase
         ValidateData(codeBar);
 
         var material = await _repositoryMaterialReadOnly.RecoverByBarCode(codeBar);
+        var result = _mapper.Map<ResponseMaterialJson>(material);
+        result.CategoryDescription = EnumExtensions.GetDescription(result.Category);
 
-        return _mapper.Map<ResponseMaterialJson>(material);
+        return result;
     }
 
     private static void ValidateData(string codeBar)
@@ -48,5 +54,15 @@ public class RecoverMaterialUseCase : IRecoverMaterialUseCase
             var messageError = result.Errors.Select(error => error.ErrorMessage).ToList();
             throw new ExceptionValidationErrors(messageError);
         }
+    }
+
+    private static List<ResponseMaterialJson> GetCategoryDescription(List<ResponseMaterialJson> responseMaterialJsons)
+    {
+        foreach (var material in responseMaterialJsons)
+        {
+            material.CategoryDescription = EnumExtensions.GetDescription(material.Category);
+        }
+
+        return responseMaterialJsons;
     }
 }
