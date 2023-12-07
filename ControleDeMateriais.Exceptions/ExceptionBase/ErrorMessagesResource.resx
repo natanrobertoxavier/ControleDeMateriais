@@ -144,12 +144,6 @@
   <data name="CPF_CADASTRADO" xml:space="preserve">
     <value>CPF já cadastrado.</value>
   </data>
-  <data name="CPF_COLABORADOR_EM_BRANCO" xml:space="preserve">
-    <value>Informe o cpf do colaborador.</value>
-  </data>
-  <data name="CPF_COLABORADOR_INVALIDO" xml:space="preserve">
-    <value>O CPF informado é inválido.</value>
-  </data>
   <data name="CPF_USUARIO_EM_BRANCO" xml:space="preserve">
     <value>Informe o CPF.</value>
   </data>
@@ -185,6 +179,15 @@
   </data>
   <data name="LOGIN_INVALIDO" xml:space="preserve">
     <value>Usuário e/ou senha incorretos.</value>
+  </data>
+  <data name="MATRICULA_CADASTRADA" xml:space="preserve">
+    <value>Matrícula já cadastrada.</value>
+  </data>
+  <data name="MATRICULA_COLABORADOR_EM_BRANCO" xml:space="preserve">
+    <value>Informe a matrícula do colaborador.</value>
+  </data>
+  <data name="MATRICULA_COLABORADOR_INVALIDO" xml:space="preserve">
+    <value>A matrícula informada é inválida.</value>
   </data>
   <data name="NENHUM_MATERIAL_LOCALIZADO" xml:space="preserve">
     <value>Nenhum material foi localizado com os dados informados.</value>

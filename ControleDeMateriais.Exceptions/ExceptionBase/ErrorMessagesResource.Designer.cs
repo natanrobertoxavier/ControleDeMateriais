@@ -142,24 +142,6 @@ namespace ControleDeMateriais.Exceptions.ExceptionBase {
         }
         
         /// <summary>
-        ///   Consulta uma cadeia de caracteres localizada semelhante a Informe o cpf do colaborador..
-        /// </summary>
-        public static string CPF_COLABORADOR_EM_BRANCO {
-            get {
-                return ResourceManager.GetString("CPF_COLABORADOR_EM_BRANCO", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Consulta uma cadeia de caracteres localizada semelhante a O CPF informado é inválido..
-        /// </summary>
-        public static string CPF_COLABORADOR_INVALIDO {
-            get {
-                return ResourceManager.GetString("CPF_COLABORADOR_INVALIDO", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a Informe o CPF..
         /// </summary>
         public static string CPF_USUARIO_EM_BRANCO {
@@ -264,6 +246,33 @@ namespace ControleDeMateriais.Exceptions.ExceptionBase {
         public static string LOGIN_INVALIDO {
             get {
                 return ResourceManager.GetString("LOGIN_INVALIDO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Matrícula já cadastrada..
+        /// </summary>
+        public static string MATRICULA_CADASTRADA {
+            get {
+                return ResourceManager.GetString("MATRICULA_CADASTRADA", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Informe a matrícula do colaborador..
+        /// </summary>
+        public static string MATRICULA_COLABORADOR_EM_BRANCO {
+            get {
+                return ResourceManager.GetString("MATRICULA_COLABORADOR_EM_BRANCO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a A matrícula informada é inválida..
+        /// </summary>
+        public static string MATRICULA_COLABORADOR_INVALIDO {
+            get {
+                return ResourceManager.GetString("MATRICULA_COLABORADOR_INVALIDO", resourceCulture);
             }
         }
         

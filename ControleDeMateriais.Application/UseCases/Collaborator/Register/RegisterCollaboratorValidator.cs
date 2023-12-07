@@ -11,7 +11,7 @@ public class RegisterCollaboratorValidator : AbstractValidator<RequestCollaborat
     {
         RuleFor(c => c.Name).NotEmpty().WithMessage(ErrorMessagesResource.NOME_COLABORADOR_EM_BRANCO);
         RuleFor(c => c.Nickname).NotEmpty().WithMessage(ErrorMessagesResource.NICKNAME_COLABORADOR_EM_BRANCO);
-        RuleFor(c => c.Cpf).NotEmpty().WithMessage(ErrorMessagesResource.CPF_COLABORADOR_EM_BRANCO);
+        RuleFor(c => c.Enrollment).NotEmpty().WithMessage(ErrorMessagesResource.MATRICULA_COLABORADOR_EM_BRANCO);
         RuleFor(c => c.Email).NotEmpty().WithMessage(ErrorMessagesResource.EMAIL_COLABORADOR_EM_BRANCO);
         RuleFor(c => c.Telephone).NotEmpty().WithMessage(ErrorMessagesResource.TELEFONE_COLABORADOR_EM_BRANCO);
         RuleFor(c => c.Password).SetValidator(new PasswordValidator());
@@ -33,17 +33,17 @@ public class RegisterCollaboratorValidator : AbstractValidator<RequestCollaborat
                 }
             });
         });
-        When(c => !string.IsNullOrEmpty(c.Cpf), () =>
+        When(c => !string.IsNullOrEmpty(c.Enrollment), () =>
         {
-            RuleFor(c => c.Cpf).Custom((cpf, context) =>
+            RuleFor(c => c.Enrollment).Custom((enrollment, context) =>
             {
-                string cpfPattern = "[0-9]{3}.[0-9]{3}.[0-9]{3}-[0-9]{2}";
-                var isMatch = Regex.IsMatch(cpf, cpfPattern);
+                string cpfPattern = "[0-9]{3}.[0-9]{3}-[0-9]{1}";
+                var isMatch = Regex.IsMatch(enrollment, cpfPattern);
 
                 if (!isMatch)
                 {
                     context.AddFailure(new FluentValidation.Results
-                        .ValidationFailure(nameof(cpf), ErrorMessagesResource.CPF_COLABORADOR_INVALIDO));
+                        .ValidationFailure(nameof(enrollment), ErrorMessagesResource.MATRICULA_COLABORADOR_INVALIDO));
                 }
             });
         });
