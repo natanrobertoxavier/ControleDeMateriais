@@ -151,8 +151,8 @@ public class ExampleControllerFilter : ISchemaFilter
                 case "nickname":
                     schema.Example = new OpenApiString("Antônio Xavier");
                     break;
-                case "cpf":
-                    schema.Example = new OpenApiString("000.000.000-00");
+                case "enrollment":
+                    schema.Example = new OpenApiString("000.000-0");
                     break;
                 case "email":
                     schema.Example = new OpenApiString("exemple@gmail.com");

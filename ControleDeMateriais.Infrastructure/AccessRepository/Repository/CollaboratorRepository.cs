@@ -11,10 +11,10 @@ public class CollaboratorRepository : ICollaboratorWriteOnlyRepository, ICollabo
         await collection.InsertOneAsync(collaborator);
     }
 
-    public async Task<bool> IsThereUserWithCpf(string cpf)
+    public async Task<bool> IsThereUserWithEnrollment(string enrollment)
     {
         var collection = ConnectDataBase.GetCollaboratorAccess();
-        var result = await collection.FindAsync(c => c.Cpf.Equals(cpf));
+        var result = await collection.FindAsync(c => c.Enrollment.Equals(enrollment));
 
         if (await result.AnyAsync())
             return true;

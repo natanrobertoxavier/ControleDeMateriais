@@ -47,7 +47,7 @@ public class RegisterCollaboratorUseCase : IRegisterCollaboratorUseCase
 
 
         var isThereUserWithEmail = await _collaboratorRepositoryReadOnly.IsThereUserWithEmail(request.Email);
-        var isThereUserWithCpf = await _collaboratorRepositoryReadOnly.IsThereUserWithCpf(request.Cpf);
+        var isThereUserWithCpf = await _collaboratorRepositoryReadOnly.IsThereUserWithEnrollment(request.Enrollment);
 
         if (isThereUserWithEmail)
         {
@@ -56,7 +56,7 @@ public class RegisterCollaboratorUseCase : IRegisterCollaboratorUseCase
 
         if (isThereUserWithCpf)
         {
-            result.Errors.Add(new FluentValidation.Results.ValidationFailure("cpf", ErrorMessagesResource.CPF_CADASTRADO));
+            result.Errors.Add(new FluentValidation.Results.ValidationFailure("enrollment", ErrorMessagesResource.MATRICULA_CADASTRADA));
         }
 
         if (!result.IsValid)

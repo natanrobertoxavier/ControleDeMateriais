@@ -11,6 +11,7 @@ public class CollaboratorController : ControleDeMateriaisController
 {
     [HttpPost]
     [ProducesResponseType(typeof(ResponseCollaboratorCreatedJson), StatusCodes.Status201Created)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
     public async Task<IActionResult> RegisterUser(
         [FromServices] IRegisterCollaboratorUseCase useCase,
         [FromBody] RequestCollaboratorJson request)

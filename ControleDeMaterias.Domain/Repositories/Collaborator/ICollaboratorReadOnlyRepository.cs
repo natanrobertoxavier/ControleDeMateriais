@@ -2,5 +2,5 @@
 public interface ICollaboratorReadOnlyRepository
 {
     Task<bool> IsThereUserWithEmail(string email);
-    Task<bool> IsThereUserWithCpf(string cpf);
+    Task<bool> IsThereUserWithEnrollment(string enrollment);
 }
