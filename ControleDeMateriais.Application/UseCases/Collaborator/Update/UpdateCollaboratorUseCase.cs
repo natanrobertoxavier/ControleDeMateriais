@@ -32,7 +32,7 @@ public class UpdateCollaboratorUseCase : IUpdateCollaboratorUseCase
 
         var result = await _repositoryCollaboratorWriteOnly.Update(enrollment, entity);
 
-        return _mapper.Map<ResponseCollaboratorJson>(request);
+        return _mapper.Map<ResponseCollaboratorJson>(result);
     }
 
     private async Task ValidateData(string enrollment, RequestUpdateCollaboratorJson request)
