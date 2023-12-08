@@ -33,7 +33,9 @@ public class AutoMapperConfiguration : Profile
             .ForMember(destiny => destiny.Id, config => config.MapFrom(origin => origin.Id.ToString()))
             .ForMember(destiny => destiny.UserId, config => config.MapFrom(origin => origin.UserId.ToString()));
 
-        CreateMap<Domain.Entities.Collaborator, Communication.Responses.ResponseCollaboratorJson>();
+        CreateMap<Domain.Entities.Collaborator, Communication.Responses.ResponseCollaboratorJson>()
+            .ForMember(destiny => destiny.Id, config => config.MapFrom(origin => origin.Id.ToString()))
+            .ForMember(destiny => destiny.UserIdCreated, config => config.MapFrom(origin => origin.UserIdCreated.ToString()));
 
         CreateMap<Domain.Entities.User, Communication.Responses.ResponseUserJson>();
     }
@@ -43,11 +45,18 @@ public class AutoMapperConfiguration : Profile
         CreateMap<Communication.Responses.ResponseMaterialJson, Domain.Entities.Material>()
             .ForMember(destiny => destiny.Id, config => config.MapFrom(origin => new ObjectId(origin.Id)))
             .ForMember(destiny => destiny.UserId, config => config.MapFrom(origin => new ObjectId(origin.UserId)));
+
+        CreateMap<Communication.Responses.ResponseCollaboratorJson, Domain.Entities.Collaborator>()
+            .ForMember(destiny => destiny.Id, config => config.MapFrom(origin => new ObjectId(origin.Id)))
+            .ForMember(destiny => destiny.UserIdCreated, config => config.MapFrom(origin => new ObjectId(origin.UserIdCreated)))
+            .ForMember(destiny => destiny.Password, config => config.Ignore());
     }
 
     private void EntityToLog()
     {
         CreateMap<Domain.Entities.Material, Domain.Entities.MaterialDeletionLog>()
             .ForMember(destiny => destiny.UserIdCreated, config => config.MapFrom(origin => origin.UserId));
+
+        CreateMap<Domain.Entities.Collaborator, Domain.Entities.CollaboratorDeletionLog>();
     }
 }

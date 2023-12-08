@@ -29,6 +29,18 @@ public class CollaboratorRepository : ICollaboratorWriteOnlyRepository, ICollabo
 
         return result;
     }
+    public async Task Delete(string enrollment)
+    {
+        var collection = ConnectDataBase.GetCollaboratorAccess();
+        var filter = Builders<Collaborator>.Filter.Where(c => c.Enrollment.Equals(enrollment));
+        await collection.DeleteOneAsync(filter);
+    }
+
+    public async Task RegisterDeletionLog(CollaboratorDeletionLog collaborator)
+    {
+        var collection = ConnectDataBase.GetCollaboratorDeletionLogAccess();
+        await collection.InsertOneAsync(collaborator);
+    }
 
     public async Task<List<Collaborator>> RecoverAll()
     {

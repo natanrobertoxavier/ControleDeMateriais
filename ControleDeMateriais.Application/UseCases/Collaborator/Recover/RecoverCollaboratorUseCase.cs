@@ -3,15 +3,16 @@ using ControleDeMateriais.Application.UseCases.User.Recover;
 using ControleDeMateriais.Communication.Responses;
 using ControleDeMateriais.Domain.Repositories.Collaborator;
 using ControleDeMateriais.Exceptions.ExceptionBase;
+using MongoDB.Driver;
 
 namespace ControleDeMateriais.Application.UseCases.Collaborator.Recover;
-public class RecoverCollaboratorUserCase : IRecoverCollaboratorUserCase
+public class RecoverCollaboratorUseCase : IRecoverCollaboratorUseCase
 {
     private readonly IMapper _mapper;
     private readonly ICollaboratorReadOnlyRepository _repositoryCollaboratorReadOnly;
     private readonly IRecoverUserUseCase _repositoryUserReadOnly;
 
-    public RecoverCollaboratorUserCase(
+    public RecoverCollaboratorUseCase(
         IMapper mapper,
         ICollaboratorReadOnlyRepository repositoryCollaboratorReadOnly,
         IRecoverUserUseCase repositoryUserReadOnly)
@@ -34,12 +35,13 @@ public class RecoverCollaboratorUserCase : IRecoverCollaboratorUserCase
         ValidateData(enrollment);
 
         var collaborator = await _repositoryCollaboratorReadOnly.RecoverByEnrollment(enrollment);
-
-        var user = await _repositoryUserReadOnly.Execute(collaborator.UserIdCreated.ToString());
-
         var result = _mapper.Map<ResponseCollaboratorJson>(collaborator);
 
-        result.UserNameCreated = user.Name;
+        if (collaborator is not null)
+        {
+            var user = await _repositoryUserReadOnly.Execute(collaborator.UserIdCreated.ToString());
+            result.UserNameCreated = user.Name;
+        }
 
         return result;
     }
@@ -67,15 +69,18 @@ public class RecoverCollaboratorUserCase : IRecoverCollaboratorUserCase
         var result = new List<ResponseCollaboratorJson>();
         foreach (var collaborator in Collaborators)
         {
-            var user = await _repositoryUserReadOnly.Execute(collaborator.UserIdCreated.ToString());
+            var user = await _repositoryUserReadOnly.Execute(collaborator.UserIdCreated.ToString()) ?? new ResponseUserJson();
 
             result.Add(new ResponseCollaboratorJson()
             {
+                Id = collaborator.Id.ToString(),
+                Created = collaborator.Created,
                 Name = collaborator.Name,
                 Nickname = collaborator.Nickname,
                 Enrollment = collaborator.Enrollment,
                 Email = collaborator.Email,
                 Telephone = collaborator.Telephone,
+                UserIdCreated = collaborator.UserIdCreated.ToString(),
                 UserNameCreated = user.Name,
             });
         }

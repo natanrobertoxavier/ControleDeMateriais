@@ -1,6 +1,7 @@
 ﻿using ControleDeMateriais.Application.Services.Cryptography;
 using ControleDeMateriais.Application.Services.LoggedUser;
 using ControleDeMateriais.Application.Services.Token;
+using ControleDeMateriais.Application.UseCases.Collaborator.Delete;
 using ControleDeMateriais.Application.UseCases.Collaborator.Recover;
 using ControleDeMateriais.Application.UseCases.Collaborator.Register;
 using ControleDeMateriais.Application.UseCases.Collaborator.Update;
@@ -63,11 +64,14 @@ public static class Initializer
         services.AddScoped<IRegisterMaterialUseCase, RegisterMaterialUseCase>();
         services.AddScoped<IRecoverMaterialUseCase, RecoverMaterialUseCase>();
         services.AddScoped<IUpdateMaterialUseCase, UpdateMaterialUseCase>();
-        services.AddScoped<IDeleteMaterialUseCase, DeleteMateriaulUseCase>();
+        services.AddScoped<IDeleteMaterialUseCase, DeleteMaterialUseCase>();
         #endregion
 
+        #region CollaboratorDependencyInjection
         services.AddScoped<IRegisterCollaboratorUseCase, RegisterCollaboratorUseCase>();
-        services.AddScoped<IRecoverCollaboratorUserCase, RecoverCollaboratorUserCase>();
+        services.AddScoped<IRecoverCollaboratorUseCase, RecoverCollaboratorUseCase>();
         services.AddScoped<IUpdateCollaboratorUseCase, UpdateCollaboratorUseCase>();
+        services.AddScoped<IDeleteCollaboratorUseCase, DeleteCollaboratorUseCase>();
+        #endregion
     }
 }
