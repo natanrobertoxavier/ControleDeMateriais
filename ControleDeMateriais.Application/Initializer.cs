@@ -3,6 +3,7 @@ using ControleDeMateriais.Application.Services.LoggedUser;
 using ControleDeMateriais.Application.Services.Token;
 using ControleDeMateriais.Application.UseCases.Collaborator.Recover;
 using ControleDeMateriais.Application.UseCases.Collaborator.Register;
+using ControleDeMateriais.Application.UseCases.Collaborator.Update;
 using ControleDeMateriais.Application.UseCases.Login.Login;
 using ControleDeMateriais.Application.UseCases.Material.Delete;
 using ControleDeMateriais.Application.UseCases.Material.Recover;
@@ -65,5 +66,6 @@ public static class Initializer
 
         services.AddScoped<IRegisterCollaboratorUseCase, RegisterCollaboratorUseCase>();
         services.AddScoped<IRecoverCollaboratorUserCase, RecoverCollaboratorUserCase>();
+        services.AddScoped<IUpdateCollaboratorUseCase, UpdateCollaboratorUseCase>();
     }
 }

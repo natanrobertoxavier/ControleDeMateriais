@@ -70,6 +70,15 @@ namespace ControleDeMateriais.Exceptions.ExceptionBase {
         }
         
         /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Não é permitida a alteração da matrícula..
+        /// </summary>
+        public static string ALTERACAO_MATRICULA_NAO_PERMITIDA {
+            get {
+                return ResourceManager.GetString("ALTERACAO_MATRICULA_NAO_PERMITIDA", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a Categoria inválida..
         /// </summary>
         public static string CATEGORIA_INVALIDA {
@@ -129,6 +138,15 @@ namespace ControleDeMateriais.Exceptions.ExceptionBase {
         public static string CODIGOS_NAO_CONFEREM {
             get {
                 return ResourceManager.GetString("CODIGOS_NAO_CONFEREM", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Nenhum colaborador foi localizado com os dados informados..
+        /// </summary>
+        public static string COLABORADOR_NAO_LOCALIZADO {
+            get {
+                return ResourceManager.GetString("COLABORADOR_NAO_LOCALIZADO", resourceCulture);
             }
         }
         

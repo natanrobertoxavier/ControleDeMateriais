@@ -17,7 +17,9 @@ public class ExampleControllerFilter : ISchemaFilter
         AddRegisterMaterialExamples(schema, context);
         AddUpdateMaterialExamples(schema, context);
         AddRegisterCollaboratorExamples(schema, context);
+        AddUpdateCollaboratorExamples(schema, context);
     }
+
     private static void AddRegisterUserExamples(OpenApiSchema schema, SchemaFilterContext context)
     {
         if (context.MemberInfo is PropertyInfo propertyInfo && context.MemberInfo.DeclaringType == typeof(RequestRegisterUserJson))
@@ -159,6 +161,28 @@ public class ExampleControllerFilter : ISchemaFilter
                     break;
                 case "password":
                     schema.Example = new OpenApiString("123456");
+                    break;
+                case "telephone":
+                    schema.Example = new OpenApiString("XX 9 XXXX-XXXX");
+                    break;
+            }
+        }
+    }
+    private static void AddUpdateCollaboratorExamples(OpenApiSchema schema, SchemaFilterContext context)
+    {
+        if (context.MemberInfo is PropertyInfo propertyInfo && context.MemberInfo.DeclaringType == typeof(RequestUpdateCollaboratorJson))
+        {
+            var propertyName = char.ToLower(propertyInfo.Name[0]) + propertyInfo.Name[1..];
+            switch (propertyName)
+            {
+                case "name":
+                    schema.Example = new OpenApiString("Antônio Francisco Pereira Xavier");
+                    break;
+                case "nickname":
+                    schema.Example = new OpenApiString("Antônio Xavier");
+                    break;
+                case "email":
+                    schema.Example = new OpenApiString("exemple@gmail.com");
                     break;
                 case "telephone":
                     schema.Example = new OpenApiString("XX 9 XXXX-XXXX");
