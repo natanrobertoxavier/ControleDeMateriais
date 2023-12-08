@@ -1,6 +1,7 @@
 ﻿using ControleDeMateriais.Application.Services.Cryptography;
 using ControleDeMateriais.Application.Services.LoggedUser;
 using ControleDeMateriais.Application.Services.Token;
+using ControleDeMateriais.Application.UseCases.Collaborator.Recover;
 using ControleDeMateriais.Application.UseCases.Collaborator.Register;
 using ControleDeMateriais.Application.UseCases.Login.Login;
 using ControleDeMateriais.Application.UseCases.Material.Delete;
@@ -63,5 +64,6 @@ public static class Initializer
         #endregion
 
         services.AddScoped<IRegisterCollaboratorUseCase, RegisterCollaboratorUseCase>();
+        services.AddScoped<IRecoverCollaboratorUserCase, RecoverCollaboratorUserCase>();
     }
 }

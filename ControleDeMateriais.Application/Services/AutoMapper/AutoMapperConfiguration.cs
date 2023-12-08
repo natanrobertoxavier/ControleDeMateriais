@@ -29,6 +29,8 @@ public class AutoMapperConfiguration : Profile
         CreateMap<Domain.Entities.Material, Communication.Responses.ResponseMaterialJson>()
             .ForMember(destiny => destiny.Id, config => config.MapFrom(origin => origin.Id.ToString()))
             .ForMember(destiny => destiny.UserId, config => config.MapFrom(origin => origin.UserId.ToString()));
+
+        CreateMap<Domain.Entities.Collaborator, Communication.Responses.ResponseCollaboratorJson>();
     }
 
     private void ResponseToEntity()

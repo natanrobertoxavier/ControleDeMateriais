@@ -1,4 +1,5 @@
-﻿using ControleDeMateriais.Domain.Entities;
+﻿using ControleDeMateriais.Communication.Responses;
+using ControleDeMateriais.Domain.Entities;
 using ControleDeMateriais.Domain.Repositories.Collaborator;
 using MongoDB.Driver;
 
@@ -9,6 +10,23 @@ public class CollaboratorRepository : ICollaboratorWriteOnlyRepository, ICollabo
     {
         var collection = ConnectDataBase.GetCollaboratorAccess();
         await collection.InsertOneAsync(collaborator);
+    }
+
+    public async Task<List<Collaborator>> RecoverAll()
+    {
+        var collection = ConnectDataBase.GetCollaboratorAccess();
+        var filter = Builders<Collaborator>.Filter.Empty;
+
+        return await collection.Find(filter).ToListAsync();
+    }
+
+    public async Task<Collaborator> RecoverByEnrollment(string enrollment)
+    {
+        var collection = ConnectDataBase.GetCollaboratorAccess();
+        var filter = Builders<Collaborator>.Filter.Where(c => c.Enrollment.Equals(enrollment));
+        var result = await collection.Find(filter).FirstOrDefaultAsync();
+
+        return result;
     }
 
     public async Task<bool> IsThereUserWithEnrollment(string enrollment)
