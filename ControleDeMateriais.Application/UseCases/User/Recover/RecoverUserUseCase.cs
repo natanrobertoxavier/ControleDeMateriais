@@ -1,10 +1,7 @@
-﻿using ControleDeMateriais.Application.Services.Cryptography;
+﻿using AutoMapper;
 using ControleDeMateriais.Communication.Responses;
-using ControleDeMateriais.Domain.Repositories.User.ForgotPassword.Forgot;
-using ControleDeMateriais.Domain.Repositories.User.ForgotPassword.RecoveryCode;
 using ControleDeMateriais.Domain.Repositories.User;
 using MongoDB.Bson;
-using AutoMapper;
 
 namespace ControleDeMateriais.Application.UseCases.User.Recover;
 public class RecoverUserUseCase : IRecoverUserUseCase

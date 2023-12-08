@@ -6,4 +6,5 @@ public class ResponseCollaboratorJson
     public string Enrollment { get; set; }
     public string Email { get; set; }
     public string Telephone { get; set; }
+    public string UserNameCreated { get; set; }
 }
