@@ -1,6 +1,7 @@
 using ControleDeMateriais.Api.Filters.LoggedUser;
 using ControleDeMateriais.Application.UseCases.Collaborator.Recover;
 using ControleDeMateriais.Application.UseCases.Collaborator.Register;
+using ControleDeMateriais.Application.UseCases.Collaborator.Update;
 using ControleDeMateriais.Communication.Requests;
 using ControleDeMateriais.Communication.Responses;
 using Microsoft.AspNetCore.Mvc;
@@ -50,6 +51,26 @@ public class CollaboratorController : ControleDeMateriaisController
         [FromRoute] [Required] string enrollment)
     {
         var result = await useCase.Execute(enrollment);
+
+        if (result is not null)
+        {
+            return Ok(result);
+        }
+
+        return NoContent();
+    }
+
+    [HttpPut]
+    [Route("enrollment/{enrollment}")]
+    [ProducesResponseType(typeof(ResponseCollaboratorJson), StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status204NoContent)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    public async Task<IActionResult> Update(
+        [FromServices] IUpdateCollaboratorUseCase useCase,
+        [FromRoute] [Required] string enrollment,
+        [FromBody] RequestUpdateCollaboratorJson request)
+    {
+        var result = await useCase.Execute(enrollment, request);
 
         if (result is not null)
         {

@@ -1,6 +1,8 @@
 ﻿using AutoMapper;
+using ControleDeMateriais.Application.UseCases.Material.Recover;
 using ControleDeMateriais.Communication.Responses;
 using ControleDeMateriais.Domain.Repositories.Collaborator;
+using ControleDeMateriais.Exceptions.ExceptionBase;
 
 namespace ControleDeMateriais.Application.UseCases.Collaborator.Recover;
 public class RecoverCollaboratorUserCase : IRecoverCollaboratorUserCase
@@ -32,9 +34,21 @@ public class RecoverCollaboratorUserCase : IRecoverCollaboratorUserCase
         return _mapper.Map<ResponseCollaboratorJson>(collaborator);
     }
 
-    private void ValidateData(string enrollment)
+    private static void ValidateData(string enrollment)
     {
-        //Implementar a validação do número da matrícula
-        throw new NotImplementedException();
+        var validator = new RecoverCollaboratorValidator();
+        var result = validator.Validate(enrollment);
+
+        if (string.IsNullOrEmpty(enrollment) || string.IsNullOrWhiteSpace(enrollment))
+        {
+            result.Errors.Add(new FluentValidation.Results.ValidationFailure("enrollment", 
+                ErrorMessagesResource.MATRICULA_COLABORADOR_EM_BRANCO));
+        }
+
+        if (!result.IsValid)
+        {
+            var messageError = result.Errors.Select(error => error.ErrorMessage).Distinct().ToList();
+            throw new ExceptionValidationErrors(messageError);
+        }
     }
 }

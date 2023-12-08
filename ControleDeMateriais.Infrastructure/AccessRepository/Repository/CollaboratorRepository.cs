@@ -12,6 +12,24 @@ public class CollaboratorRepository : ICollaboratorWriteOnlyRepository, ICollabo
         await collection.InsertOneAsync(collaborator);
     }
 
+    public async Task<Collaborator> Update(string enrollment, Collaborator collaborator)
+    {
+        var collection = ConnectDataBase.GetCollaboratorAccess();
+        var filter = Builders<Collaborator>.Filter.Where(c => c.Enrollment.Equals(enrollment));
+
+        var updateObject = Builders<Collaborator>.Update
+            .Set(c => c.Name, collaborator.Name)
+            .Set(c => c.Nickname, collaborator.Nickname)
+            .Set(c => c.Email, collaborator.Email)
+            .Set(c => c.Telephone, collaborator.Telephone);
+
+        await collection.UpdateOneAsync(filter, updateObject);
+
+        var result = await RecoverByEnrollment(enrollment);
+
+        return result;
+    }
+
     public async Task<List<Collaborator>> RecoverAll()
     {
         var collection = ConnectDataBase.GetCollaboratorAccess();

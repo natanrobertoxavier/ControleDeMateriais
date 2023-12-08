@@ -1,12 +1,9 @@
 ﻿using AutoMapper;
-using ControleDeMateriais.Application.UseCases.Material.Register;
 using ControleDeMateriais.Communication.Requests;
 using ControleDeMateriais.Communication.Responses;
 using ControleDeMateriais.Domain.Repositories.Material;
 using ControleDeMateriais.Exceptions.ExceptionBase;
 using FluentValidation.Results;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
-using MongoDB.Bson;
 
 namespace ControleDeMateriais.Application.UseCases.Material.Update;
 public class UpdateMaterialUseCase : IUpdateMaterialUseCase
@@ -37,25 +34,25 @@ public class UpdateMaterialUseCase : IUpdateMaterialUseCase
 
     private async Task ValidateData(string id, RequestUpdateMaterialJson request)
     {
-        var barCodeBD = await _repositoryMaterialReadOnly.RecoverById(id);
+        var barCodeDB = await _repositoryMaterialReadOnly.RecoverById(id);
 
         var validator = new MaterialUpdateValidator();
         var result = validator.Validate(request);
 
-        if (barCodeBD is null)
+        if (barCodeDB is null)
         {
             result.Errors.Add(new ValidationFailure("BarCode", ErrorMessagesResource.NENHUM_MATERIAL_LOCALIZADO));
             ThrowValidationErrors(result);
         }
         
-        if (barCodeBD.BarCode != request.BarCode)
+        if (barCodeDB.BarCode != request.BarCode)
         {
             result.Errors.Add(new ValidationFailure("BarCode", ErrorMessagesResource.ALTERACAO_CODIGO_BARRAS_NAO_PERMITIDA));
             ThrowValidationErrors(result);
         }
     }
 
-    private void ThrowValidationErrors(ValidationResult result)
+    private static void ThrowValidationErrors(ValidationResult result)
     {
         if (!result.IsValid)
         {
