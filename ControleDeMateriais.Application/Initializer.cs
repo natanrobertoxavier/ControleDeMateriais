@@ -11,6 +11,7 @@ using ControleDeMateriais.Application.UseCases.Material.Register;
 using ControleDeMateriais.Application.UseCases.Material.Update;
 using ControleDeMateriais.Application.UseCases.User.ForgotPassword;
 using ControleDeMateriais.Application.UseCases.User.NewPassword;
+using ControleDeMateriais.Application.UseCases.User.Recover;
 using ControleDeMateriais.Application.UseCases.User.Register;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -55,6 +56,7 @@ public static class Initializer
         services.AddScoped<ILoginUseCase, LoginUseCase>();
         services.AddScoped<IForgotPasswordUseCase, ForgotPasswordUseCase>();
         services.AddScoped<INewPasswordUseCase, NewPasswordUseCase>();
+        services.AddScoped<IRecoverUserUseCase, RecoverUserUseCase>();
         #endregion
 
         #region MaterialDependencyInjection

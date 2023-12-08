@@ -34,6 +34,8 @@ public class AutoMapperConfiguration : Profile
             .ForMember(destiny => destiny.UserId, config => config.MapFrom(origin => origin.UserId.ToString()));
 
         CreateMap<Domain.Entities.Collaborator, Communication.Responses.ResponseCollaboratorJson>();
+
+        CreateMap<Domain.Entities.User, Communication.Responses.ResponseUserJson>();
     }
 
     private void ResponseToEntity()
