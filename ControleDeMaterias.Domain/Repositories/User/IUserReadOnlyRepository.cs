@@ -1,4 +1,6 @@
-﻿namespace ControleDeMateriais.Domain.Repositories.User;
+﻿using MongoDB.Bson;
+
+namespace ControleDeMateriais.Domain.Repositories.User;
 public interface IUserReadOnlyRepository
 {
     Task<bool> IsThereUserWithEmail(string email);
@@ -6,4 +8,5 @@ public interface IUserReadOnlyRepository
     Task<bool> IsThereUserWithCpf(string cpf);
     Task<Entities.User> RecoverEmailPassword(string email, string password);
     Task<Entities.User> RecoverByEmail(string email);
+    Task<Entities.User> RecoverById(ObjectId id);
 }

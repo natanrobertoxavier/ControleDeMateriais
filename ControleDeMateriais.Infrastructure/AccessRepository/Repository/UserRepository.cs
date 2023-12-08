@@ -1,5 +1,6 @@
 ﻿using ControleDeMateriais.Domain.Entities;
 using ControleDeMateriais.Domain.Repositories.User;
+using MongoDB.Bson;
 using MongoDB.Driver;
 
 namespace ControleDeMateriais.Infrastructure.AccessRepository.Repository;
@@ -61,6 +62,14 @@ public class UserRepository : IUserWriteOnlyRepository, IUserReadOnlyRepository
     {
         var collection = ConnectDataBase.GetUserAccess();
         var filter = Builders<User>.Filter.Where(c => c.Email.Equals(email));
+
+        return await collection.Find(filter).FirstOrDefaultAsync();
+    }
+
+    public async Task<User> RecoverById(ObjectId id)
+    {
+        var collection = ConnectDataBase.GetUserAccess();
+        var filter = Builders<User>.Filter.Where(c => c.Id.Equals(id));
 
         return await collection.Find(filter).FirstOrDefaultAsync();
     }
