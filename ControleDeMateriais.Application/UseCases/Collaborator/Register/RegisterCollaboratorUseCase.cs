@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using ControleDeMateriais.Application.Services.Cryptography;
+using ControleDeMateriais.Application.Services.LoggedUser;
 using ControleDeMateriais.Communication.Requests;
 using ControleDeMateriais.Communication.Responses;
 using ControleDeMateriais.Domain.Repositories.Collaborator;
@@ -11,26 +12,33 @@ public class RegisterCollaboratorUseCase : IRegisterCollaboratorUseCase
     private readonly IMapper _mapper;
     private readonly ICollaboratorWriteOnlyRepository _collaboratorRepositoryWriteOnly;
     private readonly ICollaboratorReadOnlyRepository _collaboratorRepositoryReadOnly;
+    private readonly ILoggedUser _loggedUser;
     private readonly PasswordEncryptor _passwordEncryptor;
 
     public RegisterCollaboratorUseCase(
         IMapper mapper,
         ICollaboratorWriteOnlyRepository collaboratorRepositoryWriteOnly,
-        ICollaboratorReadOnlyRepository collaboratorRepositoryReadOnly, 
+        ICollaboratorReadOnlyRepository collaboratorRepositoryReadOnly,
+        ILoggedUser loggedUser,
         PasswordEncryptor passwordEncryptor)
     {
         _mapper = mapper;
         _collaboratorRepositoryWriteOnly = collaboratorRepositoryWriteOnly;
         _collaboratorRepositoryReadOnly = collaboratorRepositoryReadOnly;
+        _loggedUser = loggedUser;
         _passwordEncryptor = passwordEncryptor;
     }
 
     public async Task<ResponseCollaboratorCreatedJson> Execute(RequestCollaboratorJson request)
     {
         await ValidateData(request);
+        var user = await _loggedUser.RecoveryUser();
 
         var entity = _mapper.Map<Domain.Entities.Collaborator>(request);
+
         entity.Password = _passwordEncryptor.Encrypt(request.Password);
+        entity.UserIdCreated = user.Id;
+
         await _collaboratorRepositoryWriteOnly.Add(entity);
 
         return new ResponseCollaboratorCreatedJson
