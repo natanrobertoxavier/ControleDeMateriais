@@ -1,4 +1,5 @@
 using ControleDeMateriais.Api.Filters.LoggedUser;
+using ControleDeMateriais.Application.UseCases.Collaborator.Delete;
 using ControleDeMateriais.Application.UseCases.Collaborator.Recover;
 using ControleDeMateriais.Application.UseCases.Collaborator.Register;
 using ControleDeMateriais.Application.UseCases.Collaborator.Update;
@@ -24,12 +25,31 @@ public class CollaboratorController : ControleDeMateriaisController
         return Created(string.Empty, result);
     }
 
+    [HttpPut]
+    [ProducesResponseType(typeof(ResponseCollaboratorJson), StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status204NoContent)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    public async Task<IActionResult> Update(
+        [FromServices] IUpdateCollaboratorUseCase useCase,
+        [FromHeader] [Required] string enrollment,
+        [FromBody] RequestUpdateCollaboratorJson request)
+    {
+        var result = await useCase.Execute(enrollment, request);
+
+        if (result is not null)
+        {
+            return Ok(result);
+        }
+
+        return NoContent();
+    }
+
     [HttpGet]
     [ProducesResponseType(typeof(List<ResponseCollaboratorJson>), StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     public async Task<IActionResult> RecoverAll(
-        [FromServices] IRecoverCollaboratorUserCase useCase)
+        [FromServices] IRecoverCollaboratorUseCase useCase)
     {
         var result = await useCase.Execute();
 
@@ -47,7 +67,7 @@ public class CollaboratorController : ControleDeMateriaisController
     [ProducesResponseType(StatusCodes.Status204NoContent)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     public async Task<IActionResult> RecoverByEnrollment(
-        [FromServices] IRecoverCollaboratorUserCase useCase,
+        [FromServices] IRecoverCollaboratorUseCase useCase,
         [FromRoute] [Required] string enrollment)
     {
         var result = await useCase.Execute(enrollment);
@@ -60,23 +80,17 @@ public class CollaboratorController : ControleDeMateriaisController
         return NoContent();
     }
 
-    [HttpPut]
+    [HttpDelete]
     [Route("enrollment/{enrollment}")]
     [ProducesResponseType(typeof(ResponseCollaboratorJson), StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
-    public async Task<IActionResult> Update(
-        [FromServices] IUpdateCollaboratorUseCase useCase,
-        [FromRoute] [Required] string enrollment,
-        [FromBody] RequestUpdateCollaboratorJson request)
+    public async Task<IActionResult> Delete(
+        [FromServices] IDeleteCollaboratorUseCase useCase,
+        [FromRoute] [Required] string enrollment)
     {
-        var result = await useCase.Execute(enrollment, request);
+        await useCase.Execute(enrollment);
 
-        if (result is not null)
-        {
-            return Ok(result);
-        }
-
-        return NoContent();
+        return Ok();
     }
 }

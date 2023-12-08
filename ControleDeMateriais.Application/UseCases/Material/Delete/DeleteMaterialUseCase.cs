@@ -6,14 +6,14 @@ using ControleDeMateriais.Exceptions.ExceptionBase;
 using FluentValidation.Results;
 
 namespace ControleDeMateriais.Application.UseCases.Material.Delete;
-public class DeleteMateriaulUseCase : IDeleteMaterialUseCase
+public class DeleteMaterialUseCase : IDeleteMaterialUseCase
 {
     private readonly IRecoverMaterialUseCase _recoverMaterialUseCase;
     private readonly IMaterialWriteOnlyRepository _repositoryMaterialWriteOnly;
     private readonly ILoggedUser _loggedUser;
     private readonly IMapper _mapper;
 
-    public DeleteMateriaulUseCase(
+    public DeleteMaterialUseCase(
         IRecoverMaterialUseCase recoverMaterialUseCase, 
         IMaterialWriteOnlyRepository repositoryMaterialWriteOnly, 
         ILoggedUser loggedUser, 
