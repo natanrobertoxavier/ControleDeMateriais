@@ -6,7 +6,7 @@ using MongoDB.Driver;
 namespace ControleDeMateriais.Infrastructure.AccessRepository.Repository;
 public class MaterialRepository : IMaterialWriteOnlyRepository, IMaterialReadOnlyRepository
 {
-    public async Task Register(Material material)
+    public async Task Add(Material material)
     {
         var collection = ConnectDataBase.GetMaterialAccess();
         await collection.InsertOneAsync(material);

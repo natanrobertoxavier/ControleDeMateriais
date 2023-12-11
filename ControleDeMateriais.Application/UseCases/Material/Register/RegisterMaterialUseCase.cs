@@ -37,7 +37,7 @@ public class RegisterMaterialUseCase : IRegisterMaterialUseCase
         var material = _mapper.Map<Domain.Entities.Material>(request);
         material.UserId = user.Id;
 
-        await _repositoryMaterialWriteOnly.Register(material);
+        await _repositoryMaterialWriteOnly.Add(material);
 
         return _mapper.Map<ResponseMaterialJson>(material);
     }
