@@ -1,5 +1,4 @@
-﻿using ControleDeMateriais.Communication.Responses;
-using ControleDeMateriais.Domain.Entities;
+﻿using ControleDeMateriais.Domain.Entities;
 using ControleDeMateriais.Domain.Repositories.Collaborator;
 using MongoDB.Driver;
 

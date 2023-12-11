@@ -76,7 +76,7 @@ public class MaterialSelectionUseCase : IMaterialSelectionUseCase
             UserId = user.Id,
         };
 
-        await _repositoryMaterialsForCollaboratorWriteOnly.Register(materialsForCollaborator);
+        await _repositoryMaterialsForCollaboratorWriteOnly.Add(materialsForCollaborator);
 
         //Aqui vai a lógica para o envio de e-mail com a descrição dos materiais tomados de empréstimo
     }
