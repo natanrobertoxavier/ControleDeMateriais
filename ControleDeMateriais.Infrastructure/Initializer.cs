@@ -1,4 +1,6 @@
 ﻿using ControleDeMateriais.Domain.Repositories.Collaborator;
+using ControleDeMateriais.Domain.Repositories.Loan.Borrowed;
+using ControleDeMateriais.Domain.Repositories.Loan.Register;
 using ControleDeMateriais.Domain.Repositories.Material;
 using ControleDeMateriais.Domain.Repositories.User;
 using ControleDeMateriais.Domain.Repositories.User.ForgotPassword.Forgot;
@@ -34,5 +36,11 @@ public static class Initializer
 
         services.AddScoped<ICollaboratorWriteOnlyRepository, CollaboratorRepository>()
                 .AddScoped<ICollaboratorReadOnlyRepository, CollaboratorRepository>();
+
+        services.AddScoped<IBorrowedMaterialWriteOnly, BorrowedRepository>()
+                .AddScoped<IBorrowedMaterialReadOnly, BorrowedRepository>();
+
+
+        services.AddScoped<IMaterialsForCollaboratorWriteOnly, MaterialsForCollaboratorRepository>();
     }
 }

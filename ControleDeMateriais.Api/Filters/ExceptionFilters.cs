@@ -34,6 +34,10 @@ public class ExceptionFilters : IExceptionFilter
         {
             ProcessRecoveryErrors(context);
         }
+        else if (context.Exception is ExceptionBorrowedMaterialErros)
+        {
+            ProcessBorrowedMaterialErrors(context);
+        }
         else
         {
             ThrowUnknownError(context);
@@ -68,5 +72,13 @@ public class ExceptionFilters : IExceptionFilter
 
         context.HttpContext.Response.StatusCode = (int)HttpStatusCode.NoContent;
         context.Result = new ObjectResult(new ResponseErrorJson(errorValidator.Message));
+    }
+
+    private static void ProcessBorrowedMaterialErrors(ExceptionContext context)
+    {
+        var errorValidator = context.Exception as ExceptionBorrowedMaterialErros;
+
+        context.HttpContext.Response.StatusCode = (int)HttpStatusCode.BadRequest;
+        context.Result = new ObjectResult(new ResponseErrorJson(errorValidator.MessagesErrors));
     }
 }
