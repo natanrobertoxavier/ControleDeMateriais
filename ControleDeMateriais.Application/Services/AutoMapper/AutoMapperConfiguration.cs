@@ -25,6 +25,8 @@ public class AutoMapperConfiguration : Profile
 
         CreateMap<Communication.Requests.RequestUpdateCollaboratorJson, Domain.Entities.Collaborator>()
             .ForMember(destiny => destiny.Password, config => config.Ignore());
+
+        CreateMap<Communication.Requests.RequestMaterialSelectionJson, Domain.Entities.BorrowedMaterial>();
     }
 
     private void EntityToResponse()
