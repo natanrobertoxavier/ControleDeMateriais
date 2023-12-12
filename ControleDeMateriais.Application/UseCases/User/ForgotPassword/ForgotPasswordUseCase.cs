@@ -36,7 +36,7 @@ public class ForgotPasswordUseCase : IForgotPasswordUseCase
     {
         var isThereUserWithEmail = await ValidateData(request);
 
-        await _forgotPassword.SendMail(isThereUserWithEmail, await GenerateRecoveryCode(isThereUserWithEmail));
+        await _forgotPassword.SendMailRecoveryCode(isThereUserWithEmail, await GenerateRecoveryCode(isThereUserWithEmail));
 
         return new ResponseForgotPasswordJson
         {
