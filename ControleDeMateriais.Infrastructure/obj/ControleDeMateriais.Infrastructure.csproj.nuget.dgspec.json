@@ -254,7 +254,11 @@
         "frameworks": {
           "net7.0": {
             "targetAlias": "net7.0",
-            "projectReferences": {}
+            "projectReferences": {
+              "C:\\Code\\.net\\ControleDeMateriais\\ControleDeMateriais.Communication\\ControleDeMateriais.Communication.csproj": {
+                "projectPath": "C:\\Code\\.net\\ControleDeMateriais\\ControleDeMateriais.Communication\\ControleDeMateriais.Communication.csproj"
+              }
+            }
           }
         },
         "warningProperties": {

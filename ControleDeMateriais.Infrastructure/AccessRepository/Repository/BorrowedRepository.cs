@@ -14,12 +14,12 @@ public class BorrowedRepository : IBorrowedMaterialReadOnly, IBorrowedMaterialWr
     public async Task<List<string>> RecoverBorrowedMaterial(List<string> codeBar)
     {
         var collection = ConnectDataBase.GetBorrowedMaterialAccess();
-        var filter = Builders<BorrowedMaterial>.Filter.In(x => x.CodeBar, codeBar) & 
+        var filter = Builders<BorrowedMaterial>.Filter.In(x => x.BarCode, codeBar) & 
                      Builders<BorrowedMaterial>.Filter.Eq(x => x.Active, true);
 
         var resultQuery = await collection.Find(filter).ToListAsync();
         
-        var result = resultQuery?.Select(item => item.CodeBar).ToList();
+        var result = resultQuery?.Select(item => item.BarCode).ToList();
 
         if (result.Any())
             return result;
