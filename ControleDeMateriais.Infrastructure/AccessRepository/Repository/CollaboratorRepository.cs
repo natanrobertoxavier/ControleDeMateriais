@@ -1,5 +1,6 @@
 ﻿using ControleDeMateriais.Domain.Entities;
 using ControleDeMateriais.Domain.Repositories.Collaborator;
+using MongoDB.Bson;
 using MongoDB.Driver;
 
 namespace ControleDeMateriais.Infrastructure.AccessRepository.Repository;
@@ -53,6 +54,15 @@ public class CollaboratorRepository : ICollaboratorWriteOnlyRepository, ICollabo
     {
         var collection = ConnectDataBase.GetCollaboratorAccess();
         var filter = Builders<Collaborator>.Filter.Where(c => c.Enrollment.Equals(enrollment));
+        var result = await collection.Find(filter).FirstOrDefaultAsync();
+
+        return result;
+    }
+
+    public async Task<Collaborator> RecoverById(ObjectId id)
+    {
+        var collection = ConnectDataBase.GetCollaboratorAccess();
+        var filter = Builders<Collaborator>.Filter.Where(c => c.Id.Equals(id));
         var result = await collection.Find(filter).FirstOrDefaultAsync();
 
         return result;

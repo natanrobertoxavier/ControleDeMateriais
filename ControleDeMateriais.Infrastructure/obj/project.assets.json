@@ -1336,6 +1336,7 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v7.0",
         "dependencies": {
+          "ControleDeMateriais.Communication": "1.0.0",
           "Microsoft.Extensions.Configuration": "7.0.0",
           "MongoDB.Bson": "2.22.0"
         },

@@ -46,5 +46,6 @@ public static class Initializer
                 .AddScoped<IMaterialForCollaboratorReadOnly, MaterialsForCollaboratorRepository>();
 
         services.AddScoped<IEmailSendOnlyRepository, EmailRepository>();
+        services.AddScoped<ISelectedMaterialsSendMailOnlyRepository, SendMailSelectedMaterials>();        
     }
 }
