@@ -1,4 +1,5 @@
 ﻿using ControleDeMateriais.Domain.Repositories.Collaborator;
+using ControleDeMateriais.Domain.Repositories.Email;
 using ControleDeMateriais.Domain.Repositories.Loan.Borrowed;
 using ControleDeMateriais.Domain.Repositories.Loan.Register;
 using ControleDeMateriais.Domain.Repositories.Material;
@@ -42,5 +43,7 @@ public static class Initializer
 
 
         services.AddScoped<IMaterialsForCollaboratorWriteOnly, MaterialsForCollaboratorRepository>();
+
+        services.AddScoped<IEmailSendOnlyRepository, EmailRepository>();
     }
 }
