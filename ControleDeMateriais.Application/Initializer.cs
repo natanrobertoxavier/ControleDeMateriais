@@ -10,6 +10,7 @@ using ControleDeMateriais.Application.UseCases.Material.Delete;
 using ControleDeMateriais.Application.UseCases.Material.Recover;
 using ControleDeMateriais.Application.UseCases.Material.Register;
 using ControleDeMateriais.Application.UseCases.Material.Update;
+using ControleDeMateriais.Application.UseCases.MaterialsLoan.Confirm;
 using ControleDeMateriais.Application.UseCases.MaterialsLoan.Recover;
 using ControleDeMateriais.Application.UseCases.MaterialsLoan.Selection;
 using ControleDeMateriais.Application.UseCases.User.ForgotPassword;
@@ -76,8 +77,8 @@ public static class Initializer
         services.AddScoped<IDeleteCollaboratorUseCase, DeleteCollaboratorUseCase>();
         #endregion
 
-        services.AddScoped<IMaterialSelectionUseCase, MaterialSelectionUseCase>();
-        
+        services.AddScoped<IMaterialSelectionUseCase, MaterialSelectionUseCase>();        
         services.AddScoped<IRecoverBorrowedMaterialUseCase, RecoverBorrowedMaterialUseCase>();
+        services.AddScoped<IConfirmSelectedMaterialUseCase, ConfirmSelectedMaterialUseCase>();
     }
 }

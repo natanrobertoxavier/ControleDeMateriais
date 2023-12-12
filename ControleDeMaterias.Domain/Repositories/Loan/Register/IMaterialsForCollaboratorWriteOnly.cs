@@ -4,4 +4,5 @@ namespace ControleDeMateriais.Domain.Repositories.Loan.Register;
 public interface IMaterialsForCollaboratorWriteOnly
 {
     Task Add(MaterialsForCollaborator materialsForCollaborator);
+    Task Confirm(string hashId);
 }
