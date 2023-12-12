@@ -147,6 +147,9 @@
   <data name="COLABORADOR_NAO_LOCALIZADO" xml:space="preserve">
     <value>Nenhum colaborador foi localizado com os dados informados.</value>
   </data>
+  <data name="CONCESSAO_NAO_LOCALIZADA" xml:space="preserve">
+    <value>Não foi localizada nenhuma concessão para o código informado.</value>
+  </data>
   <data name="CPF_CADASTRADO" xml:space="preserve">
     <value>CPF já cadastrado.</value>
   </data>

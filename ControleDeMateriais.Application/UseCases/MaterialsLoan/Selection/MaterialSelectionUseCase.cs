@@ -5,7 +5,7 @@ using ControleDeMateriais.Application.UseCases.MaterialsLoan.Recover;
 using ControleDeMateriais.Communication.Requests;
 using ControleDeMateriais.Domain.Entities;
 using ControleDeMateriais.Domain.Repositories.Loan.Borrowed;
-using ControleDeMateriais.Domain.Repositories.Loan.Register;
+using ControleDeMateriais.Domain.Repositories.Loan.MaterialForCollaborator;
 using ControleDeMateriais.Exceptions.ExceptionBase;
 using FluentValidation.Results;
 using MongoDB.Bson;

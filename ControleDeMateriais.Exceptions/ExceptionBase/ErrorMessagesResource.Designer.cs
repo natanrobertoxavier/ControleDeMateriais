@@ -151,6 +151,15 @@ namespace ControleDeMateriais.Exceptions.ExceptionBase {
         }
         
         /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Não foi localizada nenhuma concessão para o código informado..
+        /// </summary>
+        public static string CONCESSAO_NAO_LOCALIZADA {
+            get {
+                return ResourceManager.GetString("CONCESSAO_NAO_LOCALIZADA", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a CPF já cadastrado..
         /// </summary>
         public static string CPF_CADASTRADO {
