@@ -79,4 +79,12 @@ public class CollaboratorRepository : ICollaboratorWriteOnlyRepository, ICollabo
 
         return false;
     }
+
+    public async Task<Collaborator> ConfirmPassword(string enrollment, string password)
+    {
+        var collection = ConnectDataBase.GetCollaboratorAccess();
+        var filter = Builders<Collaborator>.Filter.Where(c => c.Enrollment.Equals(enrollment) & (c.Password.Equals(password)));
+
+        return await collection.Find(filter).FirstOrDefaultAsync(); ;
+    }
 }

@@ -1,6 +1,7 @@
 ﻿using ControleDeMateriais.Application.Services.Cryptography;
 using ControleDeMateriais.Application.Services.LoggedUser;
 using ControleDeMateriais.Application.Services.Token;
+using ControleDeMateriais.Application.UseCases.Collaborator.ConfirmPassword;
 using ControleDeMateriais.Application.UseCases.Collaborator.Delete;
 using ControleDeMateriais.Application.UseCases.Collaborator.Recover;
 using ControleDeMateriais.Application.UseCases.Collaborator.Register;
@@ -10,6 +11,7 @@ using ControleDeMateriais.Application.UseCases.Material.Delete;
 using ControleDeMateriais.Application.UseCases.Material.Recover;
 using ControleDeMateriais.Application.UseCases.Material.Register;
 using ControleDeMateriais.Application.UseCases.Material.Update;
+using ControleDeMateriais.Application.UseCases.MaterialsLoan.Confirm;
 using ControleDeMateriais.Application.UseCases.MaterialsLoan.Recover;
 using ControleDeMateriais.Application.UseCases.MaterialsLoan.Selection;
 using ControleDeMateriais.Application.UseCases.User.ForgotPassword;
@@ -74,10 +76,11 @@ public static class Initializer
         services.AddScoped<IRecoverCollaboratorUseCase, RecoverCollaboratorUseCase>();
         services.AddScoped<IUpdateCollaboratorUseCase, UpdateCollaboratorUseCase>();
         services.AddScoped<IDeleteCollaboratorUseCase, DeleteCollaboratorUseCase>();
+        services.AddScoped<IConfirmPasswordUseCase, ConfirmPasswordUseCase>();
         #endregion
 
-        services.AddScoped<IMaterialSelectionUseCase, MaterialSelectionUseCase>();
-        
+        services.AddScoped<IMaterialSelectionUseCase, MaterialSelectionUseCase>();        
         services.AddScoped<IRecoverBorrowedMaterialUseCase, RecoverBorrowedMaterialUseCase>();
+        services.AddScoped<IConfirmSelectedMaterialUseCase, ConfirmSelectedMaterialUseCase>();
     }
 }

@@ -3,12 +3,10 @@ using ControleDeMateriais.Application.Services.LoggedUser;
 using ControleDeMateriais.Application.UseCases.Material.Recover;
 using ControleDeMateriais.Application.UseCases.MaterialsLoan.Recover;
 using ControleDeMateriais.Communication.Requests;
-using ControleDeMateriais.Communication.Responses;
 using ControleDeMateriais.Domain.Entities;
 using ControleDeMateriais.Domain.Repositories.Loan.Borrowed;
-using ControleDeMateriais.Domain.Repositories.Loan.Register;
+using ControleDeMateriais.Domain.Repositories.Loan.MaterialForCollaborator;
 using ControleDeMateriais.Exceptions.ExceptionBase;
-using FluentValidation;
 using FluentValidation.Results;
 using MongoDB.Bson;
 using System.Security.Cryptography;
@@ -17,7 +15,6 @@ using System.Text;
 namespace ControleDeMateriais.Application.UseCases.MaterialsLoan.Selection;
 public class MaterialSelectionUseCase : IMaterialSelectionUseCase
 {
-    private readonly IMapper _mapper;
     private readonly IRecoverMaterialUseCase _recoverMaterialUseCase;
     private readonly IRecoverBorrowedMaterialUseCase _recoverBorrowedMaterialUseCase;
     private readonly IBorrowedMaterialWriteOnly _repositoryBorrowedMaterialWriteOnly;
@@ -25,7 +22,6 @@ public class MaterialSelectionUseCase : IMaterialSelectionUseCase
     private readonly ILoggedUser _loggedUser;
 
     public MaterialSelectionUseCase(
-        IMapper mapper, 
         IRecoverMaterialUseCase recoverMaterialUseCase, 
         IRecoverBorrowedMaterialUseCase recoverBorrowedMaterialUseCase,
         IMaterialsForCollaboratorWriteOnly repositoryMaterialsForCollaboratorWriteOnly,
@@ -33,7 +29,6 @@ public class MaterialSelectionUseCase : IMaterialSelectionUseCase
 
         ILoggedUser loggedUser)
     {
-        _mapper = mapper;
         _recoverMaterialUseCase = recoverMaterialUseCase;
         _recoverBorrowedMaterialUseCase = recoverBorrowedMaterialUseCase;
         _repositoryBorrowedMaterialWriteOnly = repositoryBorrowedMaterialWriteOnly;
