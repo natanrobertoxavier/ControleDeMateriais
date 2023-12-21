@@ -1,5 +1,6 @@
 ﻿using ControleDeMateriais.Domain.Entities;
 using ControleDeMateriais.Domain.Repositories.Loan.Borrowed;
+using MongoDB.Bson;
 using MongoDB.Driver;
 
 namespace ControleDeMateriais.Infrastructure.AccessRepository.Repository;
@@ -9,6 +10,17 @@ public class BorrowedRepository : IBorrowedMaterialReadOnly, IBorrowedMaterialWr
     {
         var collection = ConnectDataBase.GetBorrowedMaterialAccess();
         await collection.InsertManyAsync(borrowedMaterial);
+    }
+
+    public async Task Confirm(string hashId)
+    {
+        var collection = ConnectDataBase.GetBorrowedMaterialAccess();
+        var filter = Builders<BorrowedMaterial>.Filter.Where(c => c.HashId.Equals(hashId));
+
+        var updateObject = Builders<BorrowedMaterial>.Update
+            .Set(c => c.Active, true);
+
+        await collection.UpdateManyAsync(filter, updateObject);
     }
 
     public async Task<List<string>> RecoverBorrowedMaterial(List<string> codeBar)
