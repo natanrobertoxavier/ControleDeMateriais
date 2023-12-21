@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace ControleDeMateriais.Api.Controllers;
 
-public class MaterialsLoan : ControleDeMateriaisController
+public class MaterialsReturn : ControleDeMateriaisController
 {
     [HttpPost]
     [ProducesResponseType(StatusCodes.Status201Created)]
@@ -17,18 +17,5 @@ public class MaterialsLoan : ControleDeMateriaisController
         await useCase.Execute(request);
 
         return Created(string.Empty, null);
-    }
-
-    [HttpPut]
-    [Route("confirm")]
-    [ProducesResponseType(StatusCodes.Status200OK)]
-    [ProducesResponseType(StatusCodes.Status400BadRequest)]
-    public async Task<IActionResult> ConfirmSelectedMaterial(
-        [FromServices] IConfirmSelectedMaterialUseCase useCase,
-        [FromBody] RequestConfirmSelectedMaterialJson request)
-    {
-        await useCase.Execute(request);
-
-        return Ok();
     }
 }

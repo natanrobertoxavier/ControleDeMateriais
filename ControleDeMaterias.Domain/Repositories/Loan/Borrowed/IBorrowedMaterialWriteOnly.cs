@@ -5,4 +5,5 @@ namespace ControleDeMateriais.Domain.Repositories.Loan.Borrowed;
 public interface IBorrowedMaterialWriteOnly
 {
     Task Add(List<BorrowedMaterial> borrowedMaterial);
+    Task Confirm(string hashId);
 }

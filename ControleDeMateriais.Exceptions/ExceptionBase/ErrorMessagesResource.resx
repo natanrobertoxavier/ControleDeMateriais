@@ -189,6 +189,12 @@
   <data name="LOGIN_INVALIDO" xml:space="preserve">
     <value>Usuário e/ou senha incorretos.</value>
   </data>
+  <data name="MATERIAL_CONCEDIDO_FINAL" xml:space="preserve">
+    <value>encontra-se concedido.</value>
+  </data>
+  <data name="MATERIAL_CONCEDIDO_INICIAL" xml:space="preserve">
+    <value>O material cadastrado sob o código de barras</value>
+  </data>
   <data name="MATRICULA_CADASTRADA" xml:space="preserve">
     <value>Matrícula já cadastrada.</value>
   </data>

@@ -277,6 +277,24 @@ namespace ControleDeMateriais.Exceptions.ExceptionBase {
         }
         
         /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a encontra-se concedido..
+        /// </summary>
+        public static string MATERIAL_CONCEDIDO_FINAL {
+            get {
+                return ResourceManager.GetString("MATERIAL_CONCEDIDO_FINAL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a O material cadastrado sob o código de barras.
+        /// </summary>
+        public static string MATERIAL_CONCEDIDO_INICIAL {
+            get {
+                return ResourceManager.GetString("MATERIAL_CONCEDIDO_INICIAL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a Matrícula já cadastrada..
         /// </summary>
         public static string MATRICULA_CADASTRADA {

@@ -63,7 +63,6 @@ public class MaterialSelectionUseCase : IMaterialSelectionUseCase
         {
             var instancia = new BorrowedMaterial()
             {
-                Active = true,
                 BarCode = barCode,
                 HashId = hashId,
                 Created = DateTime.UtcNow,
@@ -83,8 +82,6 @@ public class MaterialSelectionUseCase : IMaterialSelectionUseCase
         };
 
         await _repositoryMaterialsForCollaboratorWriteOnly.Add(materialsForCollaborator);
-
-        //Aqui vai a lógica para o envio de e-mail com a descrição dos materiais tomados de empréstimo
 
         await SendMail(request, user);
     }
@@ -125,7 +122,7 @@ public class MaterialSelectionUseCase : IMaterialSelectionUseCase
             var resultValidator = validator.Validate(string.Empty);
 
             resultValidator.Errors.AddRange(result.Select(item =>
-                new ValidationFailure("Material", $"O material cadastrado sob o código de barras {item} encontra-se emprestado.")));
+                new ValidationFailure("Material", string.Concat($"{ErrorMessagesResource.MATERIAL_CONCEDIDO_INICIAL} {item} {ErrorMessagesResource.MATERIAL_CONCEDIDO_FINAL}"))));
 
             throw new ExceptionBorrowedMaterialErros(resultValidator.Errors.Select(error => error.ErrorMessage).ToList());
         }
