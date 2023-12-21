@@ -23,14 +23,31 @@ public class BorrowedRepository : IBorrowedMaterialReadOnly, IBorrowedMaterialWr
         await collection.UpdateManyAsync(filter, updateObject);
     }
 
+    public async Task Devolution(MaterialDevolution materialDevolution)
+    {
+        var collection = ConnectDataBase.GetBorrowedMaterialAccess();
+        var filter = Builders<BorrowedMaterial>.Filter.And(
+            Builders<BorrowedMaterial>.Filter.Eq(c => c.HashId, materialDevolution.HashId),
+            Builders<BorrowedMaterial>.Filter.In(c => c.BarCode, materialDevolution.BarCode)
+        );
+
+
+        var updateObject = Builders<BorrowedMaterial>.Update
+            .Set(c => c.Active, false)
+            .Set(c => c.UserReceived, materialDevolution.UserReceived)
+            .Set(c => c.DateReceived, materialDevolution.DateReceived);
+
+        await collection.UpdateManyAsync(filter, updateObject);
+    }
+
     public async Task<List<string>> RecoverBorrowedMaterial(List<string> codeBar)
     {
         var collection = ConnectDataBase.GetBorrowedMaterialAccess();
-        var filter = Builders<BorrowedMaterial>.Filter.In(x => x.BarCode, codeBar) & 
+        var filter = Builders<BorrowedMaterial>.Filter.In(x => x.BarCode, codeBar) &
                      Builders<BorrowedMaterial>.Filter.Eq(x => x.Active, true);
 
         var resultQuery = await collection.Find(filter).ToListAsync();
-        
+
         var result = resultQuery?.Select(item => item.BarCode).ToList();
 
         if (result.Any())

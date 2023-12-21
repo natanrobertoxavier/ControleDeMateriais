@@ -6,4 +6,5 @@ public interface IBorrowedMaterialWriteOnly
 {
     Task Add(List<BorrowedMaterial> borrowedMaterial);
     Task Confirm(string hashId);
+    Task Devolution(MaterialDevolution materialDevolution);
 }

@@ -12,6 +12,7 @@ using ControleDeMateriais.Application.UseCases.Material.Recover;
 using ControleDeMateriais.Application.UseCases.Material.Register;
 using ControleDeMateriais.Application.UseCases.Material.Update;
 using ControleDeMateriais.Application.UseCases.MaterialsLoan.Confirm;
+using ControleDeMateriais.Application.UseCases.MaterialsLoan.Devolution;
 using ControleDeMateriais.Application.UseCases.MaterialsLoan.Recover;
 using ControleDeMateriais.Application.UseCases.MaterialsLoan.Selection;
 using ControleDeMateriais.Application.UseCases.User.ForgotPassword;
@@ -79,8 +80,12 @@ public static class Initializer
         services.AddScoped<IConfirmPasswordUseCase, ConfirmPasswordUseCase>();
         #endregion
 
+        #region MaterialsLoan
         services.AddScoped<IMaterialSelectionUseCase, MaterialSelectionUseCase>();        
         services.AddScoped<IRecoverBorrowedMaterialUseCase, RecoverBorrowedMaterialUseCase>();
         services.AddScoped<IConfirmSelectedMaterialUseCase, ConfirmSelectedMaterialUseCase>();
+        #endregion
+
+        services.AddScoped<IMaterialDevolutionUseCase, MaterialDevolutionUseCase>();
     }
 }
