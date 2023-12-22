@@ -456,3 +456,4 @@ $RECYCLE.BIN/
 *.user
 *.userosscache
 *.s
+.vs\ControleDeMateriais\DesignTimeBuild\.dtbcache.v2

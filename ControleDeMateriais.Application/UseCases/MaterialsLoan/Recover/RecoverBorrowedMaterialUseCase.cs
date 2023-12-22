@@ -7,6 +7,7 @@ using ControleDeMateriais.Domain.Repositories.Loan.Borrowed;
 using ControleDeMateriais.Domain.Repositories.Loan.MaterialForCollaborator;
 using ControleDeMateriais.Domain.Repositories.Material;
 using ControleDeMateriais.Domain.Repositories.User;
+using ControleDeMateriais.Exceptions.ExceptionBase;
 
 namespace ControleDeMateriais.Application.UseCases.MaterialsLoan.Recover;
 public class RecoverBorrowedMaterialUseCase : IRecoverBorrowedMaterialUseCase
@@ -48,6 +49,46 @@ public class RecoverBorrowedMaterialUseCase : IRecoverBorrowedMaterialUseCase
             var resultListMaterials = await AddMaterialInformation(resultBorrowedMaterials);
 
             var collaborator = await _repositoryCollaboratorReadOnly.RecoverById(materialForCollaborator.CollaboratorId);
+            var collaboratorConfirm = await _repositoryCollaboratorReadOnly.RecoverById(materialForCollaborator.CollaboratorConfirmedId);
+            var user = await _repositoryUserReadOnly.RecoverById(materialForCollaborator.UserId);
+
+            result.Add(new ResponseBorrowedMaterialJson
+            {
+                CollaboratorEnrollment = collaborator?.Enrollment,
+                CollaboratorNickname = collaborator?.Nickname,
+                CollaboratorTelephone = collaborator?.Telephone,
+                UserNameRegisterLoan = user?.Name,
+                LoanConfirmed = materialForCollaborator.Confirmed,
+                LoanDateTime = materialForCollaborator.DateTimeConfirmation,
+                ColaboratorNicknameConfirmed = collaboratorConfirm?.Nickname,
+                ListMaterialBorrowed = resultListMaterials,
+            });
+        }
+
+        return result;
+    }
+
+    public async Task<List<ResponseBorrowedMaterialJson>> Execute(string enrollment, bool status)
+    {
+        var result = new List<ResponseBorrowedMaterialJson>();
+
+        var collaborator = await _repositoryCollaboratorReadOnly.RecoverByEnrollment(enrollment) ??
+            throw new ExceptionValidationErrors(new List<string> { ErrorMessagesResource.COLABORADOR_NAO_LOCALIZADO });
+
+        var materialsForCollaborator = await _repositoryMaterialForCollaboratorReadOnly.RecoverByCollaborator(collaborator.Id);
+
+        foreach (var materialForCollaborator in materialsForCollaborator)
+        {
+            var resultBorrowedMaterials = await _repositoryBorrowedMaterialReadOnly
+                .RecoverForHashIdAndStatus(materialForCollaborator.MaterialsHashId, status);
+
+            if (!resultBorrowedMaterials.Any())
+            {
+                continue;
+            }
+
+            var resultListMaterials = await AddMaterialInformation(resultBorrowedMaterials);
+
             var collaboratorConfirm = await _repositoryCollaboratorReadOnly.RecoverById(materialForCollaborator.CollaboratorConfirmedId);
             var user = await _repositoryUserReadOnly.RecoverById(materialForCollaborator.UserId);
 
