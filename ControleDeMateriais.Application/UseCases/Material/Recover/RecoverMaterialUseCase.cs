@@ -1,7 +1,6 @@
 ﻿using AutoMapper;
 using ControleDeMateriais.Communication.Enum;
 using ControleDeMateriais.Communication.Responses;
-using ControleDeMateriais.Domain.Entities;
 using ControleDeMateriais.Domain.Repositories.Material;
 using ControleDeMateriais.Exceptions.ExceptionBase;
 
@@ -11,7 +10,9 @@ public class RecoverMaterialUseCase : IRecoverMaterialUseCase
     private readonly IMapper _mapper;
     private readonly IMaterialReadOnlyRepository _repositoryMaterialReadOnly;
 
-    public RecoverMaterialUseCase(IMapper mapper, IMaterialReadOnlyRepository repositoryMaterialReadOnly)
+    public RecoverMaterialUseCase(
+        IMapper mapper, 
+        IMaterialReadOnlyRepository repositoryMaterialReadOnly)
     {
         _mapper = mapper;
         _repositoryMaterialReadOnly = repositoryMaterialReadOnly;

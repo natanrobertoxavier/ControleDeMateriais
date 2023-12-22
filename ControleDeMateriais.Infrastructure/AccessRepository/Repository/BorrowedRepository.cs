@@ -1,6 +1,6 @@
-﻿using ControleDeMateriais.Domain.Entities;
+﻿using ControleDeMateriais.Communication.Responses;
+using ControleDeMateriais.Domain.Entities;
 using ControleDeMateriais.Domain.Repositories.Loan.Borrowed;
-using MongoDB.Bson;
 using MongoDB.Driver;
 
 namespace ControleDeMateriais.Infrastructure.AccessRepository.Repository;
@@ -34,10 +34,18 @@ public class BorrowedRepository : IBorrowedMaterialReadOnly, IBorrowedMaterialWr
 
         var updateObject = Builders<BorrowedMaterial>.Update
             .Set(c => c.Active, false)
-            .Set(c => c.UserReceived, materialDevolution.UserReceived)
+            .Set(c => c.UserReceivedId, materialDevolution.UserReceived)
             .Set(c => c.DateReceived, materialDevolution.DateReceived);
 
         await collection.UpdateManyAsync(filter, updateObject);
+    }
+
+    public async Task<List<BorrowedMaterial>> RecoverAll()
+    {
+        var collection = ConnectDataBase.GetBorrowedMaterialAccess();
+        var filter = Builders<BorrowedMaterial>.Filter.Empty;
+
+        return await collection.Find(filter).ToListAsync();
     }
 
     public async Task<List<string>> RecoverBorrowedMaterial(List<string> codeBar)
@@ -54,5 +62,13 @@ public class BorrowedRepository : IBorrowedMaterialReadOnly, IBorrowedMaterialWr
             return result;
 
         return null;
+    }
+
+    public async Task<List<BorrowedMaterial>> RecoverForHashId(string hashId)
+    {
+        var collection = ConnectDataBase.GetBorrowedMaterialAccess();
+        var filter = Builders<BorrowedMaterial>.Filter.Where(c => c.HashId.Equals(hashId));
+
+        return await collection.Find(filter).ToListAsync();
     }
 }
