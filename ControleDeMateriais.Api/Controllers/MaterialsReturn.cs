@@ -1,9 +1,11 @@
+using ControleDeMateriais.Api.Filters.LoggedUser;
 using ControleDeMateriais.Application.UseCases.MaterialsLoan.Devolution;
 using ControleDeMateriais.Communication.Requests;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ControleDeMateriais.Api.Controllers;
 
+[ServiceFilter(typeof(AuthenticatedUserAttribute))]
 public class MaterialsReturn : ControleDeMateriaisController
 {
     [HttpPost]

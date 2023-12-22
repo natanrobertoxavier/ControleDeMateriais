@@ -200,8 +200,8 @@ public class ExampleControllerFilter : ISchemaFilter
             var propertyName = char.ToLower(propertyInfo.Name[0]) + propertyInfo.Name[1..];
             switch (propertyName)
             {
-                case "collaboratorId":
-                    schema.Example = new OpenApiString("65847d709d253373dbf96bcb");
+                case "enrollment":
+                    schema.Example = new OpenApiString("148.914-3");
                     break;
                 case "barCode":
                     schema.Example = new OpenApiArray

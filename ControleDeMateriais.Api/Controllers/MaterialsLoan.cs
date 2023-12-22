@@ -1,3 +1,4 @@
+using ControleDeMateriais.Api.Filters.LoggedUser;
 using ControleDeMateriais.Application.UseCases.MaterialsLoan.Confirm;
 using ControleDeMateriais.Application.UseCases.MaterialsLoan.Recover;
 using ControleDeMateriais.Application.UseCases.MaterialsLoan.Selection;
@@ -7,6 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace ControleDeMateriais.Api.Controllers;
 
+[ServiceFilter(typeof(AuthenticatedUserAttribute))]
 public class MaterialsLoan : ControleDeMateriaisController
 {
     [HttpGet]

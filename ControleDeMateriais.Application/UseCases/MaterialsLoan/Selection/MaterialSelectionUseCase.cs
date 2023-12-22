@@ -73,17 +73,19 @@ public class MaterialSelectionUseCase : IMaterialSelectionUseCase
 
         await _repositoryBorrowedMaterialWriteOnly.Add(entity);
 
+        var collaborator = await _repositoryCollaboratorReadOnly.RecoverByEnrollment(request.Enrollment);
+
         var materialsForCollaborator = new MaterialsForCollaborator()
         {
             Created = DateTime.UtcNow,
-            CollaboratorId = new ObjectId(request.CollaboratorId),
+            CollaboratorId = collaborator.Id,
             MaterialsHashId = hashId,
             UserId = user.Id,
         };
 
         await _repositoryMaterialsForCollaboratorWriteOnly.Add(materialsForCollaborator);
 
-        await SendMail(request, user);
+        await SendMail(request, user, collaborator);
     }
 
     private async Task ValidateData(RequestMaterialSelectionJson request)
@@ -142,9 +144,8 @@ public class MaterialSelectionUseCase : IMaterialSelectionUseCase
         return stringBuilder.ToString();
     }
 
-    private async Task SendMail(RequestMaterialSelectionJson request, Domain.Entities.User user)
+    private async Task SendMail(RequestMaterialSelectionJson request, Domain.Entities.User user, Domain.Entities.Collaborator entityCollaborator)
     {
-        var entityCollaborator = await _repositoryCollaboratorReadOnly.RecoverById(new ObjectId(request.CollaboratorId));
         var collaborator = _mapper.Map<ResponseCollaboratorJson>(entityCollaborator);
 
         var materialSendMail = new RequestSelectedMaterialsContentEmailJson
