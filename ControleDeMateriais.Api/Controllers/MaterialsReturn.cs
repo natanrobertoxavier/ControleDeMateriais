@@ -1,6 +1,4 @@
-using ControleDeMateriais.Application.UseCases.MaterialsLoan.Confirm;
 using ControleDeMateriais.Application.UseCases.MaterialsLoan.Devolution;
-using ControleDeMateriais.Application.UseCases.MaterialsLoan.Selection;
 using ControleDeMateriais.Communication.Requests;
 using Microsoft.AspNetCore.Mvc;
 

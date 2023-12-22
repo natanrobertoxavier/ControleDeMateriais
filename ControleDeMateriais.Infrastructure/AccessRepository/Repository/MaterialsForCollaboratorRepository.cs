@@ -25,11 +25,30 @@ public class MaterialsForCollaboratorRepository : IMaterialsForCollaboratorWrite
         await collection.UpdateOneAsync(filter, updateObject);
     }
 
+    public async Task<List<MaterialsForCollaborator>> RecoverAll()
+    {
+        var collection = ConnectDataBase.GetMaterialsForCollaboratorAccess();
+        var filter = Builders<MaterialsForCollaborator>.Filter.Empty;
+        var result = await collection.Find(filter).ToListAsync() ?? null;
+
+        return result;
+    }
+
     public async Task<MaterialsForCollaborator> RecoverByHashId(string hashId)
     {
         var collection = ConnectDataBase.GetMaterialsForCollaboratorAccess();
         var filter = Builders<MaterialsForCollaborator>.Filter.Where(c => c.MaterialsHashId.Equals(hashId));
         var result = await collection.Find(filter).FirstOrDefaultAsync() ?? null;
+
+        return result;
+    }
+
+    public async Task<List<MaterialsForCollaborator>> RecoverByHashIds(List<string> hashId)
+    {
+        var collection = ConnectDataBase.GetMaterialsForCollaboratorAccess();
+        var filter = Builders<MaterialsForCollaborator>.Filter.And(
+            Builders<MaterialsForCollaborator>.Filter.In(c => c.MaterialsHashId, hashId));
+        var result = await collection.Find(filter).ToListAsync() ?? null;
 
         return result;
     }
