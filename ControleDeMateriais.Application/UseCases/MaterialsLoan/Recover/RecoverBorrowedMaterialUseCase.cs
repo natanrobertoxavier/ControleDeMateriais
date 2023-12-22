@@ -48,7 +48,7 @@ public class RecoverBorrowedMaterialUseCase : IRecoverBorrowedMaterialUseCase
             var resultListMaterials = await AddMaterialInformation(resultBorrowedMaterials);
 
             var collaborator = await _repositoryCollaboratorReadOnly.RecoverById(materialForCollaborator.CollaboratorId);
-            var collaboratorConfirm = await _repositoryCollaboratorReadOnly.RecoverById(materialForCollaborator.UserIdConfirmed);
+            var collaboratorConfirm = await _repositoryCollaboratorReadOnly.RecoverById(materialForCollaborator.CollaboratorConfirmedId);
             var user = await _repositoryUserReadOnly.RecoverById(materialForCollaborator.UserId);
 
             result.Add(new ResponseBorrowedMaterialJson

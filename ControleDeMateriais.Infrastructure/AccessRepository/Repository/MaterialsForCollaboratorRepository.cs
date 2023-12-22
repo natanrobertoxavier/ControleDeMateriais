@@ -18,7 +18,7 @@ public class MaterialsForCollaboratorRepository : IMaterialsForCollaboratorWrite
         var filter = Builders<MaterialsForCollaborator>.Filter.Where(c => c.MaterialsHashId.Equals(hashId));
 
         var updateObject = Builders<MaterialsForCollaborator>.Update
-            .Set(c => c.UserIdConfirmed, new ObjectId(userId))
+            .Set(c => c.CollaboratorConfirmedId, new ObjectId(userId))
             .Set(c => c.Confirmed, true)
             .Set(c => c.DateTimeConfirmation, DateTime.UtcNow);
 

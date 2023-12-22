@@ -18,6 +18,9 @@ public class ExampleControllerFilter : ISchemaFilter
         AddUpdateMaterialExamples(schema, context);
         AddRegisterCollaboratorExamples(schema, context);
         AddUpdateCollaboratorExamples(schema, context);
+        AddRegisterMaterialsLoanExamples(schema, context);
+        AddConfirmSelectedMaterialExamples(schema, context);
+        AddMaterialDevolutionExamples(schema, context);
     }
 
     private static void AddRegisterUserExamples(OpenApiSchema schema, SchemaFilterContext context)
@@ -186,6 +189,67 @@ public class ExampleControllerFilter : ISchemaFilter
                     break;
                 case "telephone":
                     schema.Example = new OpenApiString("XX 9 XXXX-XXXX");
+                    break;
+            }
+        }
+    }
+    private static void AddRegisterMaterialsLoanExamples(OpenApiSchema schema, SchemaFilterContext context)
+    {
+        if (context.MemberInfo is PropertyInfo propertyInfo && context.MemberInfo.DeclaringType == typeof(RequestMaterialSelectionJson))
+        {
+            var propertyName = char.ToLower(propertyInfo.Name[0]) + propertyInfo.Name[1..];
+            switch (propertyName)
+            {
+                case "enrollment":
+                    schema.Example = new OpenApiString("148.914-3");
+                    break;
+                case "barCode":
+                    schema.Example = new OpenApiArray
+                    {
+                        new OpenApiString("7896094906019"),
+                        new OpenApiString("7896094906020"),
+                        new OpenApiString("7896094906021")
+                    };
+                    break;
+            }
+        }
+    }
+    private static void AddConfirmSelectedMaterialExamples(OpenApiSchema schema, SchemaFilterContext context)
+    {
+        if (context.MemberInfo is PropertyInfo propertyInfo && context.MemberInfo.DeclaringType == typeof(RequestConfirmSelectedMaterialJson))
+        {
+            var propertyName = char.ToLower(propertyInfo.Name[0]) + propertyInfo.Name[1..];
+            switch (propertyName)
+            {
+                case "hashId":
+                    schema.Example = new OpenApiString("9f7a961a2a89b9a6c23d06de55a7bddc288c2aee0e922e39bc18bcd733da3068");
+                    break;
+                case "enrollment":
+                    schema.Example = new OpenApiString("148.914-3");
+                    break;
+                case "password":
+                    schema.Example = new OpenApiString("123456");
+                    break;
+            }
+        }
+    }
+    private static void AddMaterialDevolutionExamples(OpenApiSchema schema, SchemaFilterContext context)
+    {
+        if (context.MemberInfo is PropertyInfo propertyInfo && context.MemberInfo.DeclaringType == typeof(RequestMaterialDevolutionJson))
+        {
+            var propertyName = char.ToLower(propertyInfo.Name[0]) + propertyInfo.Name[1..];
+            switch (propertyName)
+            {
+                case "hashId":
+                    schema.Example = new OpenApiString("9f7a961a2a89b9a6c23d06de55a7bddc288c2aee0e922e39bc18bcd733da3068");
+                    break;
+                case "barCode":
+                    schema.Example = new OpenApiArray
+                    {
+                        new OpenApiString("7896094906019"),
+                        new OpenApiString("7896094906020"),
+                        new OpenApiString("7896094906021")
+                    };
                     break;
             }
         }
