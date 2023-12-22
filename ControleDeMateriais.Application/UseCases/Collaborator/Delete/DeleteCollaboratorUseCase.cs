@@ -46,7 +46,7 @@ public class DeleteCollaboratorUseCase : IDeleteCollaboratorUseCase
 
         if (collaborator is null)
         {
-            resultValidation.Errors.Add(new ValidationFailure("BarCode", ErrorMessagesResource.COLABORADOR_NAO_LOCALIZADO));
+            resultValidation.Errors.Add(new ValidationFailure("Collaborator", ErrorMessagesResource.COLABORADOR_NAO_LOCALIZADO));
         }
 
         if (!resultValidation.IsValid)

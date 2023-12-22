@@ -151,6 +151,15 @@ namespace ControleDeMateriais.Exceptions.ExceptionBase {
         }
         
         /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Concessão não confirmada..
+        /// </summary>
+        public static string CONCESSAO_NAO_CONFIRMADA {
+            get {
+                return ResourceManager.GetString("CONCESSAO_NAO_CONFIRMADA", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a Não foi localizada nenhuma concessão para o código informado..
         /// </summary>
         public static string CONCESSAO_NAO_LOCALIZADA {
@@ -291,6 +300,15 @@ namespace ControleDeMateriais.Exceptions.ExceptionBase {
         public static string MATERIAL_CONCEDIDO_INICIAL {
             get {
                 return ResourceManager.GetString("MATERIAL_CONCEDIDO_INICIAL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Nenhum material localizado com o código de barrras.
+        /// </summary>
+        public static string MATERIAL_NAO_LOCALIZADO_INICIAL {
+            get {
+                return ResourceManager.GetString("MATERIAL_NAO_LOCALIZADO_INICIAL", resourceCulture);
             }
         }
         
@@ -493,7 +511,7 @@ namespace ControleDeMateriais.Exceptions.ExceptionBase {
         }
         
         /// <summary>
-        ///   Consulta uma cadeia de caracteres localizada semelhante a Usuário sem permissão.
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Usuário sem permissão..
         /// </summary>
         public static string USUARIO_SEM_PREMISSAO {
             get {

@@ -147,6 +147,9 @@
   <data name="COLABORADOR_NAO_LOCALIZADO" xml:space="preserve">
     <value>Nenhum colaborador foi localizado com os dados informados.</value>
   </data>
+  <data name="CONCESSAO_NAO_CONFIRMADA" xml:space="preserve">
+    <value>Concessão não confirmada.</value>
+  </data>
   <data name="CONCESSAO_NAO_LOCALIZADA" xml:space="preserve">
     <value>Não foi localizada nenhuma concessão para o código informado.</value>
   </data>
@@ -194,6 +197,9 @@
   </data>
   <data name="MATERIAL_CONCEDIDO_INICIAL" xml:space="preserve">
     <value>O material cadastrado sob o código de barras</value>
+  </data>
+  <data name="MATERIAL_NAO_LOCALIZADO_INICIAL" xml:space="preserve">
+    <value>Nenhum material localizado com o código de barrras</value>
   </data>
   <data name="MATRICULA_CADASTRADA" xml:space="preserve">
     <value>Matrícula já cadastrada.</value>
@@ -262,6 +268,6 @@
     <value>Usuário não localizado.</value>
   </data>
   <data name="USUARIO_SEM_PREMISSAO" xml:space="preserve">
-    <value>Usuário sem permissão</value>
+    <value>Usuário sem permissão.</value>
   </data>
 </root>
