@@ -13,6 +13,7 @@ public class MaterialsLoan : ControleDeMateriaisController
 {
     [HttpGet]
     [ProducesResponseType(typeof(ResponseBorrowedMaterialJson), StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status204NoContent)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     public async Task<IActionResult> RecoverAll(
         [FromServices] IRecoverBorrowedMaterialUseCase useCase)
@@ -20,6 +21,24 @@ public class MaterialsLoan : ControleDeMateriaisController
         var result = await useCase.Execute();
 
         return Ok(result);
+    }
+
+    [HttpGet]
+    [Route("enrollment/{enrollment}/status/{status}")]
+    [ProducesResponseType(typeof(ResponseBorrowedMaterialJson), StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status204NoContent)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    public async Task<IActionResult> RecoverByCollaboratorAndStatus(
+        [FromServices] IRecoverBorrowedMaterialUseCase useCase,
+        [FromRoute] string enrollment,
+        [FromRoute] bool status)
+    {
+        var result = await useCase.Execute(enrollment, status);
+
+        if (result.Any())
+            return Ok(result);
+
+        return NoContent();
     }
 
     [HttpPost]

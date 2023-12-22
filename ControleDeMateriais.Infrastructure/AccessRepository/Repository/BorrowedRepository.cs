@@ -4,7 +4,7 @@ using ControleDeMateriais.Domain.Repositories.Loan.Borrowed;
 using MongoDB.Driver;
 
 namespace ControleDeMateriais.Infrastructure.AccessRepository.Repository;
-public class BorrowedRepository : IBorrowedMaterialReadOnly, IBorrowedMaterialWriteOnly
+public class BorrowedRepository : IBorrowedMaterialWriteOnly, IBorrowedMaterialReadOnly
 {
     public async Task Add(List<BorrowedMaterial> borrowedMaterial)
     {
@@ -68,6 +68,15 @@ public class BorrowedRepository : IBorrowedMaterialReadOnly, IBorrowedMaterialWr
     {
         var collection = ConnectDataBase.GetBorrowedMaterialAccess();
         var filter = Builders<BorrowedMaterial>.Filter.Where(c => c.HashId.Equals(hashId));
+
+        return await collection.Find(filter).ToListAsync();
+    }
+
+    public async Task<List<BorrowedMaterial>> RecoverForHashIdAndStatus(string hashId, bool status)
+    {
+        var collection = ConnectDataBase.GetBorrowedMaterialAccess();
+        var filter = Builders<BorrowedMaterial>.Filter.Where(c => c.HashId.Equals(hashId) &
+                                                            c.Active.Equals(status));
 
         return await collection.Find(filter).ToListAsync();
     }

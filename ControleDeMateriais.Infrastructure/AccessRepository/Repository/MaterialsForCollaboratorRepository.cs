@@ -34,6 +34,15 @@ public class MaterialsForCollaboratorRepository : IMaterialsForCollaboratorWrite
         return result;
     }
 
+    public async Task<List<MaterialsForCollaborator>> RecoverByCollaborator(ObjectId id)
+    {
+        var collection = ConnectDataBase.GetMaterialsForCollaboratorAccess();
+        var filter = Builders<MaterialsForCollaborator>.Filter.Where(c => c.CollaboratorId.Equals(id));
+        var result = await collection.Find(filter).ToListAsync() ?? null;
+
+        return result;
+    }
+
     public async Task<MaterialsForCollaborator> RecoverByHashId(string hashId)
     {
         var collection = ConnectDataBase.GetMaterialsForCollaboratorAccess();
