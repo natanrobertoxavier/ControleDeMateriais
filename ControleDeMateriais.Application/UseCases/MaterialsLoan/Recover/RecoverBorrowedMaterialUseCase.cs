@@ -108,6 +108,44 @@ public class RecoverBorrowedMaterialUseCase : IRecoverBorrowedMaterialUseCase
         return result;
     }
 
+    public async Task<List<ResponseBorrowedMaterialJson>> Execute(bool status)
+    {
+        var result = new List<ResponseBorrowedMaterialJson>();
+
+        var materialsForCollaborator = await _repositoryMaterialForCollaboratorReadOnly.RecoverAll();
+
+        foreach (var materialForCollaborator in materialsForCollaborator)
+        {
+            var resultBorrowedMaterials = await _repositoryBorrowedMaterialReadOnly
+                .RecoverForHashIdAndStatus(materialForCollaborator.MaterialsHashId, status);
+
+            if (!resultBorrowedMaterials.Any())
+            {
+                continue;
+            }
+
+            var resultListMaterials = await AddMaterialInformation(resultBorrowedMaterials);
+
+            var collaborator = await _repositoryCollaboratorReadOnly.RecoverById(materialForCollaborator.CollaboratorId);
+            var collaboratorConfirm = await _repositoryCollaboratorReadOnly.RecoverById(materialForCollaborator.CollaboratorConfirmedId);
+            var user = await _repositoryUserReadOnly.RecoverById(materialForCollaborator.UserId);
+
+            result.Add(new ResponseBorrowedMaterialJson
+            {
+                CollaboratorEnrollment = collaborator?.Enrollment,
+                CollaboratorNickname = collaborator?.Nickname,
+                CollaboratorTelephone = collaborator?.Telephone,
+                UserNameRegisterLoan = user?.Name,
+                LoanConfirmed = materialForCollaborator.Confirmed,
+                LoanDateTime = materialForCollaborator.DateTimeConfirmation,
+                ColaboratorNicknameConfirmed = collaboratorConfirm?.Nickname,
+                ListMaterialBorrowed = resultListMaterials,
+            });
+        }
+
+        return result;
+    }
+
     public async Task<List<string>> Execute(List<string> codeBar)
     {
         return await _repositoryBorrowedMaterialReadOnly.RecoverBorrowedMaterial(codeBar);
