@@ -41,6 +41,23 @@ public class MaterialsLoan : ControleDeMateriaisController
         return NoContent();
     }
 
+    [HttpGet]
+    [Route("status/{status}")]
+    [ProducesResponseType(typeof(ResponseBorrowedMaterialJson), StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status204NoContent)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    public async Task<IActionResult> RecoverByStatus(
+        [FromServices] IRecoverBorrowedMaterialUseCase useCase,
+        [FromRoute] bool status)
+    {
+        var result = await useCase.Execute(status);
+
+        if (result.Any())
+            return Ok(result);
+
+        return NoContent();
+    }
+
     [HttpPost]
     [ProducesResponseType(StatusCodes.Status201Created)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
