@@ -5,6 +5,7 @@ public interface IRecoverBorrowedMaterialUseCase
 {
     Task<List<ResponseBorrowedMaterialJson>> Execute();
     Task<List<ResponseBorrowedMaterialJson>> Execute(bool status);
+    Task<List<ResponseBorrowedMaterialJson>> Execute(string barCode);
     Task<List<ResponseBorrowedMaterialJson>> Execute(string enrollment, bool status);
     Task<List<string>> Execute(List<string> codeBar);
 }

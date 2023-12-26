@@ -64,7 +64,15 @@ public class BorrowedRepository : IBorrowedMaterialWriteOnly, IBorrowedMaterialR
         return null;
     }
 
-    public async Task<List<BorrowedMaterial>> RecoverForHashId(string hashId)
+    public async Task<List<BorrowedMaterial>> RecoverByBarCode(string barCode)
+    {
+        var collection = ConnectDataBase.GetBorrowedMaterialAccess();
+        var filter = Builders<BorrowedMaterial>.Filter.Where(c => c.BarCode.Equals(barCode));
+
+        return await collection.Find(filter).ToListAsync();
+    }
+
+    public async Task<List<BorrowedMaterial>> RecoverByHashId(string hashId)
     {
         var collection = ConnectDataBase.GetBorrowedMaterialAccess();
         var filter = Builders<BorrowedMaterial>.Filter.Where(c => c.HashId.Equals(hashId));
@@ -72,7 +80,7 @@ public class BorrowedRepository : IBorrowedMaterialWriteOnly, IBorrowedMaterialR
         return await collection.Find(filter).ToListAsync();
     }
 
-    public async Task<List<BorrowedMaterial>> RecoverForHashIdAndStatus(string hashId, bool status)
+    public async Task<List<BorrowedMaterial>> RecoverByHashIdAndStatus(string hashId, bool status)
     {
         var collection = ConnectDataBase.GetBorrowedMaterialAccess();
         var filter = Builders<BorrowedMaterial>.Filter.Where(c => c.HashId.Equals(hashId) &

@@ -58,6 +58,23 @@ public class MaterialsLoan : ControleDeMateriaisController
         return NoContent();
     }
 
+    [HttpGet]
+    [Route("barCode/{barCode}")]
+    [ProducesResponseType(typeof(ResponseBorrowedMaterialJson), StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status204NoContent)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    public async Task<IActionResult> RecoverByBarCode(
+        [FromServices] IRecoverBorrowedMaterialUseCase useCase,
+        [FromRoute] string barCode)
+    {
+        var result = await useCase.Execute(barCode);
+
+        if (result.Any())
+            return Ok(result);
+
+        return NoContent();
+    }
+
     [HttpPost]
     [ProducesResponseType(StatusCodes.Status201Created)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
