@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace ControleDeMateriais.Api.Controllers;
 
 [ServiceFilter(typeof(AuthenticatedUserAttribute))]
-public class MaterialsLoan : ControleDeMateriaisController
+public class MaterialsLoanController : ControleDeMateriaisController
 {
     [HttpGet]
     [ProducesResponseType(typeof(ResponseBorrowedMaterialJson), StatusCodes.Status200OK)]
@@ -42,7 +42,7 @@ public class MaterialsLoan : ControleDeMateriaisController
     }
 
     [HttpGet]
-    [Route("status/{status}")]
+    [Route("confirmed/{status}")]
     [ProducesResponseType(typeof(ResponseBorrowedMaterialJson), StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]

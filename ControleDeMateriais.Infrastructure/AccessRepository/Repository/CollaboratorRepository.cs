@@ -29,6 +29,7 @@ public class CollaboratorRepository : ICollaboratorWriteOnlyRepository, ICollabo
 
         return result;
     }
+
     public async Task Delete(string enrollment)
     {
         var collection = ConnectDataBase.GetCollaboratorAccess();

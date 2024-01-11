@@ -147,6 +147,9 @@
   <data name="COLABORADOR_NAO_LOCALIZADO" xml:space="preserve">
     <value>Nenhum colaborador foi localizado com os dados informados.</value>
   </data>
+  <data name="CONCESSAO_JA_CONFIRMADA" xml:space="preserve">
+    <value>Concessão já confirmada.</value>
+  </data>
   <data name="CONCESSAO_NAO_CONFIRMADA" xml:space="preserve">
     <value>Concessão não confirmada.</value>
   </data>

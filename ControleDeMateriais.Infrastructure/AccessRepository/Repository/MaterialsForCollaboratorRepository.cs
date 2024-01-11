@@ -43,6 +43,16 @@ public class MaterialsForCollaboratorRepository : IMaterialsForCollaboratorWrite
         return result;
     }
 
+    public async Task<List<MaterialsForCollaborator>> RecoverByCollaboratorLoanStatus(ObjectId id, bool status)
+    {
+        var collection = ConnectDataBase.GetMaterialsForCollaboratorAccess();
+        var filter = Builders<MaterialsForCollaborator>.Filter.Where(c => c.CollaboratorId.Equals(id) &
+                                                            c.Confirmed.Equals(status));
+        var result = await collection.Find(filter).ToListAsync() ?? null;
+
+        return result;
+    }
+
     public async Task<MaterialsForCollaborator> RecoverByHashId(string hashId)
     {
         var collection = ConnectDataBase.GetMaterialsForCollaboratorAccess();
@@ -57,6 +67,15 @@ public class MaterialsForCollaboratorRepository : IMaterialsForCollaboratorWrite
         var collection = ConnectDataBase.GetMaterialsForCollaboratorAccess();
         var filter = Builders<MaterialsForCollaborator>.Filter.And(
             Builders<MaterialsForCollaborator>.Filter.In(c => c.MaterialsHashId, hashId));
+        var result = await collection.Find(filter).ToListAsync() ?? null;
+
+        return result;
+    }
+
+    public async Task<List<MaterialsForCollaborator>> RecoverByStatus(bool status)
+    {
+        var collection = ConnectDataBase.GetMaterialsForCollaboratorAccess();
+        var filter = Builders<MaterialsForCollaborator>.Filter.Where(c => c.Confirmed.Equals(status));
         var result = await collection.Find(filter).ToListAsync() ?? null;
 
         return result;

@@ -62,6 +62,7 @@ public class RecoverBorrowedMaterialUseCase : IRecoverBorrowedMaterialUseCase
                 LoanDateTime = materialForCollaborator.DateTimeConfirmation,
                 ColaboratorNicknameConfirmed = collaboratorConfirm?.Nickname,
                 ListMaterialBorrowed = resultListMaterials,
+                HashIdLoan = materialForCollaborator.MaterialsHashId,
             });
         }
 
@@ -75,12 +76,12 @@ public class RecoverBorrowedMaterialUseCase : IRecoverBorrowedMaterialUseCase
         var collaborator = await _repositoryCollaboratorReadOnly.RecoverByEnrollment(enrollment) ??
             throw new ExceptionValidationErrors(new List<string> { ErrorMessagesResource.COLABORADOR_NAO_LOCALIZADO });
 
-        var materialsForCollaborator = await _repositoryMaterialForCollaboratorReadOnly.RecoverByCollaborator(collaborator.Id);
+        var materialsForCollaborator = await _repositoryMaterialForCollaboratorReadOnly.RecoverByCollaboratorLoanStatus(collaborator.Id, status);
 
         foreach (var materialForCollaborator in materialsForCollaborator)
         {
             var resultBorrowedMaterials = await _repositoryBorrowedMaterialReadOnly
-                .RecoverByHashIdAndStatus(materialForCollaborator.MaterialsHashId, status);
+                .RecoverByHashId(materialForCollaborator.MaterialsHashId);
 
             if (!resultBorrowedMaterials.Any())
             {
@@ -102,6 +103,7 @@ public class RecoverBorrowedMaterialUseCase : IRecoverBorrowedMaterialUseCase
                 LoanDateTime = materialForCollaborator.DateTimeConfirmation,
                 ColaboratorNicknameConfirmed = collaboratorConfirm?.Nickname,
                 ListMaterialBorrowed = resultListMaterials,
+                HashIdLoan = materialForCollaborator.MaterialsHashId,
             });
         }
 
@@ -112,12 +114,12 @@ public class RecoverBorrowedMaterialUseCase : IRecoverBorrowedMaterialUseCase
     {
         var result = new List<ResponseBorrowedMaterialJson>();
 
-        var materialsForCollaborator = await _repositoryMaterialForCollaboratorReadOnly.RecoverAll();
+        var materialsForCollaborator = await _repositoryMaterialForCollaboratorReadOnly.RecoverByStatus(status);
 
         foreach (var materialForCollaborator in materialsForCollaborator)
         {
             var resultBorrowedMaterials = await _repositoryBorrowedMaterialReadOnly
-                .RecoverByHashIdAndStatus(materialForCollaborator.MaterialsHashId, status);
+                .RecoverByHashId(materialForCollaborator.MaterialsHashId);
 
             if (!resultBorrowedMaterials.Any())
             {
@@ -140,6 +142,7 @@ public class RecoverBorrowedMaterialUseCase : IRecoverBorrowedMaterialUseCase
                 LoanDateTime = materialForCollaborator.DateTimeConfirmation,
                 ColaboratorNicknameConfirmed = collaboratorConfirm?.Nickname,
                 ListMaterialBorrowed = resultListMaterials,
+                HashIdLoan = materialForCollaborator.MaterialsHashId,
             });
         }
 
@@ -179,6 +182,7 @@ public class RecoverBorrowedMaterialUseCase : IRecoverBorrowedMaterialUseCase
                 LoanDateTime = materialForCollaborator.DateTimeConfirmation,
                 ColaboratorNicknameConfirmed = collaboratorConfirm?.Nickname,
                 ListMaterialBorrowed = resultListMaterials,
+                HashIdLoan = materialForCollaborator.MaterialsHashId,
             });
         }
 
@@ -222,6 +226,7 @@ public class RecoverBorrowedMaterialUseCase : IRecoverBorrowedMaterialUseCase
 
         return resultListMaterials;
     }
+    
     private async Task<List<ResponseBorrowedListMaterialJson>> AddMaterialInformation(BorrowedMaterial resultBorrowedMaterials)
     {
         var resultListMaterials = new List<ResponseBorrowedListMaterialJson>();

@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace ControleDeMateriais.Api.Controllers;
 
 [ServiceFilter(typeof(AuthenticatedUserAttribute))]
-public class MaterialsReturn : ControleDeMateriaisController
+public class MaterialsReturnController : ControleDeMateriaisController
 {
     [HttpPost]
     [ProducesResponseType(StatusCodes.Status200OK)]

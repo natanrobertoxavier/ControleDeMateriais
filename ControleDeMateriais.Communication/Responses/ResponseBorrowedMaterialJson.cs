@@ -1,6 +1,7 @@
 ﻿namespace ControleDeMateriais.Communication.Responses;
 public class ResponseBorrowedMaterialJson
 {
+    public string HashIdLoan { get; set; }
     public string CollaboratorEnrollment { get; set; }
     public string CollaboratorNickname { get; set; }
     public string CollaboratorTelephone { get; set; }

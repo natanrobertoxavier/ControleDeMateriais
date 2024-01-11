@@ -46,6 +46,12 @@ public class ConfirmSelectedMaterialUseCase : IConfirmSelectedMaterialUseCase
 
         var collaborator = await _confirmPasswordCollaboratorUseCase.Execute(request.Enrollment, encryptedPassword);
 
+        var loanConfirmed = await _repositoryMaterialForCollaboratorReadOnly.RecoverByCollaboratorLoanStatus(
+                                                                        new MongoDB.Bson.ObjectId(collaborator.Id), true);
+
+        if (loanConfirmed.Any())
+            throw new ExceptionValidationErrors(new List<string> { ErrorMessagesResource.CONCESSAO_JA_CONFIRMADA });
+
         return collaborator;
     }
 }
