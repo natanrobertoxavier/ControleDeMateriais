@@ -3,7 +3,7 @@ using ControleDeMateriais.Exceptions.ExceptionBase;
 using FluentValidation;
 using System.Text.RegularExpressions;
 
-namespace ControleDeMateriais.Application.UseCases.User.Register;
+namespace ControleDeMateriais.Application.UseCases.User.ForgotPassword;
 public class ForgotPasswordValidator : AbstractValidator<RequestForgotPasswordJson>
 {
     public ForgotPasswordValidator()

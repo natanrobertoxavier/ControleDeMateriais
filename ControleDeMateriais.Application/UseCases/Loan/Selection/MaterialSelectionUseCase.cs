@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using ControleDeMateriais.Application.Services.LoggedUser;
+using ControleDeMateriais.Application.UseCases.BorrowedMaterials.Recover;
 using ControleDeMateriais.Application.UseCases.Material.Recover;
-using ControleDeMateriais.Application.UseCases.MaterialsLoan.Recover;
 using ControleDeMateriais.Communication.Requests;
 using ControleDeMateriais.Communication.Responses;
 using ControleDeMateriais.Domain.Entities;
@@ -11,15 +11,14 @@ using ControleDeMateriais.Domain.Repositories.Loan.MaterialForCollaborator;
 using ControleDeMateriais.Domain.Repositories.Material;
 using ControleDeMateriais.Exceptions.ExceptionBase;
 using FluentValidation.Results;
-using MongoDB.Bson;
 using System.Security.Cryptography;
 using System.Text;
 
-namespace ControleDeMateriais.Application.UseCases.MaterialsLoan.Selection;
+namespace ControleDeMateriais.Application.UseCases.Loan.Selection;
 public class MaterialSelectionUseCase : IMaterialSelectionUseCase
 {
     private readonly IRecoverMaterialUseCase _recoverMaterialUseCase;
-    private readonly IRecoverBorrowedMaterialUseCase _recoverBorrowedMaterialUseCase;
+    private readonly IRecoverBorrowedMaterialsUseCase _recoverBorrowedMaterialsUseCase;
     private readonly IBorrowedMaterialWriteOnly _repositoryBorrowedMaterialWriteOnly;
     private readonly IMaterialsForCollaboratorWriteOnly _repositoryMaterialsForCollaboratorWriteOnly;
     private readonly ICollaboratorReadOnlyRepository _repositoryCollaboratorReadOnly;
@@ -28,9 +27,9 @@ public class MaterialSelectionUseCase : IMaterialSelectionUseCase
     private readonly ILoggedUser _loggedUser;
 
     public MaterialSelectionUseCase(
-        IRecoverMaterialUseCase recoverMaterialUseCase, 
-        IRecoverBorrowedMaterialUseCase recoverBorrowedMaterialUseCase,
+        IRecoverMaterialUseCase recoverMaterialUseCase,
         IMaterialsForCollaboratorWriteOnly repositoryMaterialsForCollaboratorWriteOnly,
+        IRecoverBorrowedMaterialsUseCase recoverBorrowedMaterialsUseCase,
         IBorrowedMaterialWriteOnly repositoryBorrowedMaterialWriteOnly,
         ICollaboratorReadOnlyRepository repositoryCollaboratorReadOnly,
         ISelectedMaterialsSendMailOnlyRepository repositoryMaterialsSendMail,
@@ -38,7 +37,7 @@ public class MaterialSelectionUseCase : IMaterialSelectionUseCase
         ILoggedUser loggedUser)
     {
         _recoverMaterialUseCase = recoverMaterialUseCase;
-        _recoverBorrowedMaterialUseCase = recoverBorrowedMaterialUseCase;
+        _recoverBorrowedMaterialsUseCase = recoverBorrowedMaterialsUseCase;
         _repositoryBorrowedMaterialWriteOnly = repositoryBorrowedMaterialWriteOnly;
         _repositoryMaterialsForCollaboratorWriteOnly = repositoryMaterialsForCollaboratorWriteOnly;
         _repositoryCollaboratorReadOnly = repositoryCollaboratorReadOnly;
@@ -116,7 +115,7 @@ public class MaterialSelectionUseCase : IMaterialSelectionUseCase
     {
         var entities = request.BarCode.ToList();
 
-        var result = await _recoverBorrowedMaterialUseCase.Execute(entities);
+        var result = await _recoverBorrowedMaterialsUseCase.Execute(entities);
 
         if (result is not null)
         {

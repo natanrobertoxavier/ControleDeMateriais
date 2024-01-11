@@ -1,20 +1,21 @@
 ﻿using ControleDeMateriais.Application.Services.Cryptography;
 using ControleDeMateriais.Application.Services.LoggedUser;
 using ControleDeMateriais.Application.Services.Token;
+using ControleDeMateriais.Application.UseCases.BorrowedMaterials.Recover;
 using ControleDeMateriais.Application.UseCases.Collaborator.ConfirmPassword;
 using ControleDeMateriais.Application.UseCases.Collaborator.Delete;
 using ControleDeMateriais.Application.UseCases.Collaborator.Recover;
 using ControleDeMateriais.Application.UseCases.Collaborator.Register;
 using ControleDeMateriais.Application.UseCases.Collaborator.Update;
+using ControleDeMateriais.Application.UseCases.Loan.Confirm;
+using ControleDeMateriais.Application.UseCases.Loan.Devolution;
+using ControleDeMateriais.Application.UseCases.Loan.Recover;
+using ControleDeMateriais.Application.UseCases.Loan.Selection;
 using ControleDeMateriais.Application.UseCases.Login.Login;
 using ControleDeMateriais.Application.UseCases.Material.Delete;
 using ControleDeMateriais.Application.UseCases.Material.Recover;
 using ControleDeMateriais.Application.UseCases.Material.Register;
 using ControleDeMateriais.Application.UseCases.Material.Update;
-using ControleDeMateriais.Application.UseCases.MaterialsLoan.Confirm;
-using ControleDeMateriais.Application.UseCases.MaterialsLoan.Devolution;
-using ControleDeMateriais.Application.UseCases.MaterialsLoan.Recover;
-using ControleDeMateriais.Application.UseCases.MaterialsLoan.Selection;
 using ControleDeMateriais.Application.UseCases.User.ForgotPassword;
 using ControleDeMateriais.Application.UseCases.User.NewPassword;
 using ControleDeMateriais.Application.UseCases.User.Recover;
@@ -82,10 +83,13 @@ public static class Initializer
 
         #region MaterialsLoan
         services.AddScoped<IMaterialSelectionUseCase, MaterialSelectionUseCase>();        
-        services.AddScoped<IRecoverBorrowedMaterialUseCase, RecoverBorrowedMaterialUseCase>();
+        services.AddScoped<IRecoverMaterialForCollaboratorUseCase, RecoverMaterialForCollaboratorUseCase>();
         services.AddScoped<IConfirmSelectedMaterialUseCase, ConfirmSelectedMaterialUseCase>();
+        services.AddScoped<IMaterialDevolutionUseCase, MaterialDevolutionUseCase>();
         #endregion
 
-        services.AddScoped<IMaterialDevolutionUseCase, MaterialDevolutionUseCase>();
+        #region BorrowedMaterials
+        services.AddScoped<IRecoverBorrowedMaterialsUseCase, RecoverBorrowedMaterialsUseCase>();
+        #endregion
     }
 }
