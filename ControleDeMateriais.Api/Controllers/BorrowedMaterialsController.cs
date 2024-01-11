@@ -1,5 +1,5 @@
 using ControleDeMateriais.Api.Filters.LoggedUser;
-using ControleDeMateriais.Application.UseCases.MaterialsLoan.Recover;
+using ControleDeMateriais.Application.UseCases.Loan.Recover;
 using ControleDeMateriais.Communication.Responses;
 using Microsoft.AspNetCore.Mvc;
 

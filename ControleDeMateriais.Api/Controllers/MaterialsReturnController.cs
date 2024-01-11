@@ -1,5 +1,5 @@
 using ControleDeMateriais.Api.Filters.LoggedUser;
-using ControleDeMateriais.Application.UseCases.MaterialsLoan.Devolution;
+using ControleDeMateriais.Application.UseCases.Loan.Devolution;
 using ControleDeMateriais.Communication.Requests;
 using Microsoft.AspNetCore.Mvc;
 
@@ -11,7 +11,7 @@ public class MaterialsReturnController : ControleDeMateriaisController
     [HttpPost]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
-    public async Task<IActionResult> MaterialSelection(
+    public async Task<IActionResult> ReturnMaterial(
         [FromServices] IMaterialDevolutionUseCase useCase,
         [FromBody] RequestMaterialDevolutionJson request)
     {

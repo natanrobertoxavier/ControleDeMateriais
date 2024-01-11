@@ -9,7 +9,7 @@ using ControleDeMateriais.Domain.Repositories.Material;
 using ControleDeMateriais.Domain.Repositories.User;
 using ControleDeMateriais.Exceptions.ExceptionBase;
 
-namespace ControleDeMateriais.Application.UseCases.MaterialsLoan.Recover;
+namespace ControleDeMateriais.Application.UseCases.Loan.Recover;
 public class RecoverMaterialForCollaboratorUseCase : IRecoverMaterialForCollaboratorUseCase
 {
     private readonly IBorrowedMaterialReadOnly _repositoryBorrowedMaterialReadOnly;
@@ -189,11 +189,6 @@ public class RecoverMaterialForCollaboratorUseCase : IRecoverMaterialForCollabor
         return result;
     }
 
-    public async Task<List<string>> Execute(List<string> codeBar)
-    {
-        return await _repositoryBorrowedMaterialReadOnly.RecoverBorrowedMaterial(codeBar);
-    }
-
     private async Task<List<ResponseBorrowedListMaterialJson>> AddMaterialInformation(List<BorrowedMaterial> resultBorrowedMaterials)
     {
         var resultListMaterials = new List<ResponseBorrowedListMaterialJson>();
@@ -209,7 +204,7 @@ public class RecoverMaterialForCollaboratorUseCase : IRecoverMaterialForCollabor
         {
             var category = (Category)materialDBs[material.BarCode].Category;
 
-            var categoryName = EnumExtensions.GetDescription(category);
+            var categoryName = category.GetDescription();
 
             var user = await _userUseCase.Execute(material.UserReceivedId.ToString()) ?? new ResponseUserJson();
 
@@ -226,14 +221,14 @@ public class RecoverMaterialForCollaboratorUseCase : IRecoverMaterialForCollabor
 
         return resultListMaterials;
     }
-    
+
     private async Task<List<ResponseBorrowedListMaterialJson>> AddMaterialInformation(BorrowedMaterial resultBorrowedMaterials)
     {
         var resultListMaterials = new List<ResponseBorrowedListMaterialJson>();
         var materialDB = await _repositoryMaterialReadOnlyRepository.RecoverByBarCode(resultBorrowedMaterials.BarCode);
 
         var category = (Category)materialDB.Category;
-        var categoryName = EnumExtensions.GetDescription(category);
+        var categoryName = category.GetDescription();
 
         var user = await _userUseCase.Execute(resultBorrowedMaterials.UserReceivedId.ToString()) ?? new ResponseUserJson();
 

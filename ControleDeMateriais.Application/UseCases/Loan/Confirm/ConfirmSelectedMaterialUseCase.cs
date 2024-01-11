@@ -6,7 +6,7 @@ using ControleDeMateriais.Domain.Repositories.Loan.Borrowed;
 using ControleDeMateriais.Domain.Repositories.Loan.MaterialForCollaborator;
 using ControleDeMateriais.Exceptions.ExceptionBase;
 
-namespace ControleDeMateriais.Application.UseCases.MaterialsLoan.Confirm;
+namespace ControleDeMateriais.Application.UseCases.Loan.Confirm;
 public class ConfirmSelectedMaterialUseCase : IConfirmSelectedMaterialUseCase
 {
     private readonly IMaterialsForCollaboratorWriteOnly _repositoryMaterialsForCollaboratorWriteOnly;
@@ -46,10 +46,9 @@ public class ConfirmSelectedMaterialUseCase : IConfirmSelectedMaterialUseCase
 
         var collaborator = await _confirmPasswordCollaboratorUseCase.Execute(request.Enrollment, encryptedPassword);
 
-        var loanConfirmed = await _repositoryMaterialForCollaboratorReadOnly.RecoverByCollaboratorLoanStatus(
-                                                                        new MongoDB.Bson.ObjectId(collaborator.Id), true);
+        var loanConfirmed = await _repositoryMaterialForCollaboratorReadOnly.RecoverByHashId(request.HashId);
 
-        if (loanConfirmed.Any())
+        if (loanConfirmed.Confirmed)
             throw new ExceptionValidationErrors(new List<string> { ErrorMessagesResource.CONCESSAO_JA_CONFIRMADA });
 
         return collaborator;

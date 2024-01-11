@@ -1,5 +1,4 @@
-﻿
-using ControleDeMateriais.Application.Services.LoggedUser;
+﻿using ControleDeMateriais.Application.Services.LoggedUser;
 using ControleDeMateriais.Application.UseCases.Material.Recover;
 using ControleDeMateriais.Communication.Requests;
 using ControleDeMateriais.Domain.Entities;
@@ -7,7 +6,7 @@ using ControleDeMateriais.Domain.Repositories.Loan.Borrowed;
 using ControleDeMateriais.Domain.Repositories.Loan.MaterialForCollaborator;
 using ControleDeMateriais.Exceptions.ExceptionBase;
 
-namespace ControleDeMateriais.Application.UseCases.MaterialsLoan.Devolution;
+namespace ControleDeMateriais.Application.UseCases.Loan.Devolution;
 public class MaterialDevolutionUseCase : IMaterialDevolutionUseCase
 {
     private readonly IBorrowedMaterialWriteOnly _repositoryMaterialWriteOnly;
@@ -57,7 +56,7 @@ public class MaterialDevolutionUseCase : IMaterialDevolutionUseCase
         foreach (var barCode in request.BarCode)
         {
             _ = await _recoverMaterialUseCase.Execute(barCode) ??
-            throw new ExceptionValidationErrors(new List<string> { 
+            throw new ExceptionValidationErrors(new List<string> {
                 string.Concat($"{ErrorMessagesResource.MATERIAL_NAO_LOCALIZADO_INICIAL} {barCode}") });
         }
     }
