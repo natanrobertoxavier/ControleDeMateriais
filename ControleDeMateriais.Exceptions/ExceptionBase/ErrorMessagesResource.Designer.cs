@@ -151,6 +151,15 @@ namespace ControleDeMateriais.Exceptions.ExceptionBase {
         }
         
         /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Concessão já confirmada..
+        /// </summary>
+        public static string CONCESSAO_JA_CONFIRMADA {
+            get {
+                return ResourceManager.GetString("CONCESSAO_JA_CONFIRMADA", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a Concessão não confirmada..
         /// </summary>
         public static string CONCESSAO_NAO_CONFIRMADA {
