@@ -19,7 +19,7 @@ namespace ControleDeMateriais.Application.UseCases.MaterialsLoan.Selection;
 public class MaterialSelectionUseCase : IMaterialSelectionUseCase
 {
     private readonly IRecoverMaterialUseCase _recoverMaterialUseCase;
-    private readonly IRecoverBorrowedMaterialUseCase _recoverBorrowedMaterialUseCase;
+    private readonly IRecoverMaterialForCollaboratorUseCase _recoverBorrowedMaterialUseCase;
     private readonly IBorrowedMaterialWriteOnly _repositoryBorrowedMaterialWriteOnly;
     private readonly IMaterialsForCollaboratorWriteOnly _repositoryMaterialsForCollaboratorWriteOnly;
     private readonly ICollaboratorReadOnlyRepository _repositoryCollaboratorReadOnly;
@@ -29,7 +29,7 @@ public class MaterialSelectionUseCase : IMaterialSelectionUseCase
 
     public MaterialSelectionUseCase(
         IRecoverMaterialUseCase recoverMaterialUseCase, 
-        IRecoverBorrowedMaterialUseCase recoverBorrowedMaterialUseCase,
+        IRecoverMaterialForCollaboratorUseCase recoverBorrowedMaterialUseCase,
         IMaterialsForCollaboratorWriteOnly repositoryMaterialsForCollaboratorWriteOnly,
         IBorrowedMaterialWriteOnly repositoryBorrowedMaterialWriteOnly,
         ICollaboratorReadOnlyRepository repositoryCollaboratorReadOnly,

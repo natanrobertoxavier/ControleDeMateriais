@@ -12,11 +12,11 @@ namespace ControleDeMateriais.Api.Controllers;
 public class MaterialsLoanController : ControleDeMateriaisController
 {
     [HttpGet]
-    [ProducesResponseType(typeof(ResponseBorrowedMaterialJson), StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(ResponseMaterialForCollaboratorJson), StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     public async Task<IActionResult> RecoverAll(
-        [FromServices] IRecoverBorrowedMaterialUseCase useCase)
+        [FromServices] IRecoverMaterialForCollaboratorUseCase useCase)
     {
         var result = await useCase.Execute();
 
@@ -25,11 +25,11 @@ public class MaterialsLoanController : ControleDeMateriaisController
 
     [HttpGet]
     [Route("enrollment/{enrollment}/status/{status}")]
-    [ProducesResponseType(typeof(ResponseBorrowedMaterialJson), StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(ResponseMaterialForCollaboratorJson), StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     public async Task<IActionResult> RecoverByCollaboratorAndStatus(
-        [FromServices] IRecoverBorrowedMaterialUseCase useCase,
+        [FromServices] IRecoverMaterialForCollaboratorUseCase useCase,
         [FromRoute] string enrollment,
         [FromRoute] bool status)
     {
@@ -43,11 +43,11 @@ public class MaterialsLoanController : ControleDeMateriaisController
 
     [HttpGet]
     [Route("confirmed/{status}")]
-    [ProducesResponseType(typeof(ResponseBorrowedMaterialJson), StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(ResponseMaterialForCollaboratorJson), StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     public async Task<IActionResult> RecoverByStatus(
-        [FromServices] IRecoverBorrowedMaterialUseCase useCase,
+        [FromServices] IRecoverMaterialForCollaboratorUseCase useCase,
         [FromRoute] bool status)
     {
         var result = await useCase.Execute(status);
@@ -60,11 +60,11 @@ public class MaterialsLoanController : ControleDeMateriaisController
 
     [HttpGet]
     [Route("barCode/{barCode}")]
-    [ProducesResponseType(typeof(ResponseBorrowedMaterialJson), StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(ResponseMaterialForCollaboratorJson), StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     public async Task<IActionResult> RecoverByBarCode(
-        [FromServices] IRecoverBorrowedMaterialUseCase useCase,
+        [FromServices] IRecoverMaterialForCollaboratorUseCase useCase,
         [FromRoute] string barCode)
     {
         var result = await useCase.Execute(barCode);

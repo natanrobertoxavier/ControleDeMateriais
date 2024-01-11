@@ -10,7 +10,7 @@ using ControleDeMateriais.Domain.Repositories.User;
 using ControleDeMateriais.Exceptions.ExceptionBase;
 
 namespace ControleDeMateriais.Application.UseCases.MaterialsLoan.Recover;
-public class RecoverBorrowedMaterialUseCase : IRecoverBorrowedMaterialUseCase
+public class RecoverMaterialForCollaboratorUseCase : IRecoverMaterialForCollaboratorUseCase
 {
     private readonly IBorrowedMaterialReadOnly _repositoryBorrowedMaterialReadOnly;
     private readonly IMaterialReadOnlyRepository _repositoryMaterialReadOnlyRepository;
@@ -19,7 +19,7 @@ public class RecoverBorrowedMaterialUseCase : IRecoverBorrowedMaterialUseCase
     private readonly IUserReadOnlyRepository _repositoryUserReadOnly;
     private readonly IRecoverUserUseCase _userUseCase;
 
-    public RecoverBorrowedMaterialUseCase(
+    public RecoverMaterialForCollaboratorUseCase(
         IBorrowedMaterialReadOnly repositoryBorrowedMaterialReadOnly,
         IMaterialReadOnlyRepository repositoryMaterialReadOnlyRepository,
         IMaterialForCollaboratorReadOnly repositoryMaterialForCollaboratorReadOnly,
@@ -35,9 +35,9 @@ public class RecoverBorrowedMaterialUseCase : IRecoverBorrowedMaterialUseCase
         _userUseCase = userUseCase;
     }
 
-    public async Task<List<ResponseBorrowedMaterialJson>> Execute()
+    public async Task<List<ResponseMaterialForCollaboratorJson>> Execute()
     {
-        var result = new List<ResponseBorrowedMaterialJson>();
+        var result = new List<ResponseMaterialForCollaboratorJson>();
 
         var materialsForCollaborator = await _repositoryMaterialForCollaboratorReadOnly.RecoverAll();
 
@@ -52,7 +52,7 @@ public class RecoverBorrowedMaterialUseCase : IRecoverBorrowedMaterialUseCase
             var collaboratorConfirm = await _repositoryCollaboratorReadOnly.RecoverById(materialForCollaborator.CollaboratorConfirmedId);
             var user = await _repositoryUserReadOnly.RecoverById(materialForCollaborator.UserId);
 
-            result.Add(new ResponseBorrowedMaterialJson
+            result.Add(new ResponseMaterialForCollaboratorJson
             {
                 CollaboratorEnrollment = collaborator?.Enrollment,
                 CollaboratorNickname = collaborator?.Nickname,
@@ -69,9 +69,9 @@ public class RecoverBorrowedMaterialUseCase : IRecoverBorrowedMaterialUseCase
         return result;
     }
 
-    public async Task<List<ResponseBorrowedMaterialJson>> Execute(string enrollment, bool status)
+    public async Task<List<ResponseMaterialForCollaboratorJson>> Execute(string enrollment, bool status)
     {
-        var result = new List<ResponseBorrowedMaterialJson>();
+        var result = new List<ResponseMaterialForCollaboratorJson>();
 
         var collaborator = await _repositoryCollaboratorReadOnly.RecoverByEnrollment(enrollment) ??
             throw new ExceptionValidationErrors(new List<string> { ErrorMessagesResource.COLABORADOR_NAO_LOCALIZADO });
@@ -93,7 +93,7 @@ public class RecoverBorrowedMaterialUseCase : IRecoverBorrowedMaterialUseCase
             var collaboratorConfirm = await _repositoryCollaboratorReadOnly.RecoverById(materialForCollaborator.CollaboratorConfirmedId);
             var user = await _repositoryUserReadOnly.RecoverById(materialForCollaborator.UserId);
 
-            result.Add(new ResponseBorrowedMaterialJson
+            result.Add(new ResponseMaterialForCollaboratorJson
             {
                 CollaboratorEnrollment = collaborator?.Enrollment,
                 CollaboratorNickname = collaborator?.Nickname,
@@ -110,9 +110,9 @@ public class RecoverBorrowedMaterialUseCase : IRecoverBorrowedMaterialUseCase
         return result;
     }
 
-    public async Task<List<ResponseBorrowedMaterialJson>> Execute(bool status)
+    public async Task<List<ResponseMaterialForCollaboratorJson>> Execute(bool status)
     {
-        var result = new List<ResponseBorrowedMaterialJson>();
+        var result = new List<ResponseMaterialForCollaboratorJson>();
 
         var materialsForCollaborator = await _repositoryMaterialForCollaboratorReadOnly.RecoverByStatus(status);
 
@@ -132,7 +132,7 @@ public class RecoverBorrowedMaterialUseCase : IRecoverBorrowedMaterialUseCase
             var collaboratorConfirm = await _repositoryCollaboratorReadOnly.RecoverById(materialForCollaborator.CollaboratorConfirmedId);
             var user = await _repositoryUserReadOnly.RecoverById(materialForCollaborator.UserId);
 
-            result.Add(new ResponseBorrowedMaterialJson
+            result.Add(new ResponseMaterialForCollaboratorJson
             {
                 CollaboratorEnrollment = collaborator?.Enrollment,
                 CollaboratorNickname = collaborator?.Nickname,
@@ -149,9 +149,9 @@ public class RecoverBorrowedMaterialUseCase : IRecoverBorrowedMaterialUseCase
         return result;
     }
 
-    public async Task<List<ResponseBorrowedMaterialJson>> Execute(string barCode)
+    public async Task<List<ResponseMaterialForCollaboratorJson>> Execute(string barCode)
     {
-        var result = new List<ResponseBorrowedMaterialJson>();
+        var result = new List<ResponseMaterialForCollaboratorJson>();
 
         var resultBorrowedMaterials = await _repositoryBorrowedMaterialReadOnly
             .RecoverByBarCode(barCode);
@@ -172,7 +172,7 @@ public class RecoverBorrowedMaterialUseCase : IRecoverBorrowedMaterialUseCase
             var collaboratorConfirm = await _repositoryCollaboratorReadOnly.RecoverById(materialForCollaborator.CollaboratorConfirmedId);
             var user = await _repositoryUserReadOnly.RecoverById(materialForCollaborator.UserId);
 
-            result.Add(new ResponseBorrowedMaterialJson
+            result.Add(new ResponseMaterialForCollaboratorJson
             {
                 CollaboratorEnrollment = collaborator?.Enrollment,
                 CollaboratorNickname = collaborator?.Nickname,

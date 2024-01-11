@@ -82,7 +82,7 @@ public static class Initializer
 
         #region MaterialsLoan
         services.AddScoped<IMaterialSelectionUseCase, MaterialSelectionUseCase>();        
-        services.AddScoped<IRecoverBorrowedMaterialUseCase, RecoverBorrowedMaterialUseCase>();
+        services.AddScoped<IRecoverMaterialForCollaboratorUseCase, RecoverMaterialForCollaboratorUseCase>();
         services.AddScoped<IConfirmSelectedMaterialUseCase, ConfirmSelectedMaterialUseCase>();
         #endregion
 
