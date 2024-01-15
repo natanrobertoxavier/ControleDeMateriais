@@ -40,6 +40,8 @@ public class AutoMapperConfiguration : Profile
             .ForMember(destiny => destiny.UserIdCreated, config => config.MapFrom(origin => origin.UserIdCreated.ToString()));
 
         CreateMap<Domain.Entities.User, Communication.Responses.ResponseUserJson>();
+
+        CreateMap<Domain.Entities.BorrowedMaterial, Communication.Responses.ResponseBorrowedMaterialJson>();
     }
 
     private void ResponseToEntity()

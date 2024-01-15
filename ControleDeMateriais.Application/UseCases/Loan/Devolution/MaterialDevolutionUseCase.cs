@@ -10,13 +10,13 @@ namespace ControleDeMateriais.Application.UseCases.Loan.Devolution;
 public class MaterialDevolutionUseCase : IMaterialDevolutionUseCase
 {
     private readonly IBorrowedMaterialWriteOnly _repositoryMaterialWriteOnly;
-    private readonly IMaterialForCollaboratorReadOnly _repositoryMaterialForCollaboratorReadOnly;
+    private readonly IMaterialsForCollaboratorReadOnly _repositoryMaterialForCollaboratorReadOnly;
     private readonly IRecoverMaterialUseCase _recoverMaterialUseCase;
     private readonly ILoggedUser _loggedUser;
 
     public MaterialDevolutionUseCase(
         IBorrowedMaterialWriteOnly repositoryMaterialWriteOnly,
-        IMaterialForCollaboratorReadOnly repositoryMaterialForCollaboratorReadOnly,
+        IMaterialsForCollaboratorReadOnly repositoryMaterialForCollaboratorReadOnly,
         IRecoverMaterialUseCase recoverMaterialUseCase,
         ILoggedUser loggedUser)
     {

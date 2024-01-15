@@ -1,4 +1,5 @@
 using ControleDeMateriais.Api.Filters.LoggedUser;
+using ControleDeMateriais.Application.UseCases.BorrowedMaterials.Recover;
 using ControleDeMateriais.Application.UseCases.Loan.Recover;
 using ControleDeMateriais.Communication.Responses;
 using Microsoft.AspNetCore.Mvc;
@@ -13,7 +14,7 @@ public class BorrowedMaterialsController : ControleDeMateriaisController
     [ProducesResponseType(StatusCodes.Status204NoContent)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     public async Task<IActionResult> RecoverAll(
-        [FromServices] IRecoverMaterialForCollaboratorUseCase useCase)
+        [FromServices] IRecoverBorrowedMaterialsUseCase useCase)
     {
         var result = await useCase.Execute();
 

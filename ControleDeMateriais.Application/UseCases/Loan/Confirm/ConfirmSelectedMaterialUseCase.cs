@@ -10,14 +10,14 @@ namespace ControleDeMateriais.Application.UseCases.Loan.Confirm;
 public class ConfirmSelectedMaterialUseCase : IConfirmSelectedMaterialUseCase
 {
     private readonly IMaterialsForCollaboratorWriteOnly _repositoryMaterialsForCollaboratorWriteOnly;
-    private readonly IMaterialForCollaboratorReadOnly _repositoryMaterialForCollaboratorReadOnly;
+    private readonly IMaterialsForCollaboratorReadOnly _repositoryMaterialForCollaboratorReadOnly;
     private readonly IBorrowedMaterialWriteOnly _repositoryMaterialWriteOnly;
     private readonly IConfirmPasswordUseCase _confirmPasswordCollaboratorUseCase;
     private readonly PasswordEncryptor _passwordEncryptor;
 
     public ConfirmSelectedMaterialUseCase(
         IMaterialsForCollaboratorWriteOnly repositoryMaterialsForCollaboratorWriteOnly,
-        IMaterialForCollaboratorReadOnly repositoryMaterialForCollaboratorReadOnly,
+        IMaterialsForCollaboratorReadOnly repositoryMaterialForCollaboratorReadOnly,
         IBorrowedMaterialWriteOnly repositoryMaterialWriteOnly,
         IConfirmPasswordUseCase confirmPasswordCollaboratorUseCase,
         PasswordEncryptor passwordEncryptor)
