@@ -1,6 +1,5 @@
 using ControleDeMateriais.Api.Filters.LoggedUser;
 using ControleDeMateriais.Application.UseCases.Loan.Confirm;
-using ControleDeMateriais.Application.UseCases.Loan.Devolution;
 using ControleDeMateriais.Application.UseCases.Loan.Selection;
 using ControleDeMateriais.Communication.Requests;
 using Microsoft.AspNetCore.Mvc;

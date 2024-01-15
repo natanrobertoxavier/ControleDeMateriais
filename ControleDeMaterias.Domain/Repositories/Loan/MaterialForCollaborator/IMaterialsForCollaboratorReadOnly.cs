@@ -2,7 +2,7 @@
 using MongoDB.Bson;
 
 namespace ControleDeMateriais.Domain.Repositories.Loan.MaterialForCollaborator;
-public interface IMaterialForCollaboratorReadOnly
+public interface IMaterialsForCollaboratorReadOnly
 {
     Task<List<MaterialsForCollaborator>> RecoverAll();
     Task<List<MaterialsForCollaborator>> RecoverByCollaborator(ObjectId id);

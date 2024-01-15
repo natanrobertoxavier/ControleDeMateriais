@@ -4,7 +4,7 @@ using MongoDB.Bson;
 using MongoDB.Driver;
 
 namespace ControleDeMateriais.Infrastructure.AccessRepository.Repository;
-public class MaterialsForCollaboratorRepository : IMaterialsForCollaboratorWriteOnly, IMaterialForCollaboratorReadOnly
+public class MaterialsForCollaboratorRepository : IMaterialsForCollaboratorWriteOnly, IMaterialsForCollaboratorReadOnly
 {
     public async Task Add(MaterialsForCollaborator materialsForCollaborator)
     {

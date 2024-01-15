@@ -14,7 +14,7 @@ public class RecoverMaterialForCollaboratorUseCase : IRecoverMaterialForCollabor
 {
     private readonly IBorrowedMaterialReadOnly _repositoryBorrowedMaterialReadOnly;
     private readonly IMaterialReadOnlyRepository _repositoryMaterialReadOnlyRepository;
-    private readonly IMaterialForCollaboratorReadOnly _repositoryMaterialForCollaboratorReadOnly;
+    private readonly IMaterialsForCollaboratorReadOnly _repositoryMaterialForCollaboratorReadOnly;
     private readonly ICollaboratorReadOnlyRepository _repositoryCollaboratorReadOnly;
     private readonly IUserReadOnlyRepository _repositoryUserReadOnly;
     private readonly IRecoverUserUseCase _userUseCase;
@@ -22,7 +22,7 @@ public class RecoverMaterialForCollaboratorUseCase : IRecoverMaterialForCollabor
     public RecoverMaterialForCollaboratorUseCase(
         IBorrowedMaterialReadOnly repositoryBorrowedMaterialReadOnly,
         IMaterialReadOnlyRepository repositoryMaterialReadOnlyRepository,
-        IMaterialForCollaboratorReadOnly repositoryMaterialForCollaboratorReadOnly,
+        IMaterialsForCollaboratorReadOnly repositoryMaterialForCollaboratorReadOnly,
         ICollaboratorReadOnlyRepository repositoryCollaboratorReadOnly,
         IUserReadOnlyRepository repositoryUserReadOnly,
         IRecoverUserUseCase userUseCase)
