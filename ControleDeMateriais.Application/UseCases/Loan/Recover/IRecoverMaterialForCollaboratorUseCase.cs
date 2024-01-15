@@ -8,4 +8,5 @@ public interface IRecoverMaterialForCollaboratorUseCase
     Task<List<ResponseMaterialForCollaboratorJson>> Execute(bool status);
     Task<List<ResponseMaterialForCollaboratorJson>> Execute(string enrollment);
     Task<List<ResponseMaterialForCollaboratorJson>> Execute(string enrollment, bool status);
+    //teste
 }
