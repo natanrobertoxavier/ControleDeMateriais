@@ -72,22 +72,22 @@ public class MaterialsForCollaboratorController : ControleDeMateriaisController
         return NoContent();
     }
 
-    [HttpGet]
-    [Route("barCode/{barCode}")]
-    [ProducesResponseType(typeof(ResponseMaterialForCollaboratorJson), StatusCodes.Status200OK)]
-    [ProducesResponseType(StatusCodes.Status204NoContent)]
-    [ProducesResponseType(StatusCodes.Status400BadRequest)]
-    public async Task<IActionResult> RecoverByBarCode(
-        [FromServices] IRecoverMaterialForCollaboratorUseCase useCase,
-        [FromRoute] string barCode)
-    {
-        var result = await useCase.Execute(barCode);
+    //[HttpGet]
+    //[Route("barCode/{barCode}")]
+    //[ProducesResponseType(typeof(ResponseMaterialForCollaboratorJson), StatusCodes.Status200OK)]
+    //[ProducesResponseType(StatusCodes.Status204NoContent)]
+    //[ProducesResponseType(StatusCodes.Status400BadRequest)]
+    //public async Task<IActionResult> RecoverByBarCode(
+    //    [FromServices] IRecoverMaterialForCollaboratorUseCase useCase,
+    //    [FromRoute] string barCode)
+    //{
+    //    var result = await useCase.Execute(barCode);
 
-        if (result.Any())
-            return Ok(result);
+    //    if (result.Any())
+    //        return Ok(result);
 
-        return NoContent();
-    }
+    //    return NoContent();
+    //}
 
     [HttpGet]
     [Route("date")]
