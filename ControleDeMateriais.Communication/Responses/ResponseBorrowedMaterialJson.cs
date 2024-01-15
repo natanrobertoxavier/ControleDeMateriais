@@ -11,4 +11,7 @@ public class ResponseBorrowedMaterialJson
     public string CollaboratorTelephone { get; set; }
     public string UserReceivedName { get; set; }
     public DateTime DateReceived { get; set; }
+    public bool Confirmed { get; set; }
+    public string CollaboratorEnrollmentConfirmed { get; set; }
+    public string CollaboratorNicknameConfirmed { get; set; }
 }

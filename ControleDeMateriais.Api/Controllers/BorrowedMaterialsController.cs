@@ -1,5 +1,6 @@
 using ControleDeMateriais.Api.Filters.LoggedUser;
 using ControleDeMateriais.Application.UseCases.BorrowedMaterials.Recover;
+using ControleDeMateriais.Application.UseCases.Loan.Recover;
 using ControleDeMateriais.Communication.Responses;
 using Microsoft.AspNetCore.Mvc;
 
@@ -18,6 +19,23 @@ public class BorrowedMaterialsController : ControleDeMateriaisController
         var result = await useCase.Execute();
 
         return Ok(result);
+    }
+
+    [HttpGet]
+    [Route("barCode/{barCode}")]
+    [ProducesResponseType(typeof(ResponseMaterialForCollaboratorJson), StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status204NoContent)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    public async Task<IActionResult> RecoverByBarCode(
+        [FromServices] IRecoverBorrowedMaterialsUseCase useCase,
+        [FromRoute] string barCode)
+    {
+        var result = await useCase.Execute(barCode);
+
+        if (result.Any())
+            return Ok(result);
+
+        return NoContent();
     }
 
     [HttpGet]

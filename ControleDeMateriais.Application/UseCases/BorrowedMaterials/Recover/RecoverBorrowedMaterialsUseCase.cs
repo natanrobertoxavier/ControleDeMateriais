@@ -55,6 +55,13 @@ public class RecoverBorrowedMaterialsUseCase : IRecoverBorrowedMaterialsUseCase
         return await _repositoryBorrowedMaterialReadOnly.RecoverBorrowedMaterial(codeBar);
     }
 
+    public async Task<List<ResponseBorrowedMaterialJson>> Execute(string barCode)
+    {
+        var resultBorrowedMaterials = await _repositoryBorrowedMaterialReadOnly.RecoverByBarCode(barCode);
+
+        return await AddInformationsBorrowedMaterials(resultBorrowedMaterials);
+    }
+
     private async Task<List<ResponseBorrowedMaterialJson>> AddInformationsBorrowedMaterials(List<BorrowedMaterial> resultBorrowedMaterials)
     {
         var result = new List<ResponseBorrowedMaterialJson>();
@@ -63,6 +70,8 @@ public class RecoverBorrowedMaterialsUseCase : IRecoverBorrowedMaterialsUseCase
         {
             var materialForCollaborator = await _repositoryMaterialsForCollaboratorReadOnly.RecoverByHashId(item.HashId);
             var collaborator = await _repositoryCollaboratorReadOnly.RecoverById(materialForCollaborator.CollaboratorId);
+            var collaboratorConfirmed = await _repositoryCollaboratorReadOnly.RecoverById(materialForCollaborator.CollaboratorConfirmedId) ??
+                new Domain.Entities.Collaborator();
             var material = await _repositoryMaterialReadOnlyRepository.RecoverByBarCode(item.BarCode);
 
             var userReceived = await _repositoryUserReadOnly.RecoverById(item.UserReceivedId) ??
@@ -81,6 +90,9 @@ public class RecoverBorrowedMaterialsUseCase : IRecoverBorrowedMaterialsUseCase
             borrowedMaterial.CollaboratorNickName = collaborator.Nickname;
             borrowedMaterial.CollaboratorTelephone = collaborator.Telephone;
             borrowedMaterial.UserReceivedName = userReceived.Name;
+            borrowedMaterial.Confirmed = materialForCollaborator.Confirmed;
+            borrowedMaterial.CollaboratorEnrollmentConfirmed = collaboratorConfirmed.Enrollment;
+            borrowedMaterial.CollaboratorNicknameConfirmed = collaboratorConfirmed.Nickname;
 
             result.Add(borrowedMaterial);
         }
