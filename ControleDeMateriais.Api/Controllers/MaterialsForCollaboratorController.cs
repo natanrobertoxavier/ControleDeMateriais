@@ -21,6 +21,23 @@ public class MaterialsForCollaboratorController : ControleDeMateriaisController
     }
 
     [HttpGet]
+    [Route("enrollment/{enrollment}")]
+    [ProducesResponseType(typeof(ResponseMaterialForCollaboratorJson), StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status204NoContent)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    public async Task<IActionResult> RecoverByCollaborator(
+        [FromServices] IRecoverMaterialForCollaboratorUseCase useCase,
+        [FromRoute] string enrollment)
+    {
+        var result = await useCase.Execute(enrollment);
+
+        if (result.Any())
+            return Ok(result);
+
+        return NoContent();
+    }
+
+    [HttpGet]
     [Route("enrollment/{enrollment}/confirmed/{status}")]
     [ProducesResponseType(typeof(ResponseMaterialForCollaboratorJson), StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
