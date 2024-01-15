@@ -53,6 +53,31 @@ public class MaterialsForCollaboratorRepository : IMaterialsForCollaboratorWrite
         return result;
     }
 
+    public async Task<List<MaterialsForCollaborator>> RecoverByDateInitialFinal(DateTime? initial, DateTime? final)
+    {
+        var collection = ConnectDataBase.GetMaterialsForCollaboratorAccess();
+        FilterDefinition<MaterialsForCollaborator> filter;
+
+        if (initial.HasValue)
+        {
+            filter = final.HasValue
+                ? Builders<MaterialsForCollaborator>.Filter.Gte("Created", initial) &
+                Builders<MaterialsForCollaborator>.Filter.Lte("Created", final)
+
+                : Builders<MaterialsForCollaborator>.Filter.Gte("Created", initial);
+        }
+        else if (final.HasValue)
+        {
+            filter = Builders<MaterialsForCollaborator>.Filter.Lte("Created", final);
+        }
+        else
+        {
+            filter = Builders<MaterialsForCollaborator>.Filter.Empty;
+        }
+
+        return await collection.Find(filter).ToListAsync();
+    }
+
     public async Task<MaterialsForCollaborator> RecoverByHashId(string hashId)
     {
         var collection = ConnectDataBase.GetMaterialsForCollaboratorAccess();

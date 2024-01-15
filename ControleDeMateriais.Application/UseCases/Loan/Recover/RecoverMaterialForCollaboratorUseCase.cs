@@ -37,116 +37,26 @@ public class RecoverMaterialForCollaboratorUseCase : IRecoverMaterialForCollabor
 
     public async Task<List<ResponseMaterialForCollaboratorJson>> Execute()
     {
-        var result = new List<ResponseMaterialForCollaboratorJson>();
-
         var materialsForCollaborator = await _repositoryMaterialForCollaboratorReadOnly.RecoverAll();
 
-        foreach (var materialForCollaborator in materialsForCollaborator)
-        {
-            var resultBorrowedMaterials = await _repositoryBorrowedMaterialReadOnly
-                .RecoverByHashId(materialForCollaborator.MaterialsHashId);
-
-            var resultListMaterials = await AddMaterialInformation(resultBorrowedMaterials);
-
-            var collaborator = await _repositoryCollaboratorReadOnly.RecoverById(materialForCollaborator.CollaboratorId);
-            var collaboratorConfirm = await _repositoryCollaboratorReadOnly.RecoverById(materialForCollaborator.CollaboratorConfirmedId);
-            var user = await _repositoryUserReadOnly.RecoverById(materialForCollaborator.UserId);
-
-            result.Add(new ResponseMaterialForCollaboratorJson
-            {
-                CollaboratorEnrollment = collaborator?.Enrollment,
-                CollaboratorNickname = collaborator?.Nickname,
-                CollaboratorTelephone = collaborator?.Telephone,
-                UserNameRegisterLoan = user?.Name,
-                LoanConfirmed = materialForCollaborator.Confirmed,
-                LoanDateTime = materialForCollaborator.DateTimeConfirmation,
-                ColaboratorNicknameConfirmed = collaboratorConfirm?.Nickname,
-                ListMaterialBorrowed = resultListMaterials,
-                HashIdLoan = materialForCollaborator.MaterialsHashId,
-            });
-        }
-
-        return result;
+        return await AddMaterialsForCollaboratorInformation(materialsForCollaborator);
     }
 
     public async Task<List<ResponseMaterialForCollaboratorJson>> Execute(string enrollment, bool status)
     {
-        var result = new List<ResponseMaterialForCollaboratorJson>();
-
         var collaborator = await _repositoryCollaboratorReadOnly.RecoverByEnrollment(enrollment) ??
             throw new ExceptionValidationErrors(new List<string> { ErrorMessagesResource.COLABORADOR_NAO_LOCALIZADO });
 
         var materialsForCollaborator = await _repositoryMaterialForCollaboratorReadOnly.RecoverByCollaboratorLoanStatus(collaborator.Id, status);
 
-        foreach (var materialForCollaborator in materialsForCollaborator)
-        {
-            var resultBorrowedMaterials = await _repositoryBorrowedMaterialReadOnly
-                .RecoverByHashId(materialForCollaborator.MaterialsHashId);
-
-            if (!resultBorrowedMaterials.Any())
-            {
-                continue;
-            }
-
-            var resultListMaterials = await AddMaterialInformation(resultBorrowedMaterials);
-
-            var collaboratorConfirm = await _repositoryCollaboratorReadOnly.RecoverById(materialForCollaborator.CollaboratorConfirmedId);
-            var user = await _repositoryUserReadOnly.RecoverById(materialForCollaborator.UserId);
-
-            result.Add(new ResponseMaterialForCollaboratorJson
-            {
-                CollaboratorEnrollment = collaborator?.Enrollment,
-                CollaboratorNickname = collaborator?.Nickname,
-                CollaboratorTelephone = collaborator?.Telephone,
-                UserNameRegisterLoan = user?.Name,
-                LoanConfirmed = materialForCollaborator.Confirmed,
-                LoanDateTime = materialForCollaborator.DateTimeConfirmation,
-                ColaboratorNicknameConfirmed = collaboratorConfirm?.Nickname,
-                ListMaterialBorrowed = resultListMaterials,
-                HashIdLoan = materialForCollaborator.MaterialsHashId,
-            });
-        }
-
-        return result;
+        return await AddMaterialsForCollaboratorInformation(materialsForCollaborator);
     }
 
     public async Task<List<ResponseMaterialForCollaboratorJson>> Execute(bool status)
     {
-        var result = new List<ResponseMaterialForCollaboratorJson>();
-
         var materialsForCollaborator = await _repositoryMaterialForCollaboratorReadOnly.RecoverByStatus(status);
 
-        foreach (var materialForCollaborator in materialsForCollaborator)
-        {
-            var resultBorrowedMaterials = await _repositoryBorrowedMaterialReadOnly
-                .RecoverByHashId(materialForCollaborator.MaterialsHashId);
-
-            if (!resultBorrowedMaterials.Any())
-            {
-                continue;
-            }
-
-            var resultListMaterials = await AddMaterialInformation(resultBorrowedMaterials);
-
-            var collaborator = await _repositoryCollaboratorReadOnly.RecoverById(materialForCollaborator.CollaboratorId);
-            var collaboratorConfirm = await _repositoryCollaboratorReadOnly.RecoverById(materialForCollaborator.CollaboratorConfirmedId);
-            var user = await _repositoryUserReadOnly.RecoverById(materialForCollaborator.UserId);
-
-            result.Add(new ResponseMaterialForCollaboratorJson
-            {
-                CollaboratorEnrollment = collaborator?.Enrollment,
-                CollaboratorNickname = collaborator?.Nickname,
-                CollaboratorTelephone = collaborator?.Telephone,
-                UserNameRegisterLoan = user?.Name,
-                LoanConfirmed = materialForCollaborator.Confirmed,
-                LoanDateTime = materialForCollaborator.DateTimeConfirmation,
-                ColaboratorNicknameConfirmed = collaboratorConfirm?.Nickname,
-                ListMaterialBorrowed = resultListMaterials,
-                HashIdLoan = materialForCollaborator.MaterialsHashId,
-            });
-        }
-
-        return result;
+        return await AddMaterialsForCollaboratorInformation(materialsForCollaborator);
     }
 
     public async Task<List<ResponseMaterialForCollaboratorJson>> Execute(string barCode)
@@ -160,13 +70,63 @@ public class RecoverMaterialForCollaboratorUseCase : IRecoverMaterialForCollabor
         {
             var materialForCollaborator = await _repositoryMaterialForCollaboratorReadOnly.RecoverByHashId(borrowedMaterial.HashId);
 
-
             var materialWithInformation = await AddMaterialInformation(borrowedMaterial);
 
             List<ResponseBorrowedListMaterialJson> resultListMaterials = new()
             {
                 materialWithInformation.FirstOrDefault()
             };
+
+            var collaborator = await _repositoryCollaboratorReadOnly.RecoverById(materialForCollaborator.CollaboratorId);
+            var collaboratorConfirm = await _repositoryCollaboratorReadOnly.RecoverById(materialForCollaborator.CollaboratorConfirmedId);
+            var user = await _repositoryUserReadOnly.RecoverById(materialForCollaborator.UserId);
+
+            result.Add(new ResponseMaterialForCollaboratorJson
+            {
+                CollaboratorEnrollment = collaborator?.Enrollment,
+                CollaboratorNickname = collaborator?.Nickname,
+                CollaboratorTelephone = collaborator?.Telephone,
+                UserNameRegisterLoan = user?.Name,
+                LoanConfirmed = materialForCollaborator.Confirmed,
+                LoanDateTime = materialForCollaborator.DateTimeConfirmation,
+                ColaboratorNicknameConfirmed = collaboratorConfirm?.Nickname,
+                ListMaterialBorrowed = resultListMaterials,
+                HashIdLoan = materialForCollaborator.MaterialsHashId,
+            });
+        }
+
+        return result;
+    }
+
+    public async Task<List<ResponseMaterialForCollaboratorJson>> Execute(DateTime? initial, DateTime? final)
+    {
+        if (initial.HasValue)
+        {
+            initial = initial.Value.Date;
+        }
+
+        if (final.HasValue)
+        {
+            final = final.Value.Date.AddDays(1).AddTicks(-1);
+        }
+
+        ValidateDates(initial, final);
+
+        var materialsForCollaborator = await _repositoryMaterialForCollaboratorReadOnly.RecoverByDateInitialFinal(initial, final);
+
+        return await AddMaterialsForCollaboratorInformation(materialsForCollaborator);
+    }
+
+    private async Task<List<ResponseMaterialForCollaboratorJson>> AddMaterialsForCollaboratorInformation(List<MaterialsForCollaborator> materialsForCollaborator)
+    {
+        var result = new List<ResponseMaterialForCollaboratorJson>();
+
+        foreach (var materialForCollaborator in materialsForCollaborator)
+        {
+            var resultBorrowedMaterials = await _repositoryBorrowedMaterialReadOnly
+                .RecoverByHashId(materialForCollaborator.MaterialsHashId);
+
+            var resultListMaterials = await AddMaterialInformation(resultBorrowedMaterials);
 
             var collaborator = await _repositoryCollaboratorReadOnly.RecoverById(materialForCollaborator.CollaboratorId);
             var collaboratorConfirm = await _repositoryCollaboratorReadOnly.RecoverById(materialForCollaborator.CollaboratorConfirmedId);
@@ -243,5 +203,13 @@ public class RecoverMaterialForCollaboratorUseCase : IRecoverMaterialForCollabor
         });
 
         return resultListMaterials;
+    }
+
+    private static void ValidateDates(DateTime? initial, DateTime? final)
+    {
+        if (initial > final)
+        {
+            throw new ExceptionValidationErrors(new List<string> { ErrorMessagesResource.DATA_FINAL_MAIOR_INICIAL });
+        }
     }
 }
