@@ -1,4 +1,6 @@
-﻿namespace ControleDeMateriais.Domain.Repositories.Material;
+﻿using ControleDeMateriais.Domain.Entities;
+
+namespace ControleDeMateriais.Domain.Repositories.Material;
 public interface IMaterialReadOnlyRepository
 {
     Task<List<Entities.Material>> RecoverAll();

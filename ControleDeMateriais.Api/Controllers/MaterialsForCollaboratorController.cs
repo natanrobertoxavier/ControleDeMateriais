@@ -1,8 +1,5 @@
 using ControleDeMateriais.Api.Filters.LoggedUser;
-using ControleDeMateriais.Application.UseCases.Loan.Confirm;
 using ControleDeMateriais.Application.UseCases.Loan.Recover;
-using ControleDeMateriais.Application.UseCases.Loan.Selection;
-using ControleDeMateriais.Communication.Requests;
 using ControleDeMateriais.Communication.Responses;
 using Microsoft.AspNetCore.Mvc;
 
@@ -68,6 +65,24 @@ public class MaterialsForCollaboratorController : ControleDeMateriaisController
         [FromRoute] string barCode)
     {
         var result = await useCase.Execute(barCode);
+
+        if (result.Any())
+            return Ok(result);
+
+        return NoContent();
+    }
+
+    [HttpGet]
+    [Route("date")]
+    [ProducesResponseType(typeof(ResponseMaterialForCollaboratorJson), StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status204NoContent)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    public async Task<IActionResult> RecoveryByDate(
+        [FromServices] IRecoverMaterialForCollaboratorUseCase useCase,
+        [FromQuery] DateTime? initial = null,
+        [FromQuery] DateTime? final = null)
+    {
+        var result = await useCase.Execute(initial, final);
 
         if (result.Any())
             return Ok(result);

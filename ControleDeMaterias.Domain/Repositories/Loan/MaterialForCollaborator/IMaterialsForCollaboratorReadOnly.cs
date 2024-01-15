@@ -10,4 +10,5 @@ public interface IMaterialsForCollaboratorReadOnly
     Task<List<MaterialsForCollaborator>> RecoverByStatus(bool status);
     Task<MaterialsForCollaborator> RecoverByHashId(string hashId);
     Task<List<MaterialsForCollaborator>> RecoverByHashIds(List<string> hashId);
+    Task<List<MaterialsForCollaborator>> RecoverByDateInitialFinal(DateTime? initial, DateTime? final);
 }

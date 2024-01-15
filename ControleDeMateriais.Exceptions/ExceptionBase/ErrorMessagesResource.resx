@@ -165,6 +165,9 @@
   <data name="CPF_USUARIO_INVALIDO" xml:space="preserve">
     <value>O CPF informado é inválido.</value>
   </data>
+  <data name="DATA_FINAL_MAIOR_INICIAL" xml:space="preserve">
+    <value>A data inicial não pode ser maior que a data final.</value>
+  </data>
   <data name="DESCRICAO_EM_BRANCO" xml:space="preserve">
     <value>Descrição do material em branco.</value>
   </data>

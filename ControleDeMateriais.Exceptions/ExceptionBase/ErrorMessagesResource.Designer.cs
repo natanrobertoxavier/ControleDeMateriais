@@ -205,6 +205,15 @@ namespace ControleDeMateriais.Exceptions.ExceptionBase {
         }
         
         /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a A data inicial não pode ser maior que a data final..
+        /// </summary>
+        public static string DATA_FINAL_MAIOR_INICIAL {
+            get {
+                return ResourceManager.GetString("DATA_FINAL_MAIOR_INICIAL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a Descrição do material em branco..
         /// </summary>
         public static string DESCRICAO_EM_BRANCO {
