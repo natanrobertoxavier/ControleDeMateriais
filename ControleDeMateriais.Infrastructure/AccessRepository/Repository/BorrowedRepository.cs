@@ -48,6 +48,35 @@ public class BorrowedRepository : IBorrowedMaterialWriteOnly, IBorrowedMaterialR
         return await collection.Find(filter).ToListAsync();
     }
 
+    public async Task<List<BorrowedMaterial>> RecoverByStatus(bool status)
+    {
+        var collection = ConnectDataBase.GetBorrowedMaterialAccess();
+        var filter =  Builders<BorrowedMaterial>.Filter.Where(c => c.Active == status);
+
+        return await collection.Find(filter).ToListAsync();
+    }
+
+    public async Task<List<BorrowedMaterial>> RecoverByStatusReceived(bool status, bool received)
+    {
+        var collection = ConnectDataBase.GetBorrowedMaterialAccess();
+        
+        FilterDefinition<BorrowedMaterial> filter;
+        var objectId = new MongoDB.Bson.ObjectId("000000000000000000000000");
+
+        if (received)
+        {
+            filter = Builders<BorrowedMaterial>.Filter.Where(c => c.Active == status &&
+                                                            c.UserReceivedId != objectId);
+        }
+        else
+        {
+            filter = Builders<BorrowedMaterial>.Filter.Where(c => c.Active == status &&
+                                                            c.UserReceivedId == objectId);
+        }
+
+        return await collection.Find(filter).ToListAsync();
+    }
+
     public async Task<List<string>> RecoverBorrowedMaterial(List<string> codeBar)
     {
         var collection = ConnectDataBase.GetBorrowedMaterialAccess();

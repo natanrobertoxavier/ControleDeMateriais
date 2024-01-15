@@ -1,11 +1,14 @@
 ﻿using AutoMapper;
 using ControleDeMateriais.Communication.Enum;
 using ControleDeMateriais.Communication.Responses;
+using ControleDeMateriais.Domain.Entities;
 using ControleDeMateriais.Domain.Repositories.Collaborator;
 using ControleDeMateriais.Domain.Repositories.Loan.Borrowed;
 using ControleDeMateriais.Domain.Repositories.Loan.MaterialForCollaborator;
 using ControleDeMateriais.Domain.Repositories.Material;
 using ControleDeMateriais.Domain.Repositories.User;
+using ControleDeMateriais.Infrastructure.AccessRepository;
+using MongoDB.Driver;
 
 namespace ControleDeMateriais.Application.UseCases.BorrowedMaterials.Recover;
 public class RecoverBorrowedMaterialsUseCase : IRecoverBorrowedMaterialsUseCase
@@ -35,9 +38,26 @@ public class RecoverBorrowedMaterialsUseCase : IRecoverBorrowedMaterialsUseCase
 
     public async Task<List<ResponseBorrowedMaterialJson>> Execute()
     {
-        var result = new List<ResponseBorrowedMaterialJson>();
-
         var resultBorrowedMaterials = await _repositoryBorrowedMaterialReadOnly.RecoverAll();
+
+        return await AddInformationsBorrowedMaterials(resultBorrowedMaterials);
+    }
+
+    public async Task<List<ResponseBorrowedMaterialJson>> Execute(bool status, bool received)
+    {
+        var resultBorrowedMaterials = await _repositoryBorrowedMaterialReadOnly.RecoverByStatusReceived(status, received);
+
+        return await AddInformationsBorrowedMaterials(resultBorrowedMaterials);
+    }
+
+    public async Task<List<string>> Execute(List<string> codeBar)
+    {
+        return await _repositoryBorrowedMaterialReadOnly.RecoverBorrowedMaterial(codeBar);
+    }
+
+    private async Task<List<ResponseBorrowedMaterialJson>> AddInformationsBorrowedMaterials(List<BorrowedMaterial> resultBorrowedMaterials)
+    {
+        var result = new List<ResponseBorrowedMaterialJson>();
 
         foreach (var item in resultBorrowedMaterials)
         {
@@ -45,9 +65,10 @@ public class RecoverBorrowedMaterialsUseCase : IRecoverBorrowedMaterialsUseCase
             var collaborator = await _repositoryCollaboratorReadOnly.RecoverById(materialForCollaborator.CollaboratorId);
             var material = await _repositoryMaterialReadOnlyRepository.RecoverByBarCode(item.BarCode);
 
-            var userReceived = await _repositoryUserReadOnly.RecoverById(item.UserReceivedId);
+            var userReceived = await _repositoryUserReadOnly.RecoverById(item.UserReceivedId) ??
+                new Domain.Entities.User();
 
-            var category = (Category) material.Category;
+            var category = (Category)material.Category;
 
             var categoryName = category.GetDescription();
 
@@ -65,10 +86,5 @@ public class RecoverBorrowedMaterialsUseCase : IRecoverBorrowedMaterialsUseCase
         }
 
         return result;
-    }
-
-    public async Task<List<string>> Execute(List<string> codeBar)
-    {
-        return await _repositoryBorrowedMaterialReadOnly.RecoverBorrowedMaterial(codeBar);
     }
 }
