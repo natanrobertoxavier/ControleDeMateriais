@@ -62,5 +62,10 @@ public class AutoMapperConfiguration : Profile
             .ForMember(destiny => destiny.UserIdCreated, config => config.MapFrom(origin => origin.UserId));
 
         CreateMap<Domain.Entities.Collaborator, Domain.Entities.CollaboratorDeletionLog>();
+
+        CreateMap<Domain.Entities.BorrowedMaterial, Domain.Entities.BorrowedMaterialDeletionLog>();
+
+        CreateMap<Domain.Entities.MaterialsForCollaborator, Domain.Entities.MaterialsForCollaboratorDeletionLog>()
+            .ForMember(destiny => destiny.UserIdCreated, config => config.MapFrom(origin => origin.UserId));
     }
 }

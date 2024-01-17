@@ -195,6 +195,9 @@
   <data name="ERRO_DESCONHECIDO" xml:space="preserve">
     <value>Erro desconhecido.</value>
   </data>
+  <data name="EXCLUSAO_CONCESSAO_CONFIRMADA_NAO_PERMITIDA" xml:space="preserve">
+    <value>Exclusão de concessão já confirmada não é permitida.</value>
+  </data>
   <data name="LOGIN_INVALIDO" xml:space="preserve">
     <value>Usuário e/ou senha incorretos.</value>
   </data>
