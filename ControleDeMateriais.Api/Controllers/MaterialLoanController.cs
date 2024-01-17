@@ -3,6 +3,8 @@ using ControleDeMateriais.Application.UseCases.Loan.Confirm;
 using ControleDeMateriais.Application.UseCases.Loan.Delete;
 using ControleDeMateriais.Application.UseCases.Loan.Selection;
 using ControleDeMateriais.Communication.Requests;
+using ControleDeMateriais.Communication.Responses;
+using ControleDeMateriais.Exceptions.ExceptionBase;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ControleDeMateriais.Api.Controllers;
@@ -38,13 +40,21 @@ public class MaterialLoanController : ControleDeMateriaisController
     [HttpDelete]
     [Route("hashId/{hashId}")]
     [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status204NoContent)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     public async Task<IActionResult> Delete(
         [FromServices] IDeleteLoanUseCase useCase,
         [FromRoute] string hashId)
     {
-        await useCase.Execute(hashId);
+        try
+        {
+            await useCase.Execute(hashId);
 
-        return Ok();
+            return Ok();
+        }
+        catch (ExceptionNoContentErrors)
+        {
+            return NoContent();
+        }
     }
 }
