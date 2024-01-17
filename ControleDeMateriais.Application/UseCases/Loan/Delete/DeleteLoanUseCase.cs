@@ -68,7 +68,7 @@ public class DeleteLoanUseCase : IDeleteLoanUseCase
     private async Task<MaterialsForCollaborator> ValidateData(string hashId)
     {
         var materialForCollaborator = await _repositoryMaterialsForCollaboratorReadOnly.RecoverByHashId(hashId) ??
-            throw new ExceptionValidationErrors(new List<string> { ErrorMessagesResource.CONCESSAO_NAO_LOCALIZADA });
+            throw new ExceptionNoContentErrors(new List<string> { ErrorMessagesResource.CONCESSAO_NAO_LOCALIZADA });
 
         if (materialForCollaborator.Confirmed)
         {

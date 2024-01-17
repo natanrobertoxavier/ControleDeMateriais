@@ -38,10 +38,22 @@ public class ExceptionFilters : IExceptionFilter
         {
             ProcessBorrowedMaterialErrors(context);
         }
+        else if (context.Exception is ExceptionNoContentErrors)
+        {
+            ProcessNoContentErrors(context);
+        }
         else
         {
             ThrowUnknownError(context);
         }
+    }
+
+    private static void ProcessNoContentErrors(ExceptionContext context)
+    {
+        var errorValidator = context.Exception as ExceptionNoContentErrors;
+
+        context.HttpContext.Response.StatusCode = 204;
+        context.Result = new ObjectResult(new ResponseErrorJson(errorValidator.MessagesErrors));
     }
 
     private static void ProcessLoginInvalidException(ExceptionContext context)
