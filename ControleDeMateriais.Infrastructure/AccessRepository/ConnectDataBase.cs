@@ -12,6 +12,8 @@ public class ConnectDataBase
     private const string collaboratorDeletionLog = "collaboratorDeletionLog";
     private const string borrowedMaterial = "borrowedMaterials";
     private const string materialsForCollaborator = "materialsForCollaborator";
+    private const string materialsForCollaboratorDeletionLog = "materialsForCollaboratorDeletionLog";
+    private const string borrowedMaterialsDeletionLog = "borrowedMaterialsDeletionLog";
 
     public static IMongoCollection<User> GetUserAccess()
     {
@@ -114,6 +116,34 @@ public class ConnectDataBase
 
         IMongoCollection<MaterialsForCollaborator> collection = 
             mongoDataBase.GetCollection<MaterialsForCollaborator>(materialsForCollaborator);
+
+        return collection;
+    }
+
+    public static IMongoCollection<MaterialsForCollaboratorDeletionLog> GetMaterialsForCollaboratorDeletionLogAccess()
+    {
+        var connection = Environment.GetEnvironmentVariable("ConnectionString");
+        var databaseName = Environment.GetEnvironmentVariable("DatabaseName");
+
+        var mongoClient = new MongoClient(connection);
+        var mongoDataBase = mongoClient.GetDatabase(databaseName);
+
+        IMongoCollection<MaterialsForCollaboratorDeletionLog> collection = 
+            mongoDataBase.GetCollection<MaterialsForCollaboratorDeletionLog>(materialsForCollaboratorDeletionLog);
+
+        return collection;
+    }
+
+    public static IMongoCollection<BorrowedMaterialDeletionLog> GetBorrowedMaterialsDeletionLogAccess()
+    {
+        var connection = Environment.GetEnvironmentVariable("ConnectionString");
+        var databaseName = Environment.GetEnvironmentVariable("DatabaseName");
+
+        var mongoClient = new MongoClient(connection);
+        var mongoDataBase = mongoClient.GetDatabase(databaseName);
+
+        IMongoCollection<BorrowedMaterialDeletionLog> collection = 
+            mongoDataBase.GetCollection<BorrowedMaterialDeletionLog>(borrowedMaterialsDeletionLog);
 
         return collection;
     }

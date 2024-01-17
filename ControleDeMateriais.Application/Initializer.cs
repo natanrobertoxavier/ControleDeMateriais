@@ -8,6 +8,7 @@ using ControleDeMateriais.Application.UseCases.Collaborator.Recover;
 using ControleDeMateriais.Application.UseCases.Collaborator.Register;
 using ControleDeMateriais.Application.UseCases.Collaborator.Update;
 using ControleDeMateriais.Application.UseCases.Loan.Confirm;
+using ControleDeMateriais.Application.UseCases.Loan.Delete;
 using ControleDeMateriais.Application.UseCases.Loan.Devolution;
 using ControleDeMateriais.Application.UseCases.Loan.Recover;
 using ControleDeMateriais.Application.UseCases.Loan.Selection;
@@ -86,6 +87,7 @@ public static class Initializer
         services.AddScoped<IRecoverMaterialForCollaboratorUseCase, RecoverMaterialForCollaboratorUseCase>();
         services.AddScoped<IConfirmSelectedMaterialUseCase, ConfirmSelectedMaterialUseCase>();
         services.AddScoped<IMaterialDevolutionUseCase, MaterialDevolutionUseCase>();
+        services.AddScoped<IDeleteLoanUseCase, DeleteLoanUseCase>();
         #endregion
 
         #region BorrowedMaterials

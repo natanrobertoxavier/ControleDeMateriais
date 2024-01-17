@@ -25,6 +25,19 @@ public class MaterialsForCollaboratorRepository : IMaterialsForCollaboratorWrite
         await collection.UpdateOneAsync(filter, updateObject);
     }
 
+    public async Task Delete(string hashId)
+    {
+        var collection = ConnectDataBase.GetMaterialsForCollaboratorAccess();
+        var filter = Builders<MaterialsForCollaborator>.Filter.Where(c => c.MaterialsHashId.Equals(hashId));
+        await collection.DeleteOneAsync(filter);
+    }
+
+    public async Task RegisterDeletionLog(MaterialsForCollaboratorDeletionLog materialsForCollaboratorDeletionLog)
+    {
+        var collection = ConnectDataBase.GetMaterialsForCollaboratorDeletionLogAccess();
+        await collection.InsertOneAsync(materialsForCollaboratorDeletionLog);
+    }
+
     public async Task<List<MaterialsForCollaborator>> RecoverAll()
     {
         var collection = ConnectDataBase.GetMaterialsForCollaboratorAccess();

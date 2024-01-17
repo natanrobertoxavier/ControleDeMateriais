@@ -5,4 +5,6 @@ public interface IMaterialsForCollaboratorWriteOnly
 {
     Task Add(MaterialsForCollaborator materialsForCollaborator);
     Task Confirm(string hashId, string userId);
+    Task Delete(string hashId);
+    Task RegisterDeletionLog(MaterialsForCollaboratorDeletionLog materialsForCollaboratorDeletionLog);
 }

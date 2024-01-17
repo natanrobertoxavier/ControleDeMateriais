@@ -295,6 +295,15 @@ namespace ControleDeMateriais.Exceptions.ExceptionBase {
         }
         
         /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Exclusão de concessão já confirmada não é permitida..
+        /// </summary>
+        public static string EXCLUSAO_CONCESSAO_CONFIRMADA_NAO_PERMITIDA {
+            get {
+                return ResourceManager.GetString("EXCLUSAO_CONCESSAO_CONFIRMADA_NAO_PERMITIDA", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a Usuário e/ou senha incorretos..
         /// </summary>
         public static string LOGIN_INVALIDO {

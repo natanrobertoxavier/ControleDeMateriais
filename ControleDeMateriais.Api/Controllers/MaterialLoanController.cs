@@ -1,5 +1,6 @@
 using ControleDeMateriais.Api.Filters.LoggedUser;
 using ControleDeMateriais.Application.UseCases.Loan.Confirm;
+using ControleDeMateriais.Application.UseCases.Loan.Delete;
 using ControleDeMateriais.Application.UseCases.Loan.Selection;
 using ControleDeMateriais.Communication.Requests;
 using Microsoft.AspNetCore.Mvc;
@@ -30,6 +31,19 @@ public class MaterialLoanController : ControleDeMateriaisController
         [FromBody] RequestConfirmSelectedMaterialJson request)
     {
         await useCase.Execute(request);
+
+        return Ok();
+    }
+
+    [HttpDelete]
+    [Route("hashId/{hashId}")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    public async Task<IActionResult> Delete(
+        [FromServices] IDeleteLoanUseCase useCase,
+        [FromRoute] string hashId)
+    {
+        await useCase.Execute(hashId);
 
         return Ok();
     }

@@ -39,6 +39,19 @@ public class BorrowedRepository : IBorrowedMaterialWriteOnly, IBorrowedMaterialR
 
         await collection.UpdateManyAsync(filter, updateObject);
     }
+    
+    public async Task Delete(string hashId)
+    {
+        var collection = ConnectDataBase.GetBorrowedMaterialAccess();
+        var filter = Builders<BorrowedMaterial>.Filter.Where(c => c.HashId.Equals(hashId));
+        await collection.DeleteManyAsync(filter);
+    }
+
+    public async Task RegisterDeletionLog(List<BorrowedMaterialDeletionLog> borrowedMaterialsLog)
+    {
+        var collection = ConnectDataBase.GetBorrowedMaterialsDeletionLogAccess();
+        await collection.InsertManyAsync(borrowedMaterialsLog);
+    }
 
     public async Task<List<BorrowedMaterial>> RecoverAll()
     {
@@ -117,4 +130,5 @@ public class BorrowedRepository : IBorrowedMaterialWriteOnly, IBorrowedMaterialR
 
         return await collection.Find(filter).ToListAsync();
     }
+
 }
